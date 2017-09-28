@@ -16,13 +16,12 @@ import { Chart } from 'chart.js';
 })
 export class GraphicPage {
 
-  @ViewChild('barCanvas') barCanvas;
-  @ViewChild('doughnutCanvas') doughnutCanvas;
   @ViewChild('lineCanvas') lineCanvas;
+  @ViewChild('lineCanvas2') lineCanvas2;
 
-  barChart: any;
-  doughnutChart: any;
+
   lineChart: any;
+  lineChart2: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -31,73 +30,71 @@ export class GraphicPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad GraphicPage');
 
-    this.barChart = new Chart(this.barCanvas.nativeElement, {
+    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
 
-      type: 'bar',
+      type: 'line',
       data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }});
+        labels: ["0", "1", "2", "3", "4", "5", "6", "7", "8",
+                "9", "10", "11", "1 año", "1", "2", "3", "4", "5", "6", "7", "8",
+                        "9", "10", "11", "2 años",],
+        datasets: [
+          {
+            label: "Media",
+            fill: false,
+            lineTension: 0.001,
+            backgroundColor: "rgba(255, 51, 178,0.4)", //caja
+            borderColor: "rgba(255, 51, 178,1)", //linea
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 51, 178,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 6,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [3.2, 4.2, 5.1, 5.8, 6.4, 6.9, 7.3, 7.6, 7.9, 8.2, 8.5, 8.7,
+                    8.9, 9.2, 9.6, 9.8, 10.0, 10.2, 10.4, 10.6, 10.9, 11.1, 11.3,
+                   11.5, 11.7],
+            spanGaps: false,
 
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-
-      type: 'doughnut',
-      data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56",
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
+          }, {
+            label: "-2DE",
+            fill: false,
+            lineTension: 0.1,
+            //fillColor: "rgba(220,220,220,0.5)",
+            //strokeColor: "rgba(220,220,220,0.8)",
+            //highlightFill: "rgba(220,220,220,0.75)",
+            //highlightStroke: "rgba(220,220,220,1)",
+            //showTooltip: false, //NEW OPTION DON"T NEED TO INCLUDE IT IF YOU WANT TO DISPLAY BUT WON"T HURT IF YOU DO
+            backgroundColor: "rgba(255, 167, 222,0.4)", //caja
+            borderColor: "rgba(255, 167, 222,1)", //linea
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 167, 222,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 6,
+            pointHoverBackgroundColor: "rgba(255, 167, 222,1)",
+            pointHoverBorderColor: "rgba(255, 167, 222,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [2.4,3.2,3.9,4.5,5.0,5.4,5.7,6.0,6.3,6.5,6.7,6.9,7.0,7.2,7.4,
+                  7.6,7.7,7.9,8.1,8.2,8.4,8.6,8.7,8.9,9.0,9.2]
+          }
+        ]
       }
 
     });
 
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+    this.lineCanvas2 = new Chart(this.lineCanvas2.nativeElement, {
 
       type: 'line',
       data: {
@@ -124,15 +121,14 @@ export class GraphicPage {
             pointHitRadius: 10,
             data: [65, 59, 80, 81, 56, 55, 40],
             spanGaps: false,
+
           }
         ]
       }
 
     });
 
+
+
     }
   }
-
-
-
-
