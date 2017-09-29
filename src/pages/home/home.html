@@ -10,23 +10,31 @@
 
   <ion-list>
     <ion-item>
-      <ion-label>Sexo</ion-label>
+      <ion-label>Genero</ion-label>
       <ion-select [(ngModel)]="sex">
         <ion-option value="f">Femenino</ion-option>
         <ion-option value="m">Masculino</ion-option>
       </ion-select>
     </ion-item>
+
     <ion-item>
-      <ion-label>Edad(años)</ion-label>
-      <ion-select [(ngModel)]="age">
-        <ion-option value="f">Femenino</ion-option>
-        <ion-option value="m">Masculino</ion-option>
-      </ion-select>
+      <ion-label>Fecha Nacimiento</ion-label>
+      <ion-datetime displayFormat="DD/MMMM/YYYY" [(ngModel)]="myDate"></ion-datetime>
     </ion-item>
+
+    <ion-item>
+        <ion-label>Altura (cms):</ion-label>
+        <ion-input type="text"></ion-input>
+   </ion-item>
+   <ion-item>
+       <ion-label>Peso (Kgs):</ion-label>
+       <ion-input type="text"></ion-input>
+  </ion-item>
+
   </ion-list>
-    
+
   <button ion-button (click)="goToGraphic()">Ejemplo</button>
-  
+
 
 
 </ion-content>
