@@ -12,7 +12,7 @@ import { GraphicPage } from '../pages/graphic/graphic'
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = GraphicPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

@@ -9,6 +9,19 @@ import { HomePage } from '../pages/home/home';
 import { GraphicPage } from '../pages/graphic/graphic';
 import { LoginPage } from '../pages/login/login';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCpswmhdfdOAXmtLZQRyjzYYsOSgGxQ7kc",
+  authDomain: "childdevelopment-31873.firebaseapp.com",
+  databaseURL: "https://childdevelopment-31873.firebaseio.com",
+  storageBucket: "",
+  messagingSenderId: '418570813126'
+};
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -18,7 +31,10 @@ import { LoginPage } from '../pages/login/login';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
