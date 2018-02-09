@@ -15,6 +15,11 @@ import { Chart } from 'chart.js';
   templateUrl: 'graphic.html',
 })
 export class GraphicPage {
+  sex: string;
+  date: {day:null, month:null,year:null};
+  color: string;
+  peso: string;
+
 
   @ViewChild('lineCanvas') lineCanvas;
   @ViewChild('lineCanvas2') lineCanvas2;
@@ -25,9 +30,18 @@ export class GraphicPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.color = this.navParams.get('color');
+    this.peso = this.navParams.get('peso');
+    this.date = this.navParams.get('date');
+    this.sex = this.navParams.get('sex');
   }
 
   ionViewDidLoad() {
+    console.log(this.color);
+    console.log(this.peso);
+    console.log(this.date.day);
+    console.log(this.sex);
+    //console.log(data);
     console.log('ionViewDidLoad GraphicPage');
 
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {

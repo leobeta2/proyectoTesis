@@ -19,8 +19,17 @@ export class HomePage {
 
   }
 
-  public goToGraphic(){
-    this.navCtrl.push(GraphicPage);
+  public goToGraphic(sex,date,color, peso){
+    /*let data= {
+      title: 'holi',
+      second: 'no molestes'
+    };
+    this.navCtrl.push(GraphicPage, data);*/
+
+
+
+    this.navCtrl.push(GraphicPage, {sex,date,color,peso});
+
   }
 
 }

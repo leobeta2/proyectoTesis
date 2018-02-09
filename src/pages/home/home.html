@@ -11,29 +11,25 @@
   <ion-list>
     <ion-item>
       <ion-label>Genero</ion-label>
-      <ion-select [(ngModel)]="sex">
+      <ion-select #sex>
         <ion-option value="f">Femenino</ion-option>
         <ion-option value="m">Masculino</ion-option>
       </ion-select>
     </ion-item>
-
     <ion-item>
       <ion-label>Fecha Nacimiento</ion-label>
-      <ion-datetime displayFormat="DD/MMMM/YYYY" [(ngModel)]="myDate"></ion-datetime>
+      <ion-datetime displayFormat="DD/MMMM/YYYY" #date></ion-datetime>
     </ion-item>
-
     <ion-item>
-        <ion-label>Altura (cms):</ion-label>
-        <ion-input type="text"></ion-input>
-   </ion-item>
-   <ion-item>
-       <ion-label>Peso (Kgs):</ion-label>
-       <ion-input type="text"></ion-input>
-  </ion-item>
-
+      <ion-label>Altura (cms):</ion-label>
+      <ion-input placeholder='Altura en centimetros...' #color></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Peso (Kgs):</ion-label>
+      <ion-input placeholder='Peso en Kilogramos' #peso></ion-input>
+    </ion-item>
   </ion-list>
-
-  <button ion-button (click)="goToGraphic()">Ejemplo</button>
+  <button ion-button color="secondary" (click)="goToGraphic(sex.value, date.value,color.value, peso.value)">About Page</button>
 
 
 
