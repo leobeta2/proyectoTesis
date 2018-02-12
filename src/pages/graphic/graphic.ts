@@ -20,13 +20,20 @@ export class GraphicPage {
   color: string;
   peso: string;
 
+  //Se define niña= A, niño= B
+  //grafico 1: Relación Peso para la Edad (P/E). Para niñ@s de 0 – 24 meses.
+  //grafico 2: Relación Longitud para la Edad (L/E). Para niña@ de 0 – 24 meses.
+  //grafico 3: Relación Peso para la Longitud (P/ L). Para niñ@s que miden entre 50 y 75 cm.
 
-  @ViewChild('lineCanvas') lineCanvas;
-  @ViewChild('lineCanvas2') lineCanvas2;
+
+  @ViewChild('graphicsA1') graphicsA1;
+  @ViewChild('graphicsA2') graphicsA2;
+  @ViewChild('graphicsA3') graphicsA3;
 
 
-  lineChart: any;
-  lineChart2: any;
+  A1: any;
+  A2: any;
+  A3: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -44,7 +51,7 @@ export class GraphicPage {
     //console.log(data);
     console.log('ionViewDidLoad GraphicPage');
 
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+    this.A1 = new Chart(this.graphicsA1.nativeElement, {
 
       type: 'line',
       data: {
@@ -189,7 +196,7 @@ export class GraphicPage {
 
     });
 
-    this.lineCanvas2 = new Chart(this.lineCanvas2.nativeElement, {
+    this.A2 = new Chart(this.graphicsA2.nativeElement, {
 
       type: 'line',
       data: {
@@ -325,6 +332,149 @@ export class GraphicPage {
       }
 
     });
+
+    this.A3 = new Chart(this.graphicsA3.nativeElement, {
+
+      type: 'line',
+      data: {
+        labels: ["50","50.5","51.0","51.5","52.0","52.5", "53.0", "53.5", "54.0", "54.5", "55.0", "55.5", "56.0", "56.5",
+        "57.0", "57.5", "58.0", "58.5", "59.0", "59.5", "60.0", "60.5", "61.0", "61.5"],
+        datasets: [
+          {
+            label: "-2DE",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255, 167, 222,0.4)",
+            borderColor: "rgba(255, 167, 222,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 167, 222,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255, 167, 222,1)",
+            pointHoverBorderColor: "rgba(255, 167, 222,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7,3.8
+              ,3.9,4.0,4.1,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5.0,
+              5.1,5.2,],
+            spanGaps: false,
+
+          },
+          {
+            label: "-1DE",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255, 124, 206,0.4)",
+            borderColor: "rgba(255, 124, 206,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 124, 206,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255, 124, 206,1)",
+            pointHoverBorderColor: "rgba(255, 124, 206,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0,4.2
+              ,4.3,4.4,4.5,4.6,4.8,4.9,5.0,5.1,5.3,5.4,5.5,
+              5.6,5.7,],
+            spanGaps: false,
+
+          },
+          {
+            label: "Media",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255, 51, 178,0.4)",
+            borderColor: "rgba(255, 51, 178,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 51, 178,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255, 51, 178,1)",
+            pointHoverBorderColor: "rgba(255, 51, 178,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0, 4.2, 4.3, 4.4,4.5
+              ,4.7,4.8,5.0,5.1,5.2,5.4,5.5,5.6,5.7,5.9,6.0,
+              6.1,6.3,],
+            spanGaps: false,
+
+          },
+          {
+            label: "1DE",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255, 124, 206,0.4)",
+            borderColor: "rgba(255, 124, 206,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 124, 206,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255, 124, 2062,1)",
+            pointHoverBorderColor: "rgba(255, 124, 206,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [3.7, 3.8, 3.9, 4.0, 4.2, 4.3, 4.4, 4.6, 4.7, 4.8,5.0
+              ,5.1,5.3,5.4,5.6,5.7,5.9,6.0,6.2,6.3,6.4,6.6,
+              6.7,6.9,],
+            spanGaps: false,
+
+          },
+          {
+            label: "2DE",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255, 167, 222,0.4)",
+            borderColor: "rgba(255, 167, 222,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 167, 222,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255, 167, 222,1)",
+            pointHoverBorderColor: "rgba(255, 167, 222,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [4.0, 4.2, 4.3, 4.4, 4.6, 4.7, 4.9, 5.0, 5.1, 5.3,5.5
+              ,5.7,5.8,6.0,6.1,6.3,6.5,6.6,6.8,6.9,7.1,7.3,
+              7.4,7.6,],
+            spanGaps: false,
+
+          },
+        ]
+      }
+
+    });
+
+
+
+
+
+    console.log(this.A1);
 
 
 
