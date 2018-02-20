@@ -2,6 +2,9 @@ import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
 
+import {DATOS} from "../../data/data.datos"
+//import { DatosInterface } from '../../interfaces/datos.interface';
+
 /**
  * Generated class for the GraphicPage page.
  *
@@ -31,6 +34,8 @@ export class GraphicPage {
   @ViewChild('graphicsA2') graphicsA2;
   @ViewChild('graphicsA3') graphicsA3;
   @ViewChild('graphicsA4') graphicsA4;
+  
+
 
 
   A1: any;
@@ -54,6 +59,20 @@ export class GraphicPage {
     //console.log(data);
     console.log('ionViewDidLoad GraphicPage');
 
+    
+
+   const tipoGrafico = DATOS[0].tipoGrafico;
+   const tutuloGrafico = DATOS[0].tituloGrafico;
+   const labels = DATOS[0].labels;
+   const dato1 = DATOS[0].dato1;
+   const dato2 = DATOS[0].dato2;
+   const datoM = DATOS[0].datoM;
+   const dato3 = DATOS[0].dato3;
+   const dato4 = DATOS[0].dato4;
+
+   console.log(labels);
+
+   
 
 
     this.A1 = new Chart(this.graphicsA1.nativeElement, {
