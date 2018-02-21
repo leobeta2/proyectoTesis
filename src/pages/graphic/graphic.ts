@@ -36,7 +36,7 @@ export class GraphicPage {
   @ViewChild('graphicsA2') graphicsA2;
   @ViewChild('graphicsA3') graphicsA3;
   @ViewChild('graphicsA4') graphicsA4;
-  
+
 
 
 
@@ -56,19 +56,117 @@ export class GraphicPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.color);
-    console.log(this.peso);
-    console.log(this.date.day);
-    console.log(this.sex);
-    console.log("Day:");
-    console.log(this.dateTime);
-    console.log(this.dateTime.getDate());
-    console.log(this.dateTime.getMonth());
-    console.log(this.dateTime.getFullYear());
-    //console.log(data);
-    console.log('ionViewDidLoad GraphicPage');
 
-    
+    //console.log(this.color);
+    //console.log(this.peso);
+    //console.log(this.date.day);
+    //console.log(this.sex);
+    //console.log("Day:");
+    //console.log(this.dateTime);
+
+    const mesActual = this.dateTime.getMonth()+1;
+    const anoActual = this.dateTime.getFullYear();
+
+    const mesNacimiento = this.date.month || 0;
+    const anoNacimiento = this.date.year || 0;
+
+    console.log("Mes Actual");
+    console.log(mesActual);
+    console.log(anoActual);
+
+    console.log("Mes Nacimiento");
+    console.log(mesNacimiento);
+    console.log(anoNacimiento);
+    //console.log(data);
+    let difMes=0;
+    let difAno=0;
+
+    if(anoActual == anoNacimiento){
+      difMes= mesActual - mesNacimiento;
+      console.log("La diferencia mismo año");
+      console.log(difMes);
+      console.log("1A");
+      console.log("2A");
+
+    }else if (anoActual-1 == anoNacimiento) {
+
+      difMes = ( mesActual- mesNacimiento);
+      difAno = anoNacimiento - anoActual;
+      if(difMes == 0){
+        difMes = 12;
+      }else if(difMes < 0 ){
+        difMes = 12 + difMes;
+      }else if(difMes > 0){
+        difMes = 12 - difMes;
+      }
+      console.log("La diferencia de 1 año");
+      console.log(difMes);
+      console.log("1A");
+      console.log("2A");
+    } else if (anoActual-2 == anoNacimiento) {
+      difMes = mesActual - mesNacimiento;
+      if (difMes == 0) {
+        difMes = 24;
+      } else if (difMes < 0) {
+        difMes = 24 + difMes;
+      } else if (difMes > 0) {
+        difMes = 24 - difMes;
+      }
+
+      console.log("NADA");
+      console.log("La diferencia de 2 año");
+      console.log(difMes);
+      console.log("5A");
+      console.log("6A");
+
+    }else if (anoActual-3 == anoNacimiento) {
+      difMes = mesActual - mesNacimiento;
+      if (difMes == 0) {
+        difMes = 36;
+      } else if (difMes < 0) {
+        difMes = 36 + difMes;
+      } else if (difMes > 0) {
+        difMes = 36 - difMes;
+      }
+      console.log("La diferencia de 3 año");
+      console.log(difMes);
+      console.log("5A");
+      console.log("6A");
+
+    }else if(anoActual-4 == anoNacimiento) {
+      difMes = mesActual - mesNacimiento;
+      if (difMes == 0) {
+        difMes = 48;
+      } else if (difMes < 0) {
+        difMes = 48 + difMes;
+      } else if (difMes > 0) {
+        difMes = 48 - difMes;
+      }
+      console.log("La diferencia de 4 año");
+      console.log(difMes);
+      console.log("5A");
+      console.log("6A");
+
+    }else if(anoActual-5 == anoNacimiento){
+      difMes = mesActual - mesNacimiento;
+      if (difMes == 0) {
+        difMes = 60;
+      } else if (difMes < 0) {
+        difMes = 60 + difMes;
+      } else if (difMes > 0) {
+        difMes = 60 - difMes;
+      }
+      console.log("La diferencia de 5 año");
+      console.log(difMes);
+      console.log("5A");
+      console.log("6A");
+
+    }else{
+        console.log("Se ingresaron mal los datos!!");
+    }
+
+
+
 
    const tipoGrafico1 = DATOS[0].tipoGrafico;
    const tipoGrafico2 = DATOS[1].tipoGrafico;
@@ -84,7 +182,7 @@ export class GraphicPage {
 
    console.log(labels);
 
-   
+
 
 
     this.A1 = new Chart(this.graphicsA1.nativeElement, {
@@ -474,7 +572,7 @@ export class GraphicPage {
 
     });
 
-    
+
 
 
 
