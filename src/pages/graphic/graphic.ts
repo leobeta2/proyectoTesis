@@ -22,7 +22,9 @@ export class GraphicPage {
   date: {day:null, month:null,year:null};
   color: string;
   peso: string;
-  t: string;
+  t1: string;
+  t2:string;
+  t3:string;
   dateTime: any;
 
   //Se define niña= A, niño= B
@@ -51,9 +53,11 @@ export class GraphicPage {
     this.peso = this.navParams.get('peso');
     this.date = this.navParams.get('date');
     this.sex = this.navParams.get('sex');
-    this.t = DATOS[0].tituloGrafico;
+    //this.t = DATOS[0].tituloGrafico;
     this.dateTime = new Date();
   }
+
+
 
   ionViewDidLoad() {
 
@@ -66,6 +70,10 @@ export class GraphicPage {
     //console.log(this.sex);
     //console.log("Day:");
     //console.log(this.dateTime);
+    let index1 = 0;
+    let index2 = 0;
+    let index3 = 0;
+
 
     const mesActual = this.dateTime.getMonth()+1;
     const anoActual = this.dateTime.getFullYear();
@@ -89,11 +97,13 @@ export class GraphicPage {
       console.log("La diferencia mismo año");
       console.log(difMes);
       console.log("1A");
+      index1 =0;
       console.log("2A");
+      index2 =1;
 
     }else if (anoActual-1 == anoNacimiento) {
 
-      difMes = ( mesActual- mesNacimiento);
+      difMes = mesActual- mesNacimiento;
       difAno = anoNacimiento - anoActual;
       if(difMes == 0){
         difMes = 12;
@@ -105,7 +115,9 @@ export class GraphicPage {
       console.log("La diferencia de 1 año");
       console.log(difMes);
       console.log("1A");
+      index1 =0;
       console.log("2A");
+      index2 =1;
     } else if (anoActual-2 == anoNacimiento) {
       difMes = mesActual - mesNacimiento;
       if (difMes == 0) {
@@ -120,7 +132,9 @@ export class GraphicPage {
       console.log("La diferencia de 2 año");
       console.log(difMes);
       console.log("5A");
+      index1 =4;
       console.log("6A");
+      index2 =5;
 
     }else if (anoActual-3 == anoNacimiento) {
       difMes = mesActual - mesNacimiento;
@@ -134,7 +148,9 @@ export class GraphicPage {
       console.log("La diferencia de 3 año");
       console.log(difMes);
       console.log("5A");
+      index1 =4;
       console.log("6A");
+      index2 =5;
 
     }else if(anoActual-4 == anoNacimiento) {
       difMes = mesActual - mesNacimiento;
@@ -148,7 +164,9 @@ export class GraphicPage {
       console.log("La diferencia de 4 año");
       console.log(difMes);
       console.log("5A");
+      index1 =4;
       console.log("6A");
+      index2 =5;
 
     }else if(anoActual-5 == anoNacimiento){
       difMes = mesActual - mesNacimiento;
@@ -162,7 +180,9 @@ export class GraphicPage {
       console.log("La diferencia de 5 año");
       console.log(difMes);
       console.log("5A");
+      index1 =4;
       console.log("6A");
+      index2 =5;
 
     }else{
         console.log("Se ingresaron mal los datos!!");
@@ -173,10 +193,13 @@ export class GraphicPage {
     console.log("Alturas");
     if(altura > 50 && altura <= 75){
       console.log("3A");
+      index3 = 2;
     }else if (altura > 75 && altura <=100){
       console.log("4A");
+      index3= 3;
     }else if (altura >=85 && altura <=130){
       console.log("7A");
+      index3=6;
     }else{
       console.log("No hay datos para esa estatura");
     }
@@ -184,20 +207,21 @@ export class GraphicPage {
 
 
 
+    this.t1 = DATOS[index1].tituloGrafico;
+    this.t2 = DATOS[index2].tituloGrafico;
+    this.t3 = DATOS[index3].tituloGrafico;
+
+    //let labelGrafico1 = DATOS[index1].labels;
+    //let dato1Grafico1 = DATOS[index1].dato1;
+    //let dato2Grafico1 = DATOS[index1].dato2;
+    //let datoMGrafico1 = DATOS[index1].datoM;
+    //let dato3Grafico1 = DATOS[index1].dato3;
+    //let dato4Grafico1 = DATOS[index1].dato4;
 
 
 
-   const tipoGrafico1 = DATOS[0].tipoGrafico;
-   const tipoGrafico2 = DATOS[1].tipoGrafico;
-   const tipoGrafico3 = DATOS[2].tipoGrafico;
-
-   const tutuloGrafico = DATOS[0].tituloGrafico;
    const labels = DATOS[0].labels;
-   const dato1 = DATOS[0].dato1;
-   const dato2 = DATOS[0].dato2;
-   const datoM = DATOS[0].datoM;
-   const dato3 = DATOS[0].dato3;
-   const dato4 = DATOS[0].dato4;
+
 
    console.log(labels);
 
@@ -208,7 +232,7 @@ export class GraphicPage {
 
       type: 'line',
       data: {
-        labels: DATOS[0].labels,
+        labels: DATOS[index1].labels,
         datasets: [
           {
            label: "-2DE",
@@ -234,7 +258,7 @@ export class GraphicPage {
            pointHoverBorderWidth: 2,
            pointRadius: 1,
            pointHitRadius: 10,
-           data: DATOS[0].dato1
+           data: DATOS[index1].dato1
          }
           ,
           {
@@ -261,7 +285,7 @@ export class GraphicPage {
            pointHoverBorderWidth: 2,
            pointRadius: 1,
            pointHitRadius: 10,
-           data: DATOS[0].dato2
+           data: DATOS[index1].dato2
           }
           ,
 
@@ -284,7 +308,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[0].datoM,
+            data: DATOS[index1].datoM,
             spanGaps: false,
 
           },
@@ -307,7 +331,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[0].dato3,
+            data: DATOS[index1].dato3,
             spanGaps: false,
 
           },
@@ -330,7 +354,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[0].dato4,
+            data: DATOS[index1].dato4,
             spanGaps: false,
 
           }
@@ -343,7 +367,7 @@ export class GraphicPage {
 
       type: 'line',
       data: {
-        labels: DATOS[1].labels,
+        labels: DATOS[index2].labels,
         datasets: [
           {
             label: "-2DE",
@@ -387,7 +411,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[1].dato2,
+            data: DATOS[index2].dato2,
             spanGaps: false,
 
           },
@@ -410,7 +434,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[1].datoM,
+            data: DATOS[index2].datoM,
             spanGaps: false,
 
           },
@@ -433,7 +457,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[1].dato3,
+            data: DATOS[index2].dato3,
             spanGaps: false,
 
           },
@@ -456,7 +480,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[1].dato4,
+            data: DATOS[index2].dato4,
             spanGaps: false,
 
           },
@@ -469,7 +493,7 @@ export class GraphicPage {
 
       type: 'line',
       data: {
-        labels: DATOS[2].labels,
+        labels: DATOS[index3].labels,
         datasets: [
           {
             label: "-2DE",
@@ -490,7 +514,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[2].dato1,
+            data: DATOS[index3].dato1,
             spanGaps: false,
 
           },
@@ -513,7 +537,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[2].dato2,
+            data: DATOS[index3].dato2,
             spanGaps: false,
 
           },
@@ -536,7 +560,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[2].datoM,
+            data: DATOS[index3].datoM,
             spanGaps: false,
 
           },
@@ -559,7 +583,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[2].dato3,
+            data: DATOS[index3].dato3,
             spanGaps: false,
 
           },
@@ -582,7 +606,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[2].dato4,
+            data: DATOS[index3].dato4,
             spanGaps: false,
 
           },
@@ -598,6 +622,6 @@ export class GraphicPage {
     console.log(this.A1);
 
 
-
     }
+
   }
