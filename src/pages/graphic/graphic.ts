@@ -57,6 +57,9 @@ export class GraphicPage {
 
   ionViewDidLoad() {
 
+    let altura = parseInt(this.color);
+    let peso = parseInt(this.peso);
+    let sex = this.sex;
     //console.log(this.color);
     //console.log(this.peso);
     //console.log(this.date.day);
@@ -164,6 +167,22 @@ export class GraphicPage {
     }else{
         console.log("Se ingresaron mal los datos!!");
     }
+
+
+    //algoritmo de la altura
+    console.log("Alturas");
+    if(altura > 50 && altura <= 75){
+      console.log("3A");
+    }else if (altura > 75 && altura <=100){
+      console.log("4A");
+    }else if (altura >=85 && altura <=130){
+      console.log("7A");
+    }else{
+      console.log("No hay datos para esa estatura");
+    }
+    console.log(altura);
+
+
 
 
 
