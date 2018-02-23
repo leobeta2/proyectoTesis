@@ -16,10 +16,18 @@
 
 
   <ion-content>
-    <label>Altura: {{color}}</label>
-    <label>Peso : {{peso}}</label>
-    <label>Fecha Nacimiento: {{date.day}} / {{date.month}} / {{date.year}}</label>
-    <label>Sexo: {{sex}}</label>
+
+
+    <ion-card>
+      <div padding>
+        <h2> <strong>Datos Ingresados:</strong> </h2>
+        <div><label>Altura: {{color}}</label></div>
+        <div><label>Peso : {{peso}}</label></div>
+        <div><label>Fecha Nacimiento: {{date.day}} / {{date.month}} / {{date.year}}</label></div>
+        <div><label>Genero: {{sex}}</label></div>
+
+      </div>
+    </ion-card>
 
     <ion-card>
       <ion-card-header>

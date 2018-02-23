@@ -98,6 +98,8 @@ export class GraphicPage {
     let difMes=0;
     let difAno=0;
 
+    let tipoGrafico1 = "";
+
     if(anoActual == anoNacimiento){
       difMes= mesActual - mesNacimiento;
       console.log("La diferencia mismo año");
@@ -106,6 +108,8 @@ export class GraphicPage {
       index1 =0;
       console.log("2A");
       index2 =1;
+      tipoGrafico1 = DATOS[index1].tipoGrafico;
+      this.mensajePercentil(tipoGrafico1,difMes,peso,altura);
 
     }else if (anoActual-1 == anoNacimiento) {
 
@@ -505,7 +509,8 @@ export class GraphicPage {
 
     });
 
-    if(this.tercerGrafico){this.A3 = new Chart(this.graphicsA3.nativeElement, {
+    if(this.tercerGrafico){
+      this.A3 = new Chart(this.graphicsA3.nativeElement, {
 
       type: 'line',
       data: {
@@ -765,10 +770,15 @@ export class GraphicPage {
 
 
 
+    }
 
+    public  mensajePercentil(tipoGrafico,difMes, peso,altura){
 
-
-
+      console.log("oliiiiiiiiiiiiiiiih");
+      console.log(tipoGrafico);
+      console.log(difMes);
+      console.log(peso);
+      console.log(altura);
     }
 
   }
