@@ -25,7 +25,11 @@ export class GraphicPage {
   t1: string;
   t2:string;
   t3:string;
+  t4:string;
   dateTime: any;
+  public cuartoGrafico = true;
+  public tercerGrafico = true;
+
 
   //Se define niña= A, niño= B
   //grafico 1: Relación Peso por la Edad (P/E). Para niñ@s de 0 – 24 meses.
@@ -60,10 +64,11 @@ export class GraphicPage {
 
 
   ionViewDidLoad() {
-
+    let opcion = true;
     let altura = parseInt(this.color);
     let peso = parseInt(this.peso);
     let sex = this.sex;
+    this.cuartoGrafico = false; // medida parche, para que pueda funcionar bien
     //console.log(this.color);
     //console.log(this.peso);
     //console.log(this.date.day);
@@ -73,6 +78,7 @@ export class GraphicPage {
     let index1 = 0;
     let index2 = 0;
     let index3 = 0;
+    let index4 = 0;
 
 
     const mesActual = this.dateTime.getMonth()+1;
@@ -194,12 +200,21 @@ export class GraphicPage {
     if(altura > 50 && altura <= 75){
       console.log("3A");
       index3 = 2;
-    }else if (altura > 75 && altura <=100){
-      console.log("4A");
-      index3= 3;
-    }else if (altura >=85 && altura <=130){
-      console.log("7A");
-      index3=6;
+    }else if (altura > 75 && altura <=130){
+      if(altura >100){
+        this.tercerGrafico=false;
+      }
+      if(altura > 75 && altura <=100){
+        console.log("4A");
+        index3= 3;
+
+      }
+
+      if(altura >=85 && altura <= 130){
+        console.log("7A");
+        this.cuartoGrafico = true;
+        index4 = 6;
+      }
     }else{
       console.log("No hay datos para esa estatura");
     }
@@ -210,6 +225,7 @@ export class GraphicPage {
     this.t1 = DATOS[index1].tituloGrafico;
     this.t2 = DATOS[index2].tituloGrafico;
     this.t3 = DATOS[index3].tituloGrafico;
+    this.t4 = DATOS[index4].tituloGrafico;
 
     //let labelGrafico1 = DATOS[index1].labels;
     //let dato1Grafico1 = DATOS[index1].dato1;
@@ -489,7 +505,7 @@ export class GraphicPage {
 
     });
 
-    this.A3 = new Chart(this.graphicsA3.nativeElement, {
+    if(this.tercerGrafico){this.A3 = new Chart(this.graphicsA3.nativeElement, {
 
       type: 'line',
       data: {
@@ -613,13 +629,144 @@ export class GraphicPage {
         ]
       }
 
+    });}
+
+
+
+  if (this.cuartoGrafico) {
+    this.A4 = new Chart(this.graphicsA4.nativeElement, {
+
+      type: 'line',
+      data: {
+        labels: DATOS[index4].labels,
+        datasets: [
+          {
+            label: "-2DE",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255, 167, 222,0.4)",
+            borderColor: "rgba(255, 167, 222,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 167, 222,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255, 167, 222,1)",
+            pointHoverBorderColor: "rgba(255, 167, 222,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: DATOS[index4].dato1,
+            spanGaps: false,
+
+          },
+          {
+            label: "-1DE",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255, 124, 206,0.4)",
+            borderColor: "rgba(255, 124, 206,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 124, 206,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255, 124, 206,1)",
+            pointHoverBorderColor: "rgba(255, 124, 206,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: DATOS[index4].dato2,
+            spanGaps: false,
+
+          },
+          {
+            label: "Media",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255, 51, 178,0.4)",
+            borderColor: "rgba(255, 51, 178,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 51, 178,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255, 51, 178,1)",
+            pointHoverBorderColor: "rgba(255, 51, 178,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: DATOS[index4].datoM,
+            spanGaps: false,
+
+          },
+          {
+            label: "1DE",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255, 124, 206,0.4)",
+            borderColor: "rgba(255, 124, 206,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 124, 206,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255, 124, 2062,1)",
+            pointHoverBorderColor: "rgba(255, 124, 206,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: DATOS[index4].dato3,
+            spanGaps: false,
+
+          },
+          {
+            label: "2DE",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255, 167, 222,0.4)",
+            borderColor: "rgba(255, 167, 222,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255, 167, 222,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255, 167, 222,1)",
+            pointHoverBorderColor: "rgba(255, 167, 222,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: DATOS[index4].dato4,
+            spanGaps: false,
+
+          },
+        ]
+      }
+
     });
+ }
 
 
 
 
 
-    console.log(this.A1);
+
+
 
 
     }

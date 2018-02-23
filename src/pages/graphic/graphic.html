@@ -39,12 +39,24 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card>
+    <ion-card *ngIf="tercerGrafico">
+
+    <ion-card-header>
+      Gráfico 3: {{t3}}
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #graphicsA3></canvas>
+    </ion-card-content>
+  </ion-card>
+
+    <ion-card *ngIf="cuartoGrafico">
+
       <ion-card-header>
-        Gráfico 3: {{t3}}
+        Gráfico 4: {{t4}}
       </ion-card-header>
       <ion-card-content>
-        <canvas #graphicsA3></canvas>
+        <canvas  #graphicsA4></canvas>
       </ion-card-content>
     </ion-card>
+
   </ion-content>
