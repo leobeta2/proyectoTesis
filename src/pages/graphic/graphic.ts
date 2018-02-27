@@ -104,10 +104,17 @@ export class GraphicPage {
       difMes= mesActual - mesNacimiento;
       console.log("La diferencia mismo año");
       console.log(difMes);
-      console.log("1A");
-      index1 =0;
-      console.log("2A");
-      index2 =1;
+      if(sex == "Masculino"){
+        index1 =7;
+        index2 =8;
+
+      }else{
+        console.log("1A");
+        index1 =0;
+        console.log("2A");
+        index2 =1;
+      }
+      
       tipoGrafico1 = DATOS[index1].tipoGrafico;
       this.mensajePercentil(tipoGrafico1,difMes,peso,altura);
 
@@ -124,10 +131,16 @@ export class GraphicPage {
       }
       console.log("La diferencia de 1 año");
       console.log(difMes);
-      console.log("1A");
-      index1 =0;
-      console.log("2A");
-      index2 =1;
+      if(sex == "Masculino"){
+        index1 = 7;
+        index2 = 8
+      }else{
+        console.log("1A");
+        index1 =0;
+        console.log("2A");
+        index2 =1;
+      }
+      
     } else if (anoActual-2 == anoNacimiento) {
       difMes = mesActual - mesNacimiento;
       if (difMes == 0) {
@@ -141,10 +154,16 @@ export class GraphicPage {
       console.log("NADA");
       console.log("La diferencia de 2 año");
       console.log(difMes);
-      console.log("5A");
-      index1 =4;
-      console.log("6A");
-      index2 =5;
+      if(sex = "Masculino"){
+        index1 = 11;
+        index2 = 12;
+      }else{
+        console.log("5A");
+        index1 =4;
+        console.log("6A");
+        index2 =5;
+      }
+      
 
     }else if (anoActual-3 == anoNacimiento) {
       difMes = mesActual - mesNacimiento;
@@ -157,10 +176,16 @@ export class GraphicPage {
       }
       console.log("La diferencia de 3 año");
       console.log(difMes);
-      console.log("5A");
-      index1 =4;
-      console.log("6A");
-      index2 =5;
+      if(sex = "Masculino"){
+        index1 = 11;
+        index2 = 12;
+      }else{
+        console.log("5A");
+        index1 =4;
+        console.log("6A");
+        index2 =5;
+      }
+      
 
     }else if(anoActual-4 == anoNacimiento) {
       difMes = mesActual - mesNacimiento;
@@ -173,10 +198,16 @@ export class GraphicPage {
       }
       console.log("La diferencia de 4 año");
       console.log(difMes);
-      console.log("5A");
-      index1 =4;
-      console.log("6A");
-      index2 =5;
+      if(sex = "Masculino"){
+        index1 = 11; 
+        index2 = 12;
+      }else{
+        console.log("5A");
+        index1 =4;
+        console.log("6A");
+        index2 =5;
+      }
+      
 
     }else if(anoActual-5 == anoNacimiento){
       difMes = mesActual - mesNacimiento;
@@ -189,10 +220,16 @@ export class GraphicPage {
       }
       console.log("La diferencia de 5 año");
       console.log(difMes);
-      console.log("5A");
-      index1 =4;
-      console.log("6A");
-      index2 =5;
+      if(sex = "Masculino"){
+        index1 = 11; 
+        index2 = 12;
+      }else{
+        console.log("5A");
+        index1 =4;
+        console.log("6A");
+        index2 =5;
+      }
+      
 
     }else{
         console.log("Se ingresaron mal los datos!!");
@@ -203,21 +240,36 @@ export class GraphicPage {
     console.log("Alturas");
     if(altura > 50 && altura <= 75){
       console.log("3A");
-      index3 = 2;
+      if(sex = "Masculino"){
+        index3 = 9;
+      }else{
+        index3 = 2;
+      }
+      
     }else if (altura > 75 && altura <=130){
       if(altura >100){
         this.tercerGrafico=false;
       }
       if(altura > 75 && altura <=100){
         console.log("4A");
-        index3= 3;
+        
+        if(sex = "Masculino"){
+          index3 = 10;
+        }else{
+          index3= 3;
+        }
 
       }
 
       if(altura >=85 && altura <= 130){
         console.log("7A");
         this.cuartoGrafico = true;
-        index4 = 6;
+        
+        if(sex="Masculino"){
+          index4 = 12;
+        }else{
+          index4 = 6;
+        }
       }
     }else{
       console.log("No hay datos para esa estatura");
