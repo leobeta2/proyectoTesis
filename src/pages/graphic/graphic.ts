@@ -3,14 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
 
 import {DATOS} from "../../data/data.datos"
-//import { DatosInterface } from '../../interfaces/datos.interface';
 
-/**
- * Generated class for the GraphicPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -105,7 +98,7 @@ export class GraphicPage {
       difMes= mesActual - mesNacimiento;
       console.log("La diferencia mismo año");
       console.log(difMes);
-      if(sex == "Masculino"){
+      if(this.sex == "Masculino"){
         index1 =7;
         index2 =8;
 
@@ -117,7 +110,7 @@ export class GraphicPage {
       }
 
       tipoGrafico1 = DATOS[index1].tipoGrafico;
-      this.mensajePercentil(tipoGrafico1,difMes,peso,altura);
+
 
     }else if (anoActual-1 == anoNacimiento) {
 
@@ -132,7 +125,7 @@ export class GraphicPage {
       }
       console.log("La diferencia de 1 año");
       console.log(difMes);
-      if(sex == "Masculino"){
+      if(this.sex == "Masculino"){
         index1 = 7;
         index2 = 8
       }else{
@@ -155,7 +148,7 @@ export class GraphicPage {
       console.log("NADA");
       console.log("La diferencia de 2 año");
       console.log(difMes);
-      if(sex = "Masculino"){
+      if(this.sex == "Masculino"){
         index1 = 11;
         index2 = 12;
       }else{
@@ -177,7 +170,7 @@ export class GraphicPage {
       }
       console.log("La diferencia de 3 año");
       console.log(difMes);
-      if(sex = "Masculino"){
+      if(this.sex = "Masculino"){
         index1 = 11;
         index2 = 12;
       }else{
@@ -199,7 +192,7 @@ export class GraphicPage {
       }
       console.log("La diferencia de 4 año");
       console.log(difMes);
-      if(sex = "Masculino"){
+      if(this.sex == "Masculino"){
         index1 = 11;
         index2 = 12;
       }else{
@@ -292,8 +285,10 @@ export class GraphicPage {
     //let dato4Grafico1 = DATOS[index1].dato4;
 
 
-
    const labels = DATOS[0].labels;
+   let tipoGraficolocal = DATOS[index1].tipoGrafico;
+
+    this.mensajePercentil(tipoGraficolocal,difMes,peso,altura);
 
 
    console.log(labels);
@@ -362,7 +357,7 @@ export class GraphicPage {
       colorBackma2 = "rgba(255, 167, 222,1)";
       pointColorBorderma2 = "rgba(255, 167, 222,1)";
     }else if(this.sex== "Masculino"){
-      console.log("pinta masculino")
+      console.log("pinta masculino");
       console.log(this.sex);
 
       //-2D
@@ -930,6 +925,14 @@ export class GraphicPage {
     }
 
     public  mensajePercentil(tipoGrafico,difMes, peso,altura){
+
+      //funcion para los mensajes de estado nutricional del niño
+      let x,y;
+      if(tipoGrafico == "1A"){
+        x = 1;
+        y = 0.8501985 + 0.7499007*x + 0.6501985*x*x;
+
+      }
 
       console.log("oliiiiiiiiiiiiiiiih");
       console.log(tipoGrafico);
