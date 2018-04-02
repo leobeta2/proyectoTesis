@@ -269,12 +269,14 @@ export class GraphicPage {
       }
 
       if(altura >=85 && altura <= 130){
-        console.log("7A");
+        console.log("7AB");
         this.cuartoGrafico = true;
 
         if(this.sex=="Masculino"){
-          index4 = 12;
+          console.log("7B");
+          index4 = 13;
         }else{
+          console.log("7A");
           index4 = 6;
         }
       }
@@ -588,7 +590,7 @@ export class GraphicPage {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: DATOS[1].dato1,
+            data: DATOS[index2].dato1,
             spanGaps: false,
 
           },
@@ -688,6 +690,10 @@ export class GraphicPage {
       }
 
     });
+    console.log("datos grafico2: "+DATOS[index2].dato1);
+    console.log("datos grafico2: "+DATOS[index2].dato2);
+    console.log("datos grafico2: "+DATOS[index2].dato3);
+    console.log("datos grafico2: "+DATOS[index2].dato4);
 
     if(this.tercerGrafico){
       this.A3 = new Chart(this.graphicsA3.nativeElement, {
