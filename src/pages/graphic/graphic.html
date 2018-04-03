@@ -1,9 +1,4 @@
-<!--
-  Generated template for the GraphicPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -21,10 +16,24 @@
     <ion-card>
       <div padding>
         <h2> <strong>Datos Ingresados:</strong> </h2>
+        <div><label>Genero: {{sex}}</label></div>
+        <div><label>Fecha Nacimiento: {{date.day}} / {{date.month}} / {{date.year}}</label></div>
         <div><label>Altura: {{color}}</label></div>
         <div><label>Peso : {{peso}}</label></div>
-        <div><label>Fecha Nacimiento: {{date.day}} / {{date.month}} / {{date.year}}</label></div>
-        <div><label>Genero: {{sex}}</label></div>
+
+
+
+      </div>
+    </ion-card>
+    <ion-card>
+      <div padding>
+        <h2> <strong>Resultados:</strong> </h2>
+        <div><label>Grafico 1: {{message1}}</label></div>
+        <div><label>Grafico 2: </label></div>
+        <div><label>Grafico 3: </label></div>
+
+
+
 
       </div>
     </ion-card>

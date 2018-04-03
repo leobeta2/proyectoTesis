@@ -23,6 +23,7 @@ export class GraphicPage {
   dateTime: any;
   public cuartoGrafico = true;
   public tercerGrafico = true;
+  public message1: string;
 
 
   //Se define niña= A, niño= B
@@ -51,6 +52,7 @@ export class GraphicPage {
     this.peso = this.navParams.get('peso');
     this.date = this.navParams.get('date');
     this.sex = this.navParams.get('sex');
+
     //this.t = DATOS[0].tituloGrafico;
     this.dateTime = new Date();
   }
@@ -63,6 +65,7 @@ export class GraphicPage {
     let peso = parseFloat(this.peso);
     let sex = this.sex;
     this.cuartoGrafico = false; // medida parche, para que pueda funcionar bien
+    this.message1 = "";
     //console.log(this.color);
     //console.log(this.peso);
     //console.log(this.date.day);
@@ -299,8 +302,10 @@ export class GraphicPage {
     //let dato3Grafico1 = DATOS[index1].dato3;
     //let dato4Grafico1 = DATOS[index1].dato4;
 
-  let tipoGraficolocal3;
-  let tipoGraficolocal4;
+
+
+    let tipoGraficolocal3;
+    let tipoGraficolocal4;
 
    const labels = DATOS[0].labels;
    let tipoGraficolocal1 = DATOS[index1].tipoGrafico || 0;
@@ -690,10 +695,7 @@ export class GraphicPage {
       }
 
     });
-    console.log("datos grafico2: "+DATOS[index2].dato1);
-    console.log("datos grafico2: "+DATOS[index2].dato2);
-    console.log("datos grafico2: "+DATOS[index2].dato3);
-    console.log("datos grafico2: "+DATOS[index2].dato4);
+
 
     if(this.tercerGrafico){
       this.A3 = new Chart(this.graphicsA3.nativeElement, {
@@ -1174,9 +1176,9 @@ export class GraphicPage {
         ym = SPLINE[9].media;
         y3 = SPLINE[9].mas1D;
         y4 = SPLINE[9].mas2D;
-
+          alt = Math.round(altura);// por mientras
         for (let i = 0; i < xx.length; i++) {
-            if (difMes == xx[i]) {
+            if (alt == xx[i]) {
               indice= i;
 
             }
@@ -1260,7 +1262,7 @@ export class GraphicPage {
         alt = Math.round(altura);// por mientras
 
         for (let i = 0; i < xx.length; i++) {
-            if (difAno == xx[i]) {
+            if (alt == xx[i]) {
               indice= i;
 
             }
@@ -1293,11 +1295,11 @@ export class GraphicPage {
         //sobre la curva -2D y debajo de la curva -1D
         console.log("Riesgo de Desnutricion(entre -2d y -1d )");
       }else if (peso > y2[indice] && peso < ym[indice]) {
-        console.log("Poco riesgo de Desnutricion(entre -1d y M )");
+        console.log("NORMAL (entre -1d y M )");
       }else if(peso == ym[indice]){
         console.log("PERFECTO!!");
       }else if(peso > ym[indice] && peso < y3[indice]){
-        console.log("Poco reisgo de obesidad(entre M y +1D)");
+        console.log("NORMAL (entre M y +1D)");
       }else if(peso == y3[indice]){
         console.log("Poco riesgo de obesidad");
       }else if(peso > y3[indice] && peso < y4[indice]){
@@ -1321,11 +1323,11 @@ export class GraphicPage {
         //sobre la curva -2D y debajo de la curva -1D
         console.log("Riesgo de Desnutricion(entre -2d y -1d )");
       }else if (altura > y2[indice] && altura < ym[indice]) {
-        console.log("Poco riesgo de Desnutricion(entre -1d y M )");
+        console.log("NORMAL (entre -1d y M )");
       }else if(altura == ym[indice]){
         console.log("PERFECTO!!");
       }else if(altura > ym[indice] && altura < y3[indice]){
-        console.log("Poco reisgo de obesidad(entre M y +1D)");
+        console.log("NORMAL (entre M y +1D)");
       }else if(altura == y3[indice]){
         console.log("Poco riesgo de obesidad");
       }else if(altura > y3[indice] && altura < y4[indice]){
