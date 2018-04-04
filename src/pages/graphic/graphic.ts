@@ -326,10 +326,10 @@ export class GraphicPage {
  }
 
 
-    this.mensajePercentil(tipoGraficolocal1,difmesTotales,difAno,peso,altura);
-    this.mensajePercentil(tipoGraficolocal2,difmesTotales,difAno,peso,altura);
-    this.mensajePercentil(tipoGraficolocal3,difmesTotales,difAno,peso,altura);
-    this.mensajePercentil(tipoGraficolocal4,difmesTotales,difAno,peso,altura);
+    this.message1 = this.mensajePercentil(tipoGraficolocal1,difmesTotales,difAno,peso,altura);
+    this.message2 = this.mensajePercentil(tipoGraficolocal2,difmesTotales,difAno,peso,altura);
+    this.message3 = this.mensajePercentil(tipoGraficolocal3,difmesTotales,difAno,peso,altura);
+    this.message4 = this.mensajePercentil(tipoGraficolocal4,difmesTotales,difAno,peso,altura);
 
 
 
@@ -969,6 +969,7 @@ export class GraphicPage {
     }
 
     public  mensajePercentil(tipoGrafico,difmesTotales,difAno, peso,altura){
+      let auxMessage= "";
       console.log("oliiiiiiiiiiiiiiiih");
       //funcion para los mensajes de estado nutricional del niño
       let xx,y1,y2,ym,y3,y4,result,indice,alt;//y1: -2D
@@ -1000,7 +1001,7 @@ export class GraphicPage {
         // console.log("peso con y3 "+y3[indice]);
         // console.log("peso con y4 "+y4[indice]);
         console.log("Para grafico 1A");
-        this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
 
 
 
@@ -1028,7 +1029,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 2A");
-        this.calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice);
 
       }
       if(tipoGrafico == '3A'){
@@ -1050,7 +1051,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 3A");
-        this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
       if(tipoGrafico == '4A'){
         xx = SPLINE[3].x;
@@ -1071,7 +1072,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 4A");
-        this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
       if(tipoGrafico == '5A'){
         xx = SPLINE[4].x;
@@ -1092,7 +1093,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 5A");
-        this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
       if(tipoGrafico == '6A'){
         xx = SPLINE[5].x;
@@ -1113,7 +1114,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 6A");
-        this.calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
       if(tipoGrafico == '7A'){
         xx = SPLINE[6].x;
@@ -1134,7 +1135,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 7A");
-        this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
       if(tipoGrafico == '1B'){
         xx = SPLINE[7].x;
@@ -1153,7 +1154,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 1B");
-        this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
 
       }
       if(tipoGrafico == '2B'){
@@ -1173,7 +1174,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 2B");
-        this.calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice);
 
       }
       if(tipoGrafico == '3B'){
@@ -1193,7 +1194,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 3B");
-        this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
       if(tipoGrafico == '4B'){
         xx = SPLINE[10].x;
@@ -1214,7 +1215,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 4B");
-        this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
       if(tipoGrafico == '5B'){
         xx = SPLINE[11].x;
@@ -1235,7 +1236,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 5B");
-        this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
       if(tipoGrafico == '6B'){
         xx = SPLINE[12].x;
@@ -1256,7 +1257,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 6B");
-        this.calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
       if(tipoGrafico == '7B'){
         xx = SPLINE[13].x;
@@ -1277,7 +1278,7 @@ export class GraphicPage {
             console.log(indice);
         }
         console.log("Para grafico 7B");
-        this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
+        auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
 
 
@@ -1287,61 +1288,83 @@ export class GraphicPage {
       //console.log(difmesTotalesTotales);
       //console.log(peso);
       //console.log(altura);
+      return (auxMessage);
     }//fin funcion mensajePercentil
 
     public calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice){
+      let aux="";
       if (peso < y1[indice]) {
         //debajo la curva -2D
         console.log("Desnutricion severa");
+        aux = "Desnutricion severa";
 
       }else if (peso == y1[indice]){
         //en la curva -2D
         console.log("Riesgo de desnutricion");
+        aux = "Riesgo de desnutricion"
 
       }else if(peso > y1[indice] && peso < y2[indice]){
         //sobre la curva -2D y debajo de la curva -1D
         console.log("Riesgo de Desnutricion(entre -2d y -1d )");
+        aux = "Riesgo de Desnutricion(entre -2d y -1d )"
       }else if (peso > y2[indice] && peso < ym[indice]) {
         console.log("NORMAL (entre -1d y M )");
+        aux = "NORMAL (entre -1d y M )";
       }else if(peso == ym[indice]){
         console.log("PERFECTO!!");
+        aux = "PERFECTO!!";
       }else if(peso > ym[indice] && peso < y3[indice]){
         console.log("NORMAL (entre M y +1D)");
+        aux = "NORMAL (entre M y +1D)";
       }else if(peso == y3[indice]){
         console.log("Poco riesgo de obesidad");
+        aux = "Poco riesgo de obesidad";
       }else if(peso > y3[indice] && peso < y4[indice]){
         console.log("riesgo de obesidad(+1d a +2d)");
+        aux = "riesgo de obesidad(+1d a +2d)";
       }else if(peso > y4[indice]){
         console.log("Obesidad!!!")
+        aux = "Obesidad!!!";
       }
-
+      return (aux);
     }
 
     public calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice){
+      let aux= "";
       if (altura < y1[indice]) {
         //debajo la curva -2D
         console.log("Desnutricion severa");
-
+        aux = "Desnutricion severa";
       }else if (altura == y1[indice]){
         //en la curva -2D
         console.log("Riesgo de desnutricion");
+        aux = "Riesgo de desnutrición"
 
       }else if(altura > y1[indice] && altura < y2[indice]){
         //sobre la curva -2D y debajo de la curva -1D
         console.log("Riesgo de Desnutricion(entre -2d y -1d )");
+        aux = "Riesgo de Desnutricion(entre -2d y -1d )";
       }else if (altura > y2[indice] && altura < ym[indice]) {
         console.log("NORMAL (entre -1d y M )");
+        aux = "NORMAL (entre -1d y M )";
       }else if(altura == ym[indice]){
         console.log("PERFECTO!!");
+        aux = "PERFECTO!!";
       }else if(altura > ym[indice] && altura < y3[indice]){
         console.log("NORMAL (entre M y +1D)");
+        aux = "NORMAL (entre M y +1D)";
       }else if(altura == y3[indice]){
         console.log("Poco riesgo de obesidad");
+        aux = "Poco riesgo de obesidad";
       }else if(altura > y3[indice] && altura < y4[indice]){
         console.log("riesgo de obesidad(+1d a +2d)");
+        aux = "Riesgo de obesidad(+1d a +2d)";
       }else if(altura > y4[indice]){
         console.log("Obesidad!!!")
+        aux = "Obesidad!!!";
+
       }
+      return (aux);
     }
 
 
