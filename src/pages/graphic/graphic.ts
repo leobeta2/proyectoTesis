@@ -24,6 +24,9 @@ export class GraphicPage {
   public cuartoGrafico = true;
   public tercerGrafico = true;
   public message1: string;
+  public message2: string;
+  public message3: string;
+  public message4: string;
 
 
   //Se define niña= A, niño= B
@@ -66,6 +69,9 @@ export class GraphicPage {
     let sex = this.sex;
     this.cuartoGrafico = false; // medida parche, para que pueda funcionar bien
     this.message1 = "";
+    this.message2 = "";
+    this.message3 = "";
+    this.message4 = "";
     //console.log(this.color);
     //console.log(this.peso);
     //console.log(this.date.day);
@@ -89,15 +95,11 @@ export class GraphicPage {
     const diaNacimiento = this.date.day || 0;
 
 
-    //console.log("Mes Actual");
-    //console.log(mesActual);
-    //console.log(anoActual);
 
-    //console.log("Mes Nacimiento");
-    //console.log(mesNacimiento);
+
     //console.log(anoNacimiento);
     //console.log(data);
-    let difMes=0;
+    let difmesTotales=0;
     let difAno=0;
     let difDia=0;
 
@@ -108,12 +110,17 @@ export class GraphicPage {
       mesActual = mesActual + 0.5;
     }
 
+    console.log("Mes Actual"+mesActual);
+    //console.log(anoActual);
+
+    console.log("Mes Nacimiento"+mesNacimiento);
+
     let tipoGrafico1 = "";
 
     if(anoActual == anoNacimiento){
-      difMes= mesActual - mesNacimiento;
+      difmesTotales= mesActual - mesNacimiento;
       console.log("La diferencia mismo año");
-      console.log(difMes);
+      console.log(difmesTotales);
       if(this.sex == "Masculino"){
         index1 =7;
         index2 =8;
@@ -130,17 +137,17 @@ export class GraphicPage {
 
     }else if (anoActual-1 == anoNacimiento) {
 
-      difMes = mesActual- mesNacimiento;
+      difmesTotales = mesActual- mesNacimiento;
       difAno = anoNacimiento - anoActual;
-      if(difMes == 0){
-        difMes = 12;
-      }else if(difMes < 0 ){
-        difMes = 12 + difMes;
-      }else if(difMes > 0){
-        difMes = 12 - difMes;
+      if(difmesTotales == 0){
+        difmesTotales = 12;
+      }else if(difmesTotales < 0 ){
+        difmesTotales = 12 - difmesTotales;
+      }else if(difmesTotales > 0){
+        difmesTotales = 12 + difmesTotales;
       }
       console.log("La diferencia de 1 año");
-      console.log(difMes);
+      console.log(difmesTotales);
       if(this.sex == "Masculino"){
         index1 = 7;
         index2 = 8
@@ -152,18 +159,18 @@ export class GraphicPage {
       }
 
     } else if (anoActual-2 == anoNacimiento) {
-      difMes = mesActual - mesNacimiento;
-      if (difMes == 0) {
-        difMes = 24;
-      } else if (difMes < 0) {
-        difMes = 24 + difMes;
-      } else if (difMes > 0) {
-        difMes = 24 - difMes;
+      difmesTotales = mesActual - mesNacimiento;
+      if (difmesTotales == 0) {
+        difmesTotales = 24;
+      } else if (difmesTotales < 0) {
+        difmesTotales = 24 + difmesTotales;
+      } else if (difmesTotales > 0) {
+        difmesTotales = 24 - difmesTotales;
       }
 
       //console.log("NADA");
       console.log("La diferencia de 2 año");
-      console.log(difMes);
+      console.log(difmesTotales);
       if(this.sex == "Masculino"){
         index1 = 11;
         index2 = 12;
@@ -176,16 +183,16 @@ export class GraphicPage {
 
 
     }else if (anoActual-3 == anoNacimiento) {
-      difMes = mesActual - mesNacimiento;
-      if (difMes == 0) {
-        difMes = 36;
-      } else if (difMes < 0) {
-        difMes = 36 + difMes;
-      } else if (difMes > 0) {
-        difMes = 36 - difMes;
+      difmesTotales = mesActual - mesNacimiento;
+      if (difmesTotales == 0) {
+        difmesTotales = 36;
+      } else if (difmesTotales < 0) {
+        difmesTotales = 36 + difmesTotales;
+      } else if (difmesTotales > 0) {
+        difmesTotales = 36 - difmesTotales;
       }
       console.log("La diferencia de 3 año");
-      console.log(difMes);
+      console.log(difmesTotales);
       if(this.sex = "Masculino"){
         index1 = 11;
         index2 = 12;
@@ -198,16 +205,16 @@ export class GraphicPage {
 
 
     }else if(anoActual-4 == anoNacimiento) {
-      difMes = mesActual - mesNacimiento;
-      if (difMes == 0) {
-        difMes = 48;
-      } else if (difMes < 0) {
-        difMes = 48 + difMes;
-      } else if (difMes > 0) {
-        difMes = 48 - difMes;
+      difmesTotales = mesActual - mesNacimiento;
+      if (difmesTotales == 0) {
+        difmesTotales = 48;
+      } else if (difmesTotales < 0) {
+        difmesTotales = 48 + difmesTotales;
+      } else if (difmesTotales > 0) {
+        difmesTotales = 48 - difmesTotales;
       }
       console.log("La diferencia de 4 año");
-      console.log(difMes);
+      console.log(difmesTotales);
       if(this.sex == "Masculino"){
         index1 = 11;
         index2 = 12;
@@ -220,16 +227,16 @@ export class GraphicPage {
 
 
     }else if(anoActual-5 == anoNacimiento){
-      difMes = mesActual - mesNacimiento;
-      if (difMes == 0) {
-        difMes = 60;
-      } else if (difMes < 0) {
-        difMes = 60 + difMes;
-      } else if (difMes > 0) {
-        difMes = 60 - difMes;
+      difmesTotales = mesActual - mesNacimiento;
+      if (difmesTotales == 0) {
+        difmesTotales = 60;
+      } else if (difmesTotales < 0) {
+        difmesTotales = 60 + difmesTotales;
+      } else if (difmesTotales > 0) {
+        difmesTotales = 60 - difmesTotales;
       }
       console.log("La diferencia de 5 año");
-      console.log(difMes);
+      console.log(difmesTotales);
       if(this.sex = "Masculino"){
         index1 = 11;
         index2 = 12;
@@ -319,10 +326,10 @@ export class GraphicPage {
  }
 
 
-    this.mensajePercentil(tipoGraficolocal1,difMes,difAno,peso,altura);
-    this.mensajePercentil(tipoGraficolocal2,difMes,difAno,peso,altura);
-    this.mensajePercentil(tipoGraficolocal3,difMes,difAno,peso,altura);
-    this.mensajePercentil(tipoGraficolocal4,difMes,difAno,peso,altura);
+    this.mensajePercentil(tipoGraficolocal1,difmesTotales,difAno,peso,altura);
+    this.mensajePercentil(tipoGraficolocal2,difmesTotales,difAno,peso,altura);
+    this.mensajePercentil(tipoGraficolocal3,difmesTotales,difAno,peso,altura);
+    this.mensajePercentil(tipoGraficolocal4,difmesTotales,difAno,peso,altura);
 
 
 
@@ -961,7 +968,7 @@ export class GraphicPage {
 
     }
 
-    public  mensajePercentil(tipoGrafico,difMes,difAno, peso,altura){
+    public  mensajePercentil(tipoGrafico,difmesTotales,difAno, peso,altura){
       console.log("oliiiiiiiiiiiiiiiih");
       //funcion para los mensajes de estado nutricional del niño
       let xx,y1,y2,ym,y3,y4,result,indice,alt;//y1: -2D
@@ -978,7 +985,7 @@ export class GraphicPage {
         y4 = SPLINE[0].mas2D;
 
         for (let i = 0; i < xx.length; i++) {
-            if (difMes == xx[i]) {
+            if (difmesTotales == xx[i]) {
               indice= i;
 
             }
@@ -999,7 +1006,7 @@ export class GraphicPage {
 
 
         // console.log("Resultado: "+y1);
-        console.log("Dif MeS: "+difMes);
+        console.log("Dif MeS: "+difmesTotales);
         // console.log("Peso: "+peso)
 
 
@@ -1013,7 +1020,7 @@ export class GraphicPage {
         y4 = SPLINE[1].mas2D;
 
         for (let i = 0; i < xx.length; i++) {
-            if (difMes == xx[i]) {
+            if (difmesTotales == xx[i]) {
               indice= i;
 
             }
@@ -1138,7 +1145,7 @@ export class GraphicPage {
         y4 = SPLINE[7].mas2D;
 
         for (let i = 0; i < xx.length; i++) {
-            if (difMes == xx[i]) {
+            if (difmesTotales == xx[i]) {
               indice= i;
 
             }
@@ -1158,7 +1165,7 @@ export class GraphicPage {
         y4 = SPLINE[8].mas2D;
 
         for (let i = 0; i < xx.length; i++) {
-            if (difMes == xx[i]) {
+            if (difmesTotales == xx[i]) {
               indice= i;
 
             }
@@ -1277,7 +1284,7 @@ export class GraphicPage {
 
 
       //console.log(tipoGrafico);
-      //console.log(difMes);
+      //console.log(difmesTotalesTotales);
       //console.log(peso);
       //console.log(altura);
     }//fin funcion mensajePercentil
