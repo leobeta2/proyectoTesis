@@ -68,10 +68,10 @@ export class GraphicPage {
     let peso = parseFloat(this.peso);
     let sex = this.sex;
     this.cuartoGrafico = false; // medida parche, para que pueda funcionar bien
-    this.message1 = "";
-    this.message2 = "";
-    this.message3 = "";
-    this.message4 = "";
+    this.message1 = "No hay informacion para mostrar!!";
+    this.message2 = "No hay informacion para mostrar!!";
+    this.message3 = "No hay informacion para mostrar!!";
+    this.message4 = "No hay informacion para mostrar!!";
     //console.log(this.color);
     //console.log(this.peso);
     //console.log(this.date.day);
