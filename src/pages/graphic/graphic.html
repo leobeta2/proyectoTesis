@@ -15,11 +15,23 @@
 
     <ion-card>
       <div padding>
-        <h2> <strong>Datos Ingresados:</strong> </h2>
-        <div><label>Genero: {{sex}}</label></div>
-        <div><label>Fecha Nacimiento: {{date.day}} / {{date.month}} / {{date.year}}</label></div>
-        <div><label>Altura: {{color}}</label></div>
-        <div><label>Peso : {{peso}}</label></div>
+
+
+        <ion-row>
+          <ion-col col-6="">
+            <h2> <strong>Datos Ingresados:</strong> </h2>
+            <div><label>Genero: {{sex}}</label></div>
+            <div><label>Fecha Nacimiento: {{date.day}} / {{date.month}} / {{date.year}}</label></div>
+            <div><label>Altura: {{color}}</label></div>
+            <div><label>Peso : {{peso}}</label></div>
+          </ion-col>
+          <ion-col col-3></ion-col>
+          <ion-col col-3>
+            <img *ngIf="banderasex" src="assets/img/nina.png" style="height: 100px;width: 190px;" />
+            <img *ngIf="!banderasex" src="assets/img/nino.png" style="height: 100px;width: 190px;" />
+          </ion-col>
+          <ion-col col-1></ion-col>
+        </ion-row>
 
 
 

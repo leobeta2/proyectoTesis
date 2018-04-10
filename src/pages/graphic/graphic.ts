@@ -21,6 +21,7 @@ export class GraphicPage {
   t3:string;
   t4:string;
   dateTime: any;
+  banderasex:boolean;
   public cuartoGrafico = true;
   public tercerGrafico = true;
   public message1: string;
@@ -368,6 +369,7 @@ export class GraphicPage {
     if(this.sex == "Femenino"){
       console.log("pinta femenio");
       console.log(this.sex);
+      this.banderasex = true;
       //-2D
       colorCajame2 = "rgba(255, 167, 222,0.4)";
       colorBordeCajame2 = "rgba(255, 167, 222,1)";
@@ -401,6 +403,7 @@ export class GraphicPage {
     }else if(this.sex== "Masculino"){
       console.log("pinta masculino");
       console.log(this.sex);
+      this.banderasex=false;
 
       //-2D
       colorCajame2 = "rgba(0, 153, 255,0.4)";
