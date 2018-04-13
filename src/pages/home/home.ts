@@ -1,6 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
-import { NavController,AlertController } from 'ionic-angular';
+import { IonicPage,NavController,AlertController,ToastController } from 'ionic-angular';
 import {GraphicPage} from "../graphic/graphic";
+import {LoginPage} from "../login/login";
+import {AngularFireAuth} from "angularfire2/auth";
 
 
 @Component({
@@ -15,8 +17,29 @@ export class HomePage {
   // ];
 
   @ViewChild('myNav') nav: NavController
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  constructor(private afAuth:AngularFireAuth,
+              private toast: ToastController,
+              public navCtrl: NavController,
+              public alertCtrl: AlertController) {
 
+  }
+
+  ionViewWillLoad(){
+    this.afAuth.authState.subscribe(data => {
+      if (data && data.email && data.uid) {
+        this.toast.create({
+          message: 'Bienvenido a Desarrollo del Infante,' +data.email+'!!',
+          duration: 3000
+        }).present();
+      }
+      else{
+        this.toast.create({
+          message: 'No se pudo autentificar',
+          duration: 3000
+        }).present();
+      }
+
+    });
   }
 
   public goToGraphic(sex,date,color, peso){
@@ -77,6 +100,10 @@ export class HomePage {
     buttons:['Aceptar']
     });
     alert.present();
+  }
+
+  goToLogin(){
+    this.navCtrl.push(LoginPage);
   }
 
 }
