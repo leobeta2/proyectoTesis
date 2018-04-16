@@ -26,7 +26,7 @@ export class LoginPage {
 
   async  login(user: User){
     try{
-      const result =this.afAuth.auth.signInWithEmailAndPassword(this.user.email,this.user.password)
+      const result =this.afAuth.auth.signInWithEmailAndPassword(this.user.email,this.user.password);
       console.log(result);
       if(result) {
         this.navCtrl.setRoot(HomePage);
@@ -39,6 +39,6 @@ export class LoginPage {
   }
 
   register(){
-    this.navCtrl.push('RegisterPage')
+    this.navCtrl.push('RegisterPage');
   }
 }

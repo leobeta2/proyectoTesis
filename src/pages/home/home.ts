@@ -3,6 +3,11 @@ import { IonicPage,NavController,AlertController,ToastController } from 'ionic-a
 import {GraphicPage} from "../graphic/graphic";
 import {LoginPage} from "../login/login";
 import {AngularFireAuth} from "angularfire2/auth";
+import {AngularFireDatabase} from "angularfire2/database";
+import {FirebaseObjectObservable} from "angularfire2/database-deprecated";
+import { AngularFireObject }  from "angularfire2/database";
+import {Profile} from "../../models/profile";
+import {ProfilePage} from "../profile/profile";
 
 
 @Component({
@@ -15,32 +20,53 @@ export class HomePage {
   //   {id:2, title: "Graficos Niña", description:"Descripcion de nota 2"},
   //   {id:3, title: "Nota 3", description:"Descripcion de nota 3"}
   // ];
+  loginUser: boolean;
 
-  @ViewChild('myNav') nav: NavController
-  constructor(private afAuth:AngularFireAuth,
+
+
+  @ViewChild('myNav') nav: NavController;
+  constructor(private afDatabase: AngularFireDatabase,
+              private afAuth:AngularFireAuth,
               private toast: ToastController,
               public navCtrl: NavController,
               public alertCtrl: AlertController) {
 
+
   }
 
   ionViewWillLoad(){
+
+
     this.afAuth.authState.subscribe(data => {
       if (data && data.email && data.uid) {
         this.toast.create({
           message: 'Bienvenido a Desarrollo del Infante,' +data.email+'!!',
           duration: 3000
         }).present();
+        //this.profileData = this.afDatabase.object('profile/'+data.uid).valueChanges();
+
+
       }
       else{
         this.toast.create({
           message: 'No se pudo autentificar',
-          duration: 3000
+          duration: 1000
         }).present();
       }
 
     });
+    console.log("estado: "+ this.loginUser );
+
+     this.afAuth.authState.subscribe(data => {
+       if(data && data.email && data.uid){
+         this.loginUser = true;
+       }else{
+         this.loginUser = false;
+       }
+     });
+
   }
+
 
   public goToGraphic(sex,date,color, peso){
     let band1 = true;
@@ -104,6 +130,16 @@ export class HomePage {
 
   goToLogin(){
     this.navCtrl.push(LoginPage);
+  }
+
+  goToProfile(){
+    this.navCtrl.push(ProfilePage);
+  }
+
+  signOut() {
+    this.afAuth.auth.signOut().then(res => {
+      this.navCtrl.setRoot(HomePage); // or somewhere else
+    });
   }
 
 }

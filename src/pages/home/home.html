@@ -1,8 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Desarrollo Infantil
-    </ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-title >
+
+            <h2>Desarrollo Infantil</h2>
+          </ion-title>
+        </ion-col>
+        <ion-col col-5="">
+
+        </ion-col>
+        <ion-col>
+          <button  *ngIf="!loginUser"  ion-button color="secondary"  (click)="goToLogin()">Entrar</button>
+          <button *ngIf="loginUser" ion-button color=""  (click)="signOut()">Salir</button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+
+
+
+
+
+
+
+
+
   </ion-navbar>
 </ion-header>
 
@@ -38,7 +63,11 @@
   </ion-list>
   <div padding>
     <button ion-button color="secondary" block  (click)="goToGraphic(sex.value, date.value,color.value, peso.value) ">Ingresar Datos</button>
-    <button ion-button color="secondary" block  (click)="goToLogin()">Login</button>
+
+    <button *ngIf="loginUser" ion-button color="secondary" block  (click)="goToProfile()">Perfil</button>
+
+
+
 
   </div>
 

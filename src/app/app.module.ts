@@ -11,13 +11,16 @@ import { HomePage } from '../pages/home/home';
 import { GraphicPage } from '../pages/graphic/graphic';
 import { LoginPage } from '../pages/login/login';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
+import {AngularFireDatabaseModule} from "angularfire2/database";
+import {ProfilePage} from "../pages/profile/profile";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     GraphicPage,
-    LoginPage
+    LoginPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
       monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
     }),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
 
   ],
   bootstrap: [IonicApp],
@@ -33,7 +37,8 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     MyApp,
     HomePage,
     GraphicPage,
-    LoginPage
+    LoginPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
