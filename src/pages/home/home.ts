@@ -1,13 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
-import { IonicPage,NavController,AlertController,ToastController } from 'ionic-angular';
+import {IonicPage, NavController, AlertController, ToastController, Item} from 'ionic-angular';
 import {GraphicPage} from "../graphic/graphic";
 import {LoginPage} from "../login/login";
 import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from "angularfire2/database";
 import {FirebaseObjectObservable} from "angularfire2/database-deprecated";
 import { AngularFireObject }  from "angularfire2/database";
-import {Profile} from "../../models/profile";
 import {ProfilePage} from "../profile/profile";
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -22,15 +22,19 @@ export class HomePage {
   // ];
   loginUser: boolean;
 
+  //profileData: FirebaseObjectObservable<any>;
+  //items: Observable<{}>;
+
 
 
   @ViewChild('myNav') nav: NavController;
   constructor(private afDatabase: AngularFireDatabase,
+              //private afDb: AngularFireObject<any>,
               private afAuth:AngularFireAuth,
               private toast: ToastController,
               public navCtrl: NavController,
               public alertCtrl: AlertController) {
-
+    //this.profileData = this.afDatabase.object('/profile').valueChanges();
 
   }
 
@@ -43,7 +47,9 @@ export class HomePage {
           message: 'Bienvenido a Desarrollo del Infante,' +data.email+'!!',
           duration: 3000
         }).present();
-        //this.profileData = this.afDatabase.object('profile/'+data.uid).valueChanges();
+        //this.profileData = this.afDb.valueChanges()
+        //this.items = this.afDatabase.object('profile/'+data.uid).valueChanges();
+        //console.log("profile" +this.items);
 
 
       }
@@ -70,11 +76,7 @@ export class HomePage {
 
   public goToGraphic(sex,date,color, peso){
     let band1 = true;
-    /*let data= {
-      title: 'holi',
-      second: 'no molestes'
-    };
-    this.navCtrl.push(GraphicPage, data);*/
+
 
     if(sex=="" || date=="" || color =="" || peso ==""){
       this.showAlert();

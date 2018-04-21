@@ -1141,21 +1141,29 @@ export class GraphicPage {
         auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
       if(tipoGrafico == '1B'){
+        console.log("Estoy en 1B");
         xx = SPLINE[7].x;
         y1 = SPLINE[7].menos2D;
         y2 = SPLINE[7].menos1D;
         ym = SPLINE[7].media;
         y3 = SPLINE[7].mas1D;
         y4 = SPLINE[7].mas2D;
-
+        console.log("EJe xx:.........."+xx);
+        console.log("Peso indice:......."+y1);
+        console.log("Peso indice:......."+y2);
+        console.log("Peso indice:......."+ym);
+        console.log("Peso indice:......."+y3);
+        console.log("Peso indice:......."+y4);
+        console.log("Dif Meses:....."+difmesTotales);
         for (let i = 0; i < xx.length; i++) {
             if (difmesTotales == xx[i]) {
               indice= i;
 
             }
             xx[i];
-            console.log(indice);
+            //console.log(indice);
         }
+        console.log(indice);
         console.log("Para grafico 1B");
         auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
 
@@ -1283,7 +1291,7 @@ export class GraphicPage {
         console.log("Para grafico 7B");
         auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
-
+      //console.log("Mensaje:......." +auxMessage);
 
 
 
@@ -1295,6 +1303,10 @@ export class GraphicPage {
     }//fin funcion mensajePercentil
 
     public calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice){
+      console.log("Calculos Peso!!");
+      console.log("Peso:........."+peso);
+      console.log("Indice:......."+indice);
+
       let aux="";
       if (peso < y1[indice]) {
         //debajo la curva -2D
@@ -1326,13 +1338,14 @@ export class GraphicPage {
         console.log("riesgo de obesidad(+1d a +2d)");
         aux = "riesgo de obesidad(+1d a +2d)";
       }else if(peso > y4[indice]){
-        console.log("Obesidad!!!")
+        console.log("Obesidad!!!");
         aux = "Obesidad!!!";
       }
       return (aux);
     }
 
     public calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice){
+      console.log("Calculos LOngitud y altura");
       let aux= "";
       if (altura < y1[indice]) {
         //debajo la curva -2D
