@@ -443,7 +443,10 @@ export class GraphicPage {
     }
 
 
-
+    // LOS PUNTOS PARA INDICAR LA POSICION EN EL GRAFICO
+    let puntoPeso = this.PointPositionPeso(this.peso,difmesTotales);
+    let puntoAltura = this.PointPositionAltura(this.color,difmesTotales);
+    let puntoLongitudPeso = this.PointPositionPesoLongitud(this.peso,this.color);
 
     this.A1 = new Chart(this.graphicsA1.nativeElement, {
 
@@ -575,6 +578,19 @@ export class GraphicPage {
             spanGaps: false,
 
           }
+          ,
+          {
+            label: "Coordenadas",
+            backgroundColor: "#40FF00",
+            borderColor: "#40FF00",
+            data: puntoPeso,
+            fill: false,
+            pointRadius: 5,
+            pointHoverRadius: 10,
+            showLine: false // no line shown
+
+          }
+
         ]
       }
 
@@ -701,6 +717,17 @@ export class GraphicPage {
             spanGaps: false,
 
           },
+          {
+            label: "Coordenada",
+            backgroundColor: "#40FF00",
+            borderColor: "#40FF00",
+            data: puntoAltura,
+            fill: false,
+            pointRadius: 5,
+            pointHoverRadius: 10,
+            showLine: false // no line shown
+
+          }
         ]
       }
 
@@ -829,6 +856,17 @@ export class GraphicPage {
             spanGaps: false,
 
           },
+          {
+            label: "Coordenada",
+            backgroundColor: "#40FF00",
+            borderColor: "#40FF00",
+            data: puntoLongitudPeso,
+            fill: false,
+            pointRadius: 5,
+            pointHoverRadius: 10,
+            showLine: false // no line shown
+
+          }
         ]
       }
 
@@ -959,6 +997,17 @@ export class GraphicPage {
             spanGaps: false,
 
           },
+          {
+            label: "Coordenada",
+            backgroundColor: "#40FF00",
+            borderColor: "#40FF00",
+            data: puntoLongitudPeso,
+            fill: false,
+            pointRadius: 5,
+            pointHoverRadius: 10,
+            showLine: false // no line shown
+
+          }
         ]
       }
 
@@ -1383,6 +1432,41 @@ export class GraphicPage {
       return (aux);
     }
 
+    public PointPositionPeso(peso,Meses){
+      let tam2 = 3;
+      let a = [];
+      for (let i=0; i < Meses;i++){
+        a.push(null);
+
+      }
+      a.push(peso);
+      console.log("Peso"+ a);
+
+      return(a);
+    }
+  public PointPositionAltura(Altura,Meses){
+    let tam2 = 3;
+    let a = [];
+    for (let i=0; i < Meses;i++){
+      a.push(null);
+
+    }
+    a.push(Altura);
+    console.log("Altura"+ a);
+
+    return(a);
+  }
+  public PointPositionPesoLongitud(Peso,longitud){
+    let a = [];
+    longitud = longitud -50;
+    for (let i=0; i < longitud;i+0.5){
+      a.push(null);
+
+    }
+    a.push(Peso);
+    console.log("PesoLongitud:"+ a);
+    return(a);
+  }
 
 
 
