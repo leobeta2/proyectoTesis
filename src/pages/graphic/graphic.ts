@@ -78,7 +78,7 @@ export class GraphicPage {
     //console.log(this.peso);
     //console.log(this.date.day);
     //console.log("Este es el sexo");
-    //console.log(this.sex);
+    console.log(this.sex);
     //console.log("Day:");
     //console.log(this.dateTime);
     let index1 = 0;
@@ -162,11 +162,14 @@ export class GraphicPage {
 
     } else if (anoActual-2 == anoNacimiento) {
       difmesTotales = mesActual - mesNacimiento;
+      console.log("MESACTUAL: "+mesActual);//5
+      console.log("MESNACIMIENTO:"+mesNacimiento);//1
+      difAno = anoActual - anoNacimiento;
       if (difmesTotales == 0) {
         difmesTotales = 24;
-      } else if (difmesTotales < 0) {
-        difmesTotales = 24 + difmesTotales;
       } else if (difmesTotales > 0) {
+        difmesTotales = 24 + difmesTotales;
+      } else if (difmesTotales < 0) {
         difmesTotales = 24 - difmesTotales;
       }
 
@@ -186,16 +189,17 @@ export class GraphicPage {
 
     }else if (anoActual-3 == anoNacimiento) {
       difmesTotales = mesActual - mesNacimiento;
+      difAno = anoActual - anoNacimiento;
       if (difmesTotales == 0) {
         difmesTotales = 36;
-      } else if (difmesTotales < 0) {
+      } else if (difmesTotales >0) {
         difmesTotales = 36 + difmesTotales;
-      } else if (difmesTotales > 0) {
+      } else if (difmesTotales < 0) {
         difmesTotales = 36 - difmesTotales;
       }
       console.log("La diferencia de 3 año");
       console.log(difmesTotales);
-      if(this.sex = "Masculino"){
+      if(this.sex == "Masculino"){
         index1 = 11;
         index2 = 12;
       }else{
@@ -208,11 +212,12 @@ export class GraphicPage {
 
     }else if(anoActual-4 == anoNacimiento) {
       difmesTotales = mesActual - mesNacimiento;
+      difAno = anoActual - anoNacimiento;
       if (difmesTotales == 0) {
         difmesTotales = 48;
-      } else if (difmesTotales < 0) {
-        difmesTotales = 48 + difmesTotales;
       } else if (difmesTotales > 0) {
+        difmesTotales = 48 + difmesTotales;
+      } else if (difmesTotales < 0) {
         difmesTotales = 48 - difmesTotales;
       }
       console.log("La diferencia de 4 año");
@@ -230,11 +235,12 @@ export class GraphicPage {
 
     }else if(anoActual-5 == anoNacimiento){
       difmesTotales = mesActual - mesNacimiento;
+      difAno = anoActual - anoNacimiento;
       if (difmesTotales == 0) {
         difmesTotales = 60;
-      } else if (difmesTotales < 0) {
-        difmesTotales = 60 + difmesTotales;
       } else if (difmesTotales > 0) {
+        difmesTotales = 60 + difmesTotales;
+      } else if (difmesTotales < 0) {
         difmesTotales = 60 - difmesTotales;
       }
       console.log("La diferencia de 5 año");
@@ -251,7 +257,7 @@ export class GraphicPage {
 
 
     }else{
-        console.log("Se ingresaron mal los datos!!");
+        console.log("sE SUPERAN LOS 6 AÑOS");
     }
 
 
@@ -368,7 +374,6 @@ export class GraphicPage {
     let pointColorBorderma2 = "";
 
     if(this.sex == "Femenino"){
-      console.log("pinta femenio");
       console.log(this.sex);
       this.banderasex = true;
       //-2D
@@ -1136,7 +1141,15 @@ export class GraphicPage {
         y3 = SPLINE[4].mas1D;
         y4 = SPLINE[4].mas2D;
 
+        //  console.log("EJe xx:.........."+xx);
+        // console.log("Peso indice:......."+y1);
+        // console.log("Peso indice:......."+y2);
+        // console.log("Peso indice:......."+ym);
+        // console.log("Peso indice:......."+y3);
+        // console.log("Peso indice:......."+y4);
 
+        console.log("difAno: ..." + difAno);
+        console.log("difmeses: ..."+ difmesTotales);
 
         for (let i = 0; i < xx.length; i++) {
             if (difAno == xx[i]) {
@@ -1180,14 +1193,23 @@ export class GraphicPage {
 
         alt = Math.round(altura);// por mientras
 
+        console.log("EJe xx:.........."+xx);
+        console.log("Peso indice:......."+y1);
+        console.log("Peso indice:......."+y2);
+        console.log("Peso indice:......."+ym);
+        console.log("Peso indice:......."+y3);
+        console.log("Peso indice:......."+y4);
+
         for (let i = 0; i < xx.length; i++) {
-            if (difAno == xx[i]) {
+            if (alt == xx[i]) {
               indice= i;
 
             }
             xx[i];
-            console.log(indice);
+            
         }
+        console.log("INDICE EN 7A: "+indice);
+            console.log("Diferencia año: "+difAno);
         console.log("Para grafico 7A");
         auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice);
       }
@@ -1355,9 +1377,14 @@ export class GraphicPage {
     }//fin funcion mensajePercentil
 
     public calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice){
-      //console.log("Calculos Peso!!");
+      console.log("Calculos Peso!!");
       //console.log("Peso:........."+peso);
       //console.log("Indice:......."+indice);
+      console.log(y1[indice]);
+      console.log(y2[indice]);
+      console.log(ym[indice]);
+      console.log(y3[indice]);
+      console.log(y4[indice]);
 
       let aux="";
       if (peso < y1[indice]) {
@@ -1374,19 +1401,19 @@ export class GraphicPage {
         //sobre la curva -2D y debajo de la curva -1D
 
         aux = "Riesgo de Desnutricion(Entre -2D y -1D )"
-      }else if (peso > y2[indice] && peso < ym[indice]) {
+      }else if (peso > y2[indice] && peso <= ym[indice]) {
 
         aux = "NORMAL - Eutrofico (Entre -1D y Media )";
       }else if(peso == ym[indice]){
 
-        aux = "PERFECTO!!";
-      }else if(peso > ym[indice] && peso < y3[indice]){
+        aux = "ORMAL - Eutrofico";
+      }else if(peso > ym[indice] && peso <= y3[indice]){
 
         aux = "NORMAL - Eutrofico (Entre Media y +1D)";
       }else if(peso == y3[indice]){
 
         aux = "Riesgo de obesidad";
-      }else if(peso > y3[indice] && peso < y4[indice]){
+      }else if(peso > y3[indice] && peso <= y4[indice]){
 
         aux = "Riesgo de obesidad (Entre +1D y +2D)";
       }else if(peso > y4[indice]){
@@ -1413,7 +1440,7 @@ export class GraphicPage {
         aux = "Talla Baja (entre -2D y -1D )";
       }else if (altura > y2[indice] && altura < ym[indice]) {
 
-        aux = "Talla Normal - Eutrofico (entre -1d y M )";
+        aux = "Talla Normal - Eutrofico (entre -1D y M )";
       }else if(altura == ym[indice]){
 
         aux = "Talla Normal - Eutrofico";
@@ -1425,7 +1452,7 @@ export class GraphicPage {
         aux = "Talla Alta";
       }else if(altura > y3[indice] && altura < y4[indice]){
 
-        aux = "Talla ALta (ENtre +1D y +2D)";
+        aux = "Talla Alta (ENtre +1D y +2D)";
       }else if(altura > y4[indice]){
 
         aux = "Talla muy Alta!!";
