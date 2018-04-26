@@ -22,6 +22,7 @@ export class GraphicPage {
   t4:string;
   dateTime: any;
   banderasex:boolean;
+  edad1: any;
   public cuartoGrafico = true;
   public tercerGrafico = true;
   public message1: string;
@@ -296,7 +297,7 @@ export class GraphicPage {
     }
     console.log(altura);
 
-
+    this.edad1 = difmesTotales;
 
     this.t1 = DATOS[index1].tituloGrafico;
     this.t2 = DATOS[index2].tituloGrafico;
@@ -1060,6 +1061,7 @@ export class GraphicPage {
 
         // console.log("Resultado: "+y1);
         console.log("Dif MeS: "+difmesTotales);
+
         // console.log("Peso: "+peso)
 
 
@@ -1197,13 +1199,14 @@ export class GraphicPage {
         ym = SPLINE[7].media;
         y3 = SPLINE[7].mas1D;
         y4 = SPLINE[7].mas2D;
-        console.log("EJe xx:.........."+xx);
-        console.log("Peso indice:......."+y1);
-        console.log("Peso indice:......."+y2);
-        console.log("Peso indice:......."+ym);
-        console.log("Peso indice:......."+y3);
-        console.log("Peso indice:......."+y4);
-        console.log("Dif Meses:....."+difmesTotales);
+        //console.log("EJe xx:.........."+xx);
+        //console.log("Peso indice:......."+y1);
+        //console.log("Peso indice:......."+y2);
+        //console.log("Peso indice:......."+ym);
+        //console.log("Peso indice:......."+y3);
+        //console.log("Peso indice:......."+y4);
+        //
+        // console.log("Dif Meses:....."+difmesTotales);
         for (let i = 0; i < xx.length; i++) {
             if (difmesTotales == xx[i]) {
               indice= i;
@@ -1352,43 +1355,43 @@ export class GraphicPage {
     }//fin funcion mensajePercentil
 
     public calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice){
-      console.log("Calculos Peso!!");
-      console.log("Peso:........."+peso);
-      console.log("Indice:......."+indice);
+      //console.log("Calculos Peso!!");
+      //console.log("Peso:........."+peso);
+      //console.log("Indice:......."+indice);
 
       let aux="";
       if (peso < y1[indice]) {
         //debajo la curva -2D
         console.log("Desnutricion severa");
-        aux = "Desnutricion severa";
+        aux = "Desnutricion!!";
 
       }else if (peso == y1[indice]){
         //en la curva -2D
-        console.log("Riesgo de desnutricion");
-        aux = "Riesgo de desnutricion"
+        console.log("Riesgo de Desnutricion");
+        aux = "Desnutrición!!";
 
       }else if(peso > y1[indice] && peso < y2[indice]){
         //sobre la curva -2D y debajo de la curva -1D
-        console.log("Riesgo de Desnutricion(entre -2d y -1d )");
-        aux = "Riesgo de Desnutricion(entre -2d y -1d )"
+
+        aux = "Riesgo de Desnutricion(Entre -2D y -1D )"
       }else if (peso > y2[indice] && peso < ym[indice]) {
-        console.log("NORMAL (entre -1d y M )");
-        aux = "NORMAL (entre -1d y M )";
+
+        aux = "NORMAL - Eutrofico (Entre -1D y Media )";
       }else if(peso == ym[indice]){
-        console.log("PERFECTO!!");
+
         aux = "PERFECTO!!";
       }else if(peso > ym[indice] && peso < y3[indice]){
-        console.log("NORMAL (entre M y +1D)");
-        aux = "NORMAL (entre M y +1D)";
+
+        aux = "NORMAL - Eutrofico (Entre Media y +1D)";
       }else if(peso == y3[indice]){
-        console.log("Poco riesgo de obesidad");
-        aux = "Poco riesgo de obesidad";
+
+        aux = "Riesgo de obesidad";
       }else if(peso > y3[indice] && peso < y4[indice]){
-        console.log("riesgo de obesidad(+1d a +2d)");
-        aux = "riesgo de obesidad(+1d a +2d)";
+
+        aux = "Riesgo de obesidad (Entre +1D y +2D)";
       }else if(peso > y4[indice]){
-        console.log("Obesidad!!!");
-        aux = "Obesidad!!!";
+
+        aux = "Obesidad!!";
       }
       return (aux);
     }
@@ -1398,35 +1401,34 @@ export class GraphicPage {
       let aux= "";
       if (altura < y1[indice]) {
         //debajo la curva -2D
-        console.log("Desnutricion severa");
-        aux = "Desnutricion severa";
+
+        aux = "Talla muy Baja (< -2D)";
       }else if (altura == y1[indice]){
         //en la curva -2D
-        console.log("Riesgo de desnutricion");
-        aux = "Riesgo de desnutrición"
+        aux = "Talla muy Baja (-2D)";
 
       }else if(altura > y1[indice] && altura < y2[indice]){
         //sobre la curva -2D y debajo de la curva -1D
-        console.log("Riesgo de Desnutricion(entre -2d y -1d )");
-        aux = "Riesgo de Desnutricion(entre -2d y -1d )";
+
+        aux = "Talla Baja (entre -2D y -1D )";
       }else if (altura > y2[indice] && altura < ym[indice]) {
-        console.log("NORMAL (entre -1d y M )");
-        aux = "NORMAL (entre -1d y M )";
+
+        aux = "Talla Normal - Eutrofico (entre -1d y M )";
       }else if(altura == ym[indice]){
-        console.log("PERFECTO!!");
-        aux = "PERFECTO!!";
+
+        aux = "Talla Normal - Eutrofico";
       }else if(altura > ym[indice] && altura < y3[indice]){
-        console.log("NORMAL (entre M y +1D)");
-        aux = "NORMAL (entre M y +1D)";
+
+        aux = "Talla Normal - Eutrofico (entre M y +1D)";
       }else if(altura == y3[indice]){
-        console.log("Poco riesgo de obesidad");
-        aux = "Poco riesgo de obesidad";
+
+        aux = "Talla Alta";
       }else if(altura > y3[indice] && altura < y4[indice]){
-        console.log("riesgo de obesidad(+1d a +2d)");
-        aux = "Riesgo de obesidad(+1d a +2d)";
+
+        aux = "Talla ALta (ENtre +1D y +2D)";
       }else if(altura > y4[indice]){
-        console.log("Obesidad!!!")
-        aux = "Obesidad!!!";
+
+        aux = "Talla muy Alta!!";
 
       }
       return (aux);
@@ -1458,15 +1460,20 @@ export class GraphicPage {
   }
   public PointPositionPesoLongitud(Peso,longitud){
     let a = [];
+
     longitud = longitud -50;
-    for (let i=0; i < longitud;i+0.5){
+    for (let i=0; i < longitud;i++){
+      //console.log(i);
       a.push(null);
+      a.push(null);
+
 
     }
     a.push(Peso);
-    console.log("PesoLongitud:"+ a);
+    //console.log("PesoLongitud:"+ a);
     return(a);
   }
+
 
 
 

@@ -24,6 +24,7 @@
             <div><label>Fecha Nacimiento: {{date.day}} / {{date.month}} / {{date.year}}</label></div>
             <div><label>Altura: {{color}}</label></div>
             <div><label>Peso : {{peso}}</label></div>
+            <div><label>Edad en Meses: {{edad1}}</label></div>
           </ion-col>
           <ion-col col-3></ion-col>
           <ion-col col-3>
@@ -40,10 +41,10 @@
     <ion-card>
       <div padding>
         <h2> <strong>Resultados:</strong> </h2>
-        <div><label>Grafico 1: {{message1}}</label></div>
-        <div><label>Grafico 2: {{message2}}</label></div>
-        <div><label>Grafico 3: {{message3}}</label></div>
-        <div *ngIf="cuartoGrafico"><label>Grafico 4: {{message4}}</label></div>
+        <div><label>Grafico 1 (Peso/Edad): {{message1}}</label></div>
+        <div><label>Grafico 2 (ALtura/Edad): {{message2}}</label></div>
+        <div><label>Grafico 3 (Peso/Altura): {{message3}}</label></div>
+        <div *ngIf="cuartoGrafico"><label>Grafico 4 Peso/Altura): {{message4}}</label></div>
 
 
 
