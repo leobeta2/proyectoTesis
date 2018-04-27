@@ -453,6 +453,8 @@ export class GraphicPage {
     let puntoPeso = this.PointPositionPeso(this.peso,difmesTotales);
     let puntoAltura = this.PointPositionAltura(this.color,difmesTotales);
     let puntoLongitudPeso = this.PointPositionPesoLongitud(this.peso,this.color);
+    let puntoLongitudPeso2 = this.PointPositionPesoLongitud2(this.peso,this.color);
+    console.log("punto tercer y cuarto graficos"+puntoLongitudPeso);
 
     this.A1 = new Chart(this.graphicsA1.nativeElement, {
 
@@ -587,8 +589,8 @@ export class GraphicPage {
           ,
           {
             label: "Coordenadas",
-            backgroundColor: "#40FF00",
-            borderColor: "#40FF00",
+            backgroundColor: "#ff0000",
+            borderColor: "#ff0000",
             data: puntoPeso,
             fill: false,
             pointRadius: 5,
@@ -725,8 +727,8 @@ export class GraphicPage {
           },
           {
             label: "Coordenada",
-            backgroundColor: "#40FF00",
-            borderColor: "#40FF00",
+            backgroundColor: "#ff0000",
+            borderColor: "#ff0000",
             data: puntoAltura,
             fill: false,
             pointRadius: 5,
@@ -864,8 +866,8 @@ export class GraphicPage {
           },
           {
             label: "Coordenada",
-            backgroundColor: "#40FF00",
-            borderColor: "#40FF00",
+            backgroundColor: "#ff0000",
+            borderColor: "#ff0000",
             data: puntoLongitudPeso,
             fill: false,
             pointRadius: 5,
@@ -1005,9 +1007,9 @@ export class GraphicPage {
           },
           {
             label: "Coordenada",
-            backgroundColor: "#40FF00",
-            borderColor: "#40FF00",
-            data: puntoLongitudPeso,
+            backgroundColor: "#ff0000",
+            borderColor: "#ff0000",
+            data: puntoLongitudPeso2,
             fill: false,
             pointRadius: 5,
             pointHoverRadius: 10,
@@ -1193,12 +1195,6 @@ export class GraphicPage {
 
         alt = Math.round(altura);// por mientras
 
-        console.log("EJe xx:.........."+xx);
-        console.log("Peso indice:......."+y1);
-        console.log("Peso indice:......."+y2);
-        console.log("Peso indice:......."+ym);
-        console.log("Peso indice:......."+y3);
-        console.log("Peso indice:......."+y4);
 
         for (let i = 0; i < xx.length; i++) {
             if (alt == xx[i]) {
@@ -1487,7 +1483,7 @@ export class GraphicPage {
   }
   public PointPositionPesoLongitud(Peso,longitud){
     let a = [];
-
+    console.log("Point Position Longitud!!!!");
     longitud = longitud -50;
     for (let i=0; i < longitud;i++){
       //console.log(i);
@@ -1500,7 +1496,30 @@ export class GraphicPage {
     //console.log("PesoLongitud:"+ a);
     return(a);
   }
+  
+  public PointPositionPesoLongitud2(Peso, longitud){
+    let a = [];
+    let band = true;
+    console.log("Point Position Longitud 222222!!!!");
+    console.log("LONGIUD Antes: "+longitud);
+    let longitudReal = longitud;
+    longitud = longitud -85;
+    console.log("LONGIUD despues: "+longitud);
+    for (let i=0; i < longitud;i++){
+      //console.log(i);
+      if(longitudReal>120 && band) {
+        band = false;
+        a.push(null);
+      }
+      a.push(null);
+      a.push(null);
 
+
+    }
+    a.push(Peso);
+    //console.log("PesoLongitud:"+ a);
+    return(a);
+  }
 
 
 
