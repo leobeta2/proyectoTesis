@@ -1,7 +1,7 @@
 export const DATOS = [
 	{
 		tipoGrafico:"1A",
-		tituloGrafico:"Peso por edad NiÑAS de 0 a 24 meses. (Mediana y desviaciones estandar)",
+		tituloGrafico:"Peso por Edad NiÑAS de 0 a 24 meses. (Mediana y desviaciones estandar)",
 		labels:["0", "1", "2", "3", "4", "5", "6", "7", "8",
                 "9", "10", "11", "1 año", "1", "2", "3", "4", "5", "6", "7", "8",
                         "9", "10", "11", "2 años",],//25 datos
@@ -21,7 +21,7 @@ export const DATOS = [
 	},
 	{
 		tipoGrafico:"2A",
-		tituloGrafico:"Longitud por edad NIÑAS de 0 a 24 meses. (Mediana y desviaciones estandar)",
+		tituloGrafico:"Talla por Edad NIÑAS de 0 a 24 meses. (Mediana y desviaciones estandar)",
 		labels:["0","1","2","3","4","5","6","7","8","9","10","11","1año",
                  "1","2","3","4","5","6","7","8","9","10","11","2años"],
 		dato1: [45.4, 49.8, 53.0, 55.6, 57.8, 59.6, 61.2, 62.7,64.0,65.3,66.5
@@ -42,7 +42,7 @@ export const DATOS = [
 	},
 	{
 		tipoGrafico:"3A",
-		tituloGrafico:"Peso por longitud NIÑAS de 50 a 75 cms. (Mediana y desviaciones estándar).",
+		tituloGrafico:"Peso por Talla NIÑAS de 50 a 75 cms. (Mediana y desviaciones estándar).",
 		labels:["50","50.5","51.0","51.5","52.0","52.5", "53.0", "53.5", "54.0", "54.5", "55.0", "55.5", "56.0", "56.5",
                 "57.0", "57.5", "58.0", "58.5", "59.0", "59.5", "60.0", "60.5", "61.0", "61.5", "62.0", "62.5", "63.0", "63.5",
                 "64.0", "64.5", "65.0", "65.5", "66.0", "66.5", "67.0", "67.5", "68.0", "68.5", "69.0", "69.5" ,"70.0", "70.5",
@@ -80,7 +80,7 @@ export const DATOS = [
 	},
   {
     tipoGrafico:"4A",
-    tituloGrafico:"Peso por longitud NIÑAS de 75 a 100 cms. (Mediana y desviaciones estándar).",
+    tituloGrafico:"Peso por Talla NIÑAS de 75 a 100 cms. (Mediana y desviaciones estándar).",
     labels:["75","75.5","76.0","76.5","77.0","77.5", "78.0", "78.5", "79.0", "79.5", "80.0", "80.5", "81.0", "81.5",
                 "82.0", "82.5", "83.0", "83.5", "84.0", "84.5", "85.0", "85.5", "86.0", "86.5", "87.0", "87.5", "88.0", "88.5",
                 "89.0", "89.5", "90.0", "90.5", "91.0", "91.5", "92.0", "92.5", "93.0", "93.5", "94.0", "94.5" ,"95.0", "95.5",
@@ -118,7 +118,7 @@ export const DATOS = [
   },
   {
     tipoGrafico:"5A",
-    tituloGrafico:"Peso por edad NIÑAS de 2 a 6 años. (Mediana y desviaciones estándar).",
+    tituloGrafico:"Peso por Edad NIÑAS de 2 a 6 años. (Mediana y desviaciones estándar).",
     labels:["2.0 años","2.1","2.2","2.3","2.4","2.5", "2.6", "2.7", "2.8", "2.9", "2.10", "2.11", "3.0", "3.1",
                 "3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "4.0", "4.1", "4.2", "4.3",
                 "4.4", "4.5", "4.6", "4.7", "4.8", "4.9", "4.10", "4.11", "5.0","5.0", "5.1", "5.2", "5.3" ,"5.4", "5.5",
@@ -156,7 +156,7 @@ export const DATOS = [
   },
   {
     tipoGrafico:"6A",
-    tituloGrafico:"Estatura por edad NIÑAS de 2 a 6 años. (Mediana y desviaciones estándar).",
+    tituloGrafico:"Estatura por Edad NIÑAS de 2 a 6 años. (Mediana y desviaciones estándar).",
     labels:["2.0 años","2.1","2.2","2.3","2.4","2.5", "2.6", "2.7", "2.8", "2.9", "2.10", "2.11", "3.0", "3.1",
                 "3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "4.0", "4.1", "4.2", "4.3",
                 "4.4", "4.5", "4.6", "4.7", "4.8", "4.9", "4.10", "4.11", "5.0","5.0", "5.1", "5.2", "5.3" ,"5.4", "5.5",
@@ -247,7 +247,7 @@ export const DATOS = [
   },
   {
     tipoGrafico:"1B",
-    tituloGrafico:"Peso por edad NiÑoS de 0 a 24 meses. (Mediana y desviaciones estandar)",
+    tituloGrafico:"Peso por Edad NiÑoS de 0 a 24 meses. (Mediana y desviaciones estandar)",
     labels:["0", "1", "2", "3", "4", "5", "6", "7", "8",
       "9", "10", "11", "1 año", "1", "2", "3", "4", "5", "6", "7", "8",
       "9", "10", "11", "2 años",],
@@ -265,7 +265,7 @@ export const DATOS = [
 
   {
     tipoGrafico:"2B",
-    tituloGrafico:"Longitud por edad NIÑOS de 0 a 24 meses. (Mediana y desviaciones estandar)",
+    tituloGrafico:"Talla por Edad NIÑOS de 0 a 24 meses. (Mediana y desviaciones estandar)",
     labels:["0","1","2","3","4","5","6","7","8","9","10","11","1año",
       "1","2","3","4","5","6","7","8","9","10","11","2años"],
     dato1: [46.1,50.8,54.4,57.3,59.7,61.7,63.3,64.8,66.2,67.5,68.7,69.9,71.0,
@@ -282,7 +282,7 @@ export const DATOS = [
 
   {
     tipoGrafico:"3B",
-    tituloGrafico:"Peso por longitud NIÑ0S de 50 a 75 cms. (Mediana y desviaciones estándar).",
+    tituloGrafico:"Peso por Talla NIÑ0S de 50 a 75 cms. (Mediana y desviaciones estándar).",
     labels:["50","50.5","51.0","51.5","52.0","52.5", "53.0", "53.5", "54.0", "54.5", "55.0", "55.5", "56.0", "56.5",
       "57.0", "57.5", "58.0", "58.5", "59.0", "59.5", "60.0", "60.5", "61.0", "61.5", "62.0", "62.5", "63.0", "63.5",
       "64.0", "64.5", "65.0", "65.5", "66.0", "66.5", "67.0", "67.5", "68.0", "68.5", "69.0", "69.5" ,"70.0", "70.5",
@@ -316,7 +316,7 @@ export const DATOS = [
 
   {
     tipoGrafico:"4B",
-    tituloGrafico:"Peso por longitud NIÑOS de 75 a 100 cms. (Mediana y desviaciones estándar).",
+    tituloGrafico:"Peso por Talla NIÑOS de 75 a 100 cms. (Mediana y desviaciones estándar).",
     labels:["75","75.5","76.0","76.5","77.0","77.5", "78.0", "78.5", "79.0", "79.5", "80.0", "80.5", "81.0", "81.5",
       "82.0", "82.5", "83.0", "83.5", "84.0", "84.5", "85.0", "85.5", "86.0", "86.5", "87.0", "87.5", "88.0", "88.5",
       "89.0", "89.5", "90.0", "90.5", "91.0", "91.5", "92.0", "92.5", "93.0", "93.5", "94.0", "94.5" ,"95.0", "95.5",
@@ -345,7 +345,7 @@ export const DATOS = [
 
   {
     tipoGrafico:"5B",
-    tituloGrafico:"Peso por edad NIÑOS de 2 a 6 años. (Mediana y desviaciones estándar).",
+    tituloGrafico:"Peso por Edad NIÑOS de 2 a 6 años. (Mediana y desviaciones estándar).",
     labels:["2.0 años","2.1","2.2","2.3","2.4","2.5", "2.6", "2.7", "2.8", "2.9", "2.10", "2.11", "3.0", "3.1",
       "3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "4.0", "4.1", "4.2", "4.3",
       "4.4", "4.5", "4.6", "4.7", "4.8", "4.9", "4.10", "4.11", "5.0","5.0", "5.1", "5.2", "5.3" ,"5.4", "5.5",
@@ -375,7 +375,7 @@ export const DATOS = [
 
   {
     tipoGrafico:"6B",
-    tituloGrafico:"Estatura por edad NIÑ0S de 2 a 6 años. (Mediana y desviaciones estándar).",
+    tituloGrafico:"Estatura por Edad NIÑ0S de 2 a 6 años. (Mediana y desviaciones estándar).",
     labels:["2.0 años","2.1","2.2","2.3","2.4","2.5", "2.6", "2.7", "2.8", "2.9", "2.10", "2.11", "3.0", "3.1",
       "3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "4.0", "4.1", "4.2", "4.3",
       "4.4", "4.5", "4.6", "4.7", "4.8", "4.9", "4.10", "4.11", "5.0","5.0", "5.1", "5.2", "5.3" ,"5.4", "5.5",

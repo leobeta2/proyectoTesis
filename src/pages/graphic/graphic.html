@@ -42,9 +42,10 @@
       <div padding>
         <h2> <strong>Resultados:</strong> </h2>
         <div><label>Grafico 1 (Peso/Edad): {{message1}}</label></div>
-        <div><label>Grafico 2 (ALtura/Edad): {{message2}}</label></div>
-        <div><label>Grafico 3 (Peso/Altura): {{message3}}</label></div>
-        <div *ngIf="cuartoGrafico"><label>Grafico 4 Peso/Altura): {{message4}}</label></div>
+        <div><label>Grafico 2 (Peso/Talla): {{message3}}</label></div>
+        <div><label>Grafico 3 (Talla/Edad): {{message2}}</label></div>
+
+
 
 
 
@@ -61,33 +62,38 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card>
-      <ion-card-header>
-        Grafico 2: {{t2}}
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #graphicsA2></canvas>
-      </ion-card-content>
-    </ion-card>
-
     <ion-card *ngIf="tercerGrafico">
 
     <ion-card-header>
-      Gráfico 3: {{t3}}
+      Gráfico 2: {{t3}}
     </ion-card-header>
     <ion-card-content>
       <canvas #graphicsA3></canvas>
     </ion-card-content>
   </ion-card>
 
-    <ion-card *ngIf="cuartoGrafico">
+  <ion-card *ngIf="cuartoGrafico">
 
+    <ion-card-header>
+      Gráfico 2: {{t4}}
+    </ion-card-header>
+    <ion-card-content>
+      <canvas  #graphicsA4></canvas>
+    </ion-card-content>
+  </ion-card>
+
+
+    <ion-card>
       <ion-card-header>
-        Gráfico 4: {{t4}}
+        Grafico 3: {{t2}}
       </ion-card-header>
       <ion-card-content>
-        <canvas  #graphicsA4></canvas>
+        <canvas #graphicsA2></canvas>
       </ion-card-content>
     </ion-card>
+
+
+
+
 
   </ion-content>

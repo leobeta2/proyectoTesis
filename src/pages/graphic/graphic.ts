@@ -28,7 +28,6 @@ export class GraphicPage {
   public message1: string;
   public message2: string;
   public message3: string;
-  public message4: string;
 
 
   //Se define niña= A, niño= B
@@ -73,7 +72,6 @@ export class GraphicPage {
     this.message1 = "No hay informacion para mostrar!!";
     this.message2 = "No hay informacion para mostrar!!";
     this.message3 = "No hay informacion para mostrar!!";
-    this.message4 = "No hay informacion para mostrar!!";
     //console.log(this.color);
     //console.log(this.peso);
     //console.log(this.date.day);
@@ -97,11 +95,10 @@ export class GraphicPage {
     const diaNacimiento = this.date.day || 0;
 
 
-
-
+    let DosAnos = false;
     //console.log(anoNacimiento);
     //console.log(data);
-    let difmesTotales=0;
+
     let difAno=0;
     let difDia=0;
 
@@ -117,12 +114,18 @@ export class GraphicPage {
 
     console.log("Mes Nacimiento"+mesNacimiento);
 
+
     let tipoGrafico1 = "";
 
-    if(anoActual == anoNacimiento){
-      difmesTotales= mesActual - mesNacimiento;
+
+    // numero de meses entre fecha de nacimiento y fecha actual
+    const mesesT = this.dateTime.getMonth() - mesNacimiento + (12 * (this.dateTime.getFullYear() - anoNacimiento))+1;
+    console.log("mesesT: "+ mesesT);
+
+    if( mesesT <= 12){
+
       console.log("La diferencia mismo año");
-      console.log(difmesTotales);
+      console.log(mesesT);
       if(this.sex == "Masculino"){
         index1 =7;
         index2 =8;
@@ -137,19 +140,13 @@ export class GraphicPage {
       tipoGrafico1 = DATOS[index1].tipoGrafico;
 
 
-    }else if (anoActual-1 == anoNacimiento) {
+    }else if (mesesT > 12 && mesesT <= 24) {
 
-      difmesTotales = mesActual- mesNacimiento;
+
       difAno = anoNacimiento - anoActual;
-      if(difmesTotales == 0){
-        difmesTotales = 12;
-      }else if(difmesTotales < 0 ){
-        difmesTotales = 12 - difmesTotales;
-      }else if(difmesTotales > 0){
-        difmesTotales = 12 + difmesTotales;
-      }
+
       console.log("La diferencia de 1 año");
-      console.log(difmesTotales);
+      console.log(mesesT);
       if(this.sex == "Masculino"){
         index1 = 7;
         index2 = 8
@@ -160,22 +157,17 @@ export class GraphicPage {
         index2 =1;
       }
 
-    } else if (anoActual-2 == anoNacimiento) {
-      difmesTotales = mesActual - mesNacimiento;
+    } else if (mesesT > 24 && mesesT <=36) {
+      DosAnos = true;
+
       console.log("MESACTUAL: "+mesActual);//5
       console.log("MESNACIMIENTO:"+mesNacimiento);//1
       difAno = anoActual - anoNacimiento;
-      if (difmesTotales == 0) {
-        difmesTotales = 24;
-      } else if (difmesTotales > 0) {
-        difmesTotales = 24 + difmesTotales;
-      } else if (difmesTotales < 0) {
-        difmesTotales = 24 - difmesTotales;
-      }
+
 
       //console.log("NADA");
       console.log("La diferencia de 2 año");
-      console.log(difmesTotales);
+      console.log(mesesT);
       if(this.sex == "Masculino"){
         index1 = 11;
         index2 = 12;
@@ -187,18 +179,13 @@ export class GraphicPage {
       }
 
 
-    }else if (anoActual-3 == anoNacimiento) {
-      difmesTotales = mesActual - mesNacimiento;
+    }else if (mesesT > 36 && mesesT <= 48 ) {
+      DosAnos = true;
+
       difAno = anoActual - anoNacimiento;
-      if (difmesTotales == 0) {
-        difmesTotales = 36;
-      } else if (difmesTotales >0) {
-        difmesTotales = 36 + difmesTotales;
-      } else if (difmesTotales < 0) {
-        difmesTotales = 36 - difmesTotales;
-      }
+
       console.log("La diferencia de 3 año");
-      console.log(difmesTotales);
+      console.log(mesesT);
       if(this.sex == "Masculino"){
         index1 = 11;
         index2 = 12;
@@ -210,18 +197,13 @@ export class GraphicPage {
       }
 
 
-    }else if(anoActual-4 == anoNacimiento) {
-      difmesTotales = mesActual - mesNacimiento;
+    }else if(mesesT >48 && mesesT<= 60) {
+      DosAnos = true;
+
       difAno = anoActual - anoNacimiento;
-      if (difmesTotales == 0) {
-        difmesTotales = 48;
-      } else if (difmesTotales > 0) {
-        difmesTotales = 48 + difmesTotales;
-      } else if (difmesTotales < 0) {
-        difmesTotales = 48 - difmesTotales;
-      }
+
       console.log("La diferencia de 4 año");
-      console.log(difmesTotales);
+      console.log(mesesT);
       if(this.sex == "Masculino"){
         index1 = 11;
         index2 = 12;
@@ -233,18 +215,13 @@ export class GraphicPage {
       }
 
 
-    }else if(anoActual-5 == anoNacimiento){
-      difmesTotales = mesActual - mesNacimiento;
+    }else if(mesesT > 60 && mesesT <=72){
+      DosAnos = true;
+
       difAno = anoActual - anoNacimiento;
-      if (difmesTotales == 0) {
-        difmesTotales = 60;
-      } else if (difmesTotales > 0) {
-        difmesTotales = 60 + difmesTotales;
-      } else if (difmesTotales < 0) {
-        difmesTotales = 60 - difmesTotales;
-      }
+
       console.log("La diferencia de 5 año");
-      console.log(difmesTotales);
+      console.log(mesesT);
       if(this.sex = "Masculino"){
         index1 = 11;
         index2 = 12;
@@ -257,6 +234,7 @@ export class GraphicPage {
 
 
     }else{
+        DosAnos = true;
         console.log("sE SUPERAN LOS 6 AÑOS");
     }
 
@@ -272,11 +250,11 @@ export class GraphicPage {
       }
 
     }else if (altura > 75 && altura <=130){
-      if(altura >100){
-        this.tercerGrafico=false;
-      }
-      if(altura > 75 && altura <=100){
+
+      if(altura > 75 && altura <=99){
         console.log("4A");
+        this.tercerGrafico = true;
+        this.cuartoGrafico = false;
 
         if(this.sex == "Masculino"){
           index3 = 10;
@@ -286,9 +264,7 @@ export class GraphicPage {
 
       }
 
-      if(altura >=85 && altura <= 130){
-        console.log("7AB");
-        this.cuartoGrafico = true;
+      if(altura >=100 && altura <= 130){
 
         if(this.sex=="Masculino"){
           console.log("7B");
@@ -303,7 +279,7 @@ export class GraphicPage {
     }
     console.log(altura);
 
-    this.edad1 = difmesTotales;
+    this.edad1 = mesesT;
 
     this.t1 = DATOS[index1].tituloGrafico;
     this.t2 = DATOS[index2].tituloGrafico;
@@ -319,25 +295,22 @@ export class GraphicPage {
 
 
 
-    let tipoGraficolocal3;
-    let tipoGraficolocal4;
 
-   const labels = DATOS[0].labels;
-   let tipoGraficolocal1 = DATOS[index1].tipoGrafico || 0;
-   let tipoGraficolocal2 = DATOS[index2].tipoGrafico || 0;
-   if(index3!=0){
-      tipoGraficolocal3 = DATOS[index3].tipoGrafico || 0;
-   }
+    
 
-   if (index4 != 0){
-    tipoGraficolocal4 = DATOS[index4].tipoGrafico || 0;
- }
+    const labels = DATOS[0].labels;
+    let tipoGraficolocal1 = DATOS[index1].tipoGrafico || 0;
+    let tipoGraficolocal2 = DATOS[index2].tipoGrafico || 0;
+    let tipoGraficolocal3 = DATOS[index3].tipoGrafico || 0;
+   
+
+ 
 
 
-    this.message1 = this.mensajePercentil(tipoGraficolocal1,difmesTotales,difAno,peso,altura);
-    this.message2 = this.mensajePercentil(tipoGraficolocal2,difmesTotales,difAno,peso,altura);
-    this.message3 = this.mensajePercentil(tipoGraficolocal3,difmesTotales,difAno,peso,altura);
-    this.message4 = this.mensajePercentil(tipoGraficolocal4,difmesTotales,difAno,peso,altura);
+    this.message1 = this.mensajePercentil(tipoGraficolocal1,mesesT,difAno,peso,altura);
+    this.message2 = this.mensajePercentil(tipoGraficolocal2,mesesT,difAno,peso,altura);
+    this.message3 = this.mensajePercentil(tipoGraficolocal3,mesesT,difAno,peso,altura);
+    
 
 
 
@@ -450,10 +423,10 @@ export class GraphicPage {
 
 
     // LOS PUNTOS PARA INDICAR LA POSICION EN EL GRAFICO
-    let puntoPeso = this.PointPositionPeso(this.peso,difmesTotales);
-    let puntoAltura = this.PointPositionAltura(this.color,difmesTotales);
+    let puntoPeso = this.PointPositionPeso(this.peso,mesesT, DosAnos);
+    let puntoAltura = this.PointPositionAltura(this.color,mesesT, DosAnos);
     let puntoLongitudPeso = this.PointPositionPesoLongitud(this.peso,this.color);
-    let puntoLongitudPeso2 = this.PointPositionPesoLongitud2(this.peso,this.color);
+    
     console.log("punto tercer y cuarto graficos"+puntoLongitudPeso);
 
     this.A1 = new Chart(this.graphicsA1.nativeElement, {
@@ -883,152 +856,10 @@ export class GraphicPage {
 
 
 
-  if (this.cuartoGrafico) {
-    this.A4 = new Chart(this.graphicsA4.nativeElement, {
 
-      type: 'line',
-      data: {
-        labels: DATOS[index4].labels,
-        datasets: [
-          {
-            label: "-2DE",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: colorCajame2, //caja
-            borderColor: colorBordeCajame2, //linea
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: colorPuntoBordeme2,
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 6,
-            pointHoverBackgroundColor: colorBackme2,
-            pointHoverBorderColor: pointColorBorderme2,
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: DATOS[index4].dato1,
-            spanGaps: false,
+  }
 
-          },
-          {
-            label: "-1DE",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: colorCajame1, //caja
-            borderColor: colorBordeCajame1, //linea
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: colorPuntoBordeme1,
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 6,
-            pointHoverBackgroundColor: colorBackme1,
-            pointHoverBorderColor: pointColorBorderme1,
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: DATOS[index4].dato2,
-            spanGaps: false,
-
-          },
-          {
-            label: "Media",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: colorCaja, //caja
-            borderColor: colorBordeCaja, //linea
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: colorPuntoBorde,
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 6,
-            pointHoverBackgroundColor: colorBack,
-            pointHoverBorderColor: pointColorBorder,
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: DATOS[index4].datoM,
-            spanGaps: false,
-
-          },
-          {
-            label: "1DE",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: colorCajama1, //caja
-            borderColor: colorBordeCajama1, //linea
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: colorPuntoBordema1,
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 6,
-            pointHoverBackgroundColor: colorBackma1,
-            pointHoverBorderColor: pointColorBorderma1,
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: DATOS[index4].dato3,
-            spanGaps: false,
-
-          },
-          {
-            label: "2DE",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: colorCajama2, //caja
-            borderColor: colorBordeCajama2, //linea
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: colorPuntoBordema2,
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 6,
-            pointHoverBackgroundColor: colorBackma2,
-            pointHoverBorderColor: pointColorBorderma2,
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: DATOS[index4].dato4,
-            spanGaps: false,
-
-          },
-          {
-            label: "Coordenada",
-            backgroundColor: "#ff0000",
-            borderColor: "#ff0000",
-            data: puntoLongitudPeso2,
-            fill: false,
-            pointRadius: 5,
-            pointHoverRadius: 10,
-            showLine: false // no line shown
-
-          }
-        ]
-      }
-
-    });
- }
-
-
-
-
-
-    }
-
-    public  mensajePercentil(tipoGrafico,difmesTotales,difAno, peso,altura){
+    public  mensajePercentil(tipoGrafico,mesesT,difAno, peso,altura){
       let auxMessage= "";
       console.log("oliiiiiiiiiiiiiiiih");
       //funcion para los mensajes de estado nutricional del niño
@@ -1046,7 +877,7 @@ export class GraphicPage {
         y4 = SPLINE[0].mas2D;
 
         for (let i = 0; i < xx.length; i++) {
-            if (difmesTotales == xx[i]) {
+            if (mesesT == xx[i]) {
               indice= i;
 
             }
@@ -1067,7 +898,7 @@ export class GraphicPage {
 
 
         // console.log("Resultado: "+y1);
-        console.log("Dif MeS: "+difmesTotales);
+        console.log("Dif MeS: "+mesesT);
 
         // console.log("Peso: "+peso)
 
@@ -1082,7 +913,7 @@ export class GraphicPage {
         y4 = SPLINE[1].mas2D;
 
         for (let i = 0; i < xx.length; i++) {
-            if (difmesTotales == xx[i]) {
+            if (mesesT == xx[i]) {
               indice= i;
 
             }
@@ -1151,7 +982,7 @@ export class GraphicPage {
         // console.log("Peso indice:......."+y4);
 
         console.log("difAno: ..." + difAno);
-        console.log("difmeses: ..."+ difmesTotales);
+        console.log("difmeses: ..."+ mesesT);
 
         for (let i = 0; i < xx.length; i++) {
             if (difAno == xx[i]) {
@@ -1202,7 +1033,7 @@ export class GraphicPage {
 
             }
             xx[i];
-            
+
         }
         console.log("INDICE EN 7A: "+indice);
             console.log("Diferencia año: "+difAno);
@@ -1224,9 +1055,9 @@ export class GraphicPage {
         //console.log("Peso indice:......."+y3);
         //console.log("Peso indice:......."+y4);
         //
-        // console.log("Dif Meses:....."+difmesTotales);
+        // console.log("Dif Meses:....."+mesesT);
         for (let i = 0; i < xx.length; i++) {
-            if (difmesTotales == xx[i]) {
+            if (mesesT == xx[i]) {
               indice= i;
 
             }
@@ -1246,15 +1077,22 @@ export class GraphicPage {
         y3 = SPLINE[8].mas1D;
         y4 = SPLINE[8].mas2D;
 
+        console.log("Para grafico 2B");
+
+        console.log("EJe xx:.........."+xx);
+        
+        console.log("Dif Meses:....."+mesesT);
+
+        
         for (let i = 0; i < xx.length; i++) {
-            if (difmesTotales == xx[i]) {
+            if (mesesT == xx[i]) {
               indice= i;
 
             }
             xx[i];
-            console.log(indice);
+            
         }
-        console.log("Para grafico 2B");
+        console.log("indice actual en 2B"+indice);
         auxMessage = this.calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice);
 
       }
@@ -1265,7 +1103,7 @@ export class GraphicPage {
         ym = SPLINE[9].media;
         y3 = SPLINE[9].mas1D;
         y4 = SPLINE[9].mas2D;
-          alt = Math.round(altura);// por mientras
+        alt = Math.round(altura);// por mientras
         for (let i = 0; i < xx.length; i++) {
             if (alt == xx[i]) {
               indice= i;
@@ -1366,7 +1204,7 @@ export class GraphicPage {
 
 
       //console.log(tipoGrafico);
-      //console.log(difmesTotalesTotales);
+      //console.log(mesesTTotales);
       //console.log(peso);
       //console.log(altura);
       return (auxMessage);
@@ -1374,8 +1212,8 @@ export class GraphicPage {
 
     public calculosPeso(xx,peso,altura,y1,y2,ym,y3,y4,indice){
       console.log("Calculos Peso!!");
-      //console.log("Peso:........."+peso);
-      //console.log("Indice:......."+indice);
+      console.log("Peso:........."+peso);
+      console.log("Indice:......."+indice);
       console.log(y1[indice]);
       console.log(y2[indice]);
       console.log(ym[indice]);
@@ -1386,12 +1224,12 @@ export class GraphicPage {
       if (peso < y1[indice]) {
         //debajo la curva -2D
         console.log("Desnutricion severa");
-        aux = "Desnutricion!!";
+        aux = "Desnutrición (-2D)";
 
       }else if (peso == y1[indice]){
         //en la curva -2D
         console.log("Riesgo de Desnutricion");
-        aux = "Desnutrición!!";
+        aux = "Desnutrición (-2D)";
 
       }else if(peso > y1[indice] && peso < y2[indice]){
         //sobre la curva -2D y debajo de la curva -1D
@@ -1402,7 +1240,7 @@ export class GraphicPage {
         aux = "NORMAL - Eutrofico (Entre -1D y Media )";
       }else if(peso == ym[indice]){
 
-        aux = "ORMAL - Eutrofico";
+        aux = "NORMAL - Eutrofico";
       }else if(peso > ym[indice] && peso <= y3[indice]){
 
         aux = "NORMAL - Eutrofico (Entre Media y +1D)";
@@ -1414,7 +1252,7 @@ export class GraphicPage {
         aux = "Riesgo de obesidad (Entre +1D y +2D)";
       }else if(peso > y4[indice]){
 
-        aux = "Obesidad!!";
+        aux = "Obesidad (+2D)";
       }
       return (aux);
     }
@@ -1422,6 +1260,11 @@ export class GraphicPage {
     public calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice){
       console.log("Calculos LOngitud y altura");
       let aux= "";
+      console.log(y1[indice]);
+      console.log(y2[indice]);
+      console.log(ym[indice]);
+      console.log(y3[indice]);
+      console.log(y4[indice]);
       if (altura < y1[indice]) {
         //debajo la curva -2D
 
@@ -1449,17 +1292,21 @@ export class GraphicPage {
       }else if(altura > y3[indice] && altura < y4[indice]){
 
         aux = "Talla Alta (ENtre +1D y +2D)";
-      }else if(altura > y4[indice]){
+      }else if(altura >= y4[indice]){
 
-        aux = "Talla muy Alta!!";
+        aux = "Talla muy Alta (+2D)";
 
       }
       return (aux);
     }
 
-    public PointPositionPeso(peso,Meses){
+    public PointPositionPeso(peso,Meses,DosAnos){
+
       let tam2 = 3;
       let a = [];
+      if (DosAnos == true){
+        Meses = Meses - 24;
+      }
       for (let i=0; i < Meses;i++){
         a.push(null);
 
@@ -1469,9 +1316,14 @@ export class GraphicPage {
 
       return(a);
     }
-  public PointPositionAltura(Altura,Meses){
+
+  public PointPositionAltura(Altura,Meses,DosAnos){
+    console.log("ENtre??!?!?!?");
     let tam2 = 3;
     let a = [];
+    if (DosAnos == true){
+      Meses = Meses - 24;
+    }
     for (let i=0; i < Meses;i++){
       a.push(null);
 
@@ -1484,42 +1336,49 @@ export class GraphicPage {
   public PointPositionPesoLongitud(Peso,longitud){
     let a = [];
     console.log("Point Position Longitud!!!!");
-    longitud = longitud -50;
-    for (let i=0; i < longitud;i++){
-      //console.log(i);
-      a.push(null);
-      a.push(null);
-
-
-    }
-    a.push(Peso);
-    //console.log("PesoLongitud:"+ a);
-    return(a);
-  }
-  
-  public PointPositionPesoLongitud2(Peso, longitud){
-    let a = [];
-    let band = true;
-    console.log("Point Position Longitud 222222!!!!");
-    console.log("LONGIUD Antes: "+longitud);
-    let longitudReal = longitud;
-    longitud = longitud -85;
-    console.log("LONGIUD despues: "+longitud);
-    for (let i=0; i < longitud;i++){
-      //console.log(i);
-      if(longitudReal>120 && band) {
-        band = false;
+    console.log("LONGIUD Antes 1: "+longitud);
+    if (longitud >= 50 && longitud < 75) {
+      longitud = longitud -50;
+      console.log("LONGIUD despues 1: "+longitud);
+      for (let i=0; i < longitud;i++){
+        //console.log(i);
+        a.push(null);
         a.push(null);
       }
-      a.push(null);
-      a.push(null);
-
-
     }
+    if (longitud >= 75 && longitud < 100) {
+      longitud = longitud -75;
+      console.log("LONGIUD despues 1: "+longitud);
+      for (let i=0; i < longitud;i++){
+        //console.log(i);
+        a.push(null);
+        a.push(null);
+      
+      }
+    }
+
+    if (longitud >= 100 && longitud <=130 ) {
+      
+    longitud = longitud -50;
+    console.log("LONGIUD despues 1: "+longitud);
+    for (let i=0; i < longitud;i++){
+      //console.log(i);
+      a.push(null);
+      a.push(null);
+
+
+      }
+    }
+    
+
     a.push(Peso);
+      
+    
     //console.log("PesoLongitud:"+ a);
     return(a);
   }
+
+  
 
 
 
