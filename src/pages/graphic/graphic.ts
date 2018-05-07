@@ -82,7 +82,6 @@ export class GraphicPage {
     let index1 = 0;
     let index2 = 0;
     let index3 = 0;
-    let index4 = 0;
 
 
     let mesActual = this.dateTime.getMonth()+1;
@@ -265,13 +264,13 @@ export class GraphicPage {
       }
 
       if(altura >=100 && altura <= 130){
-
+        console.log("Aqui estoy??")
         if(this.sex=="Masculino"){
           console.log("7B");
-          index4 = 13;
+          index3 = 13;
         }else{
           console.log("7A");
-          index4 = 6;
+          index3 = 6;
         }
       }
     }else{
@@ -284,7 +283,7 @@ export class GraphicPage {
     this.t1 = DATOS[index1].tituloGrafico;
     this.t2 = DATOS[index2].tituloGrafico;
     this.t3 = DATOS[index3].tituloGrafico;
-    this.t4 = DATOS[index4].tituloGrafico;
+    
 
     //let labelGrafico1 = DATOS[index1].labels;
     //let dato1Grafico1 = DATOS[index1].dato1;
@@ -1359,7 +1358,7 @@ export class GraphicPage {
 
     if (longitud >= 100 && longitud <=130 ) {
       
-    longitud = longitud -50;
+    longitud = longitud -85;
     console.log("LONGIUD despues 1: "+longitud);
     for (let i=0; i < longitud;i++){
       //console.log(i);
