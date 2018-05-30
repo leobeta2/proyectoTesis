@@ -8,6 +8,7 @@ import {FirebaseObjectObservable} from "angularfire2/database-deprecated";
 import { AngularFireObject }  from "angularfire2/database";
 import {ProfilePage} from "../profile/profile";
 import { Observable } from 'rxjs/Observable';
+import {Graphic2Page} from '../graphic2/graphic2'
 
 
 @Component({
@@ -100,9 +101,10 @@ export class HomePage {
 
     }
 
+  }
 
-
-
+  public prueba(){
+    this.navCtrl.push(Graphic2Page);
   }
 
   showAlert(){

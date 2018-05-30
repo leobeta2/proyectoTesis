@@ -9,10 +9,12 @@ import {AngularFireAuthModule} from "angularfire2/auth";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { GraphicPage } from '../pages/graphic/graphic';
+import {Graphic2Page} from '../pages/graphic2/graphic2'
 import { LoginPage } from '../pages/login/login';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {ProfilePage} from "../pages/profile/profile";
+import { ProfileService } from "../services/profile.service"
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {ProfilePage} from "../pages/profile/profile";
     HomePage,
     GraphicPage,
     LoginPage,
-    ProfilePage
+    ProfilePage,
+    Graphic2Page
   ],
   imports: [
     BrowserModule,
@@ -38,12 +41,14 @@ import {ProfilePage} from "../pages/profile/profile";
     HomePage,
     GraphicPage,
     LoginPage,
-    ProfilePage
+    ProfilePage,
+    Graphic2Page
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ProfileService
   ]
 })
 export class AppModule {}
