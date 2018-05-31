@@ -103,8 +103,8 @@ export class HomePage {
 
   }
 
-  public prueba(){
-    this.navCtrl.push(Graphic2Page);
+  public goToGraphic2(sex,date,color, peso){
+    this.navCtrl.push(Graphic2Page, {sex,date,color,peso});
   }
 
   showAlert(){

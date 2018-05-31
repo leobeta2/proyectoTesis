@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 
 import {DATOS} from "../../data/data.datos"
 import {SPLINE} from "../../data/data.spline"
+import {DATOS2} from "../../data/data.datos2"
 
 
 
@@ -283,7 +284,7 @@ export class GraphicPage {
     this.t1 = DATOS[index1].tituloGrafico;
     this.t2 = DATOS[index2].tituloGrafico;
     this.t3 = DATOS[index3].tituloGrafico;
-    
+
 
     //let labelGrafico1 = DATOS[index1].labels;
     //let dato1Grafico1 = DATOS[index1].dato1;
@@ -295,21 +296,21 @@ export class GraphicPage {
 
 
 
-    
+
 
     const labels = DATOS[0].labels;
     let tipoGraficolocal1 = DATOS[index1].tipoGrafico || 0;
     let tipoGraficolocal2 = DATOS[index2].tipoGrafico || 0;
     let tipoGraficolocal3 = DATOS[index3].tipoGrafico || 0;
-   
 
- 
+
+
 
 
     this.message1 = this.mensajePercentil(tipoGraficolocal1,mesesT,difAno,peso,altura);
     this.message2 = this.mensajePercentil(tipoGraficolocal2,mesesT,difAno,peso,altura);
     this.message3 = this.mensajePercentil(tipoGraficolocal3,mesesT,difAno,peso,altura);
-    
+
 
 
 
@@ -425,7 +426,7 @@ export class GraphicPage {
     let puntoPeso = this.PointPositionPeso(this.peso,mesesT, DosAnos);
     let puntoAltura = this.PointPositionAltura(this.color,mesesT, DosAnos);
     let puntoLongitudPeso = this.PointPositionPesoLongitud(this.peso,this.color);
-    
+
     console.log("punto tercer y cuarto graficos"+puntoLongitudPeso);
 
     this.A1 = new Chart(this.graphicsA1.nativeElement, {
@@ -1079,17 +1080,17 @@ export class GraphicPage {
         console.log("Para grafico 2B");
 
         console.log("EJe xx:.........."+xx);
-        
+
         console.log("Dif Meses:....."+mesesT);
 
-        
+
         for (let i = 0; i < xx.length; i++) {
             if (mesesT == xx[i]) {
               indice= i;
 
             }
             xx[i];
-            
+
         }
         console.log("indice actual en 2B"+indice);
         auxMessage = this.calculosLongitudAltura(xx,peso,altura,y1,y2,ym,y3,y4,indice);
@@ -1352,12 +1353,12 @@ export class GraphicPage {
         //console.log(i);
         a.push(null);
         a.push(null);
-      
+
       }
     }
 
     if (longitud >= 100 && longitud <=130 ) {
-      
+
     longitud = longitud -85;
     console.log("LONGIUD despues 1: "+longitud);
     for (let i=0; i < longitud;i++){
@@ -1368,16 +1369,16 @@ export class GraphicPage {
 
       }
     }
-    
+
 
     a.push(Peso);
-      
-    
+
+
     //console.log("PesoLongitud:"+ a);
     return(a);
   }
 
-  
+
 
 
 
