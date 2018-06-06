@@ -118,14 +118,123 @@ export class Graphic2Page {
     this.edad1 = mesesT;
 
     index3 = this.GraficoAltura(altura,this.sex);
-
+    console.log('index3: ' +index3);
     this.t1 = DATOS2[index1].tituloGrafico;
     this.t2 = DATOS2[index2].tituloGrafico;
     this.t3 = DATOS2[index3].tituloGrafico;
+    console.log('Despues');
 
     let tipoGraficolocal1 = DATOS2[index1].tipoGrafico || 0;
     let tipoGraficolocal2 = DATOS2[index2].tipoGrafico || 0;
     //let tipoGraficolocal3 = DATOS[index3].tipoGrafico || 0;
+
+    //Definimos el color de los graficos
+
+    let colorCajame2 = "";
+    let colorBordeCajame2="";
+    let colorPuntoBordeme2 = "";
+    let colorBackme2 = "";
+    let pointColorBorderme2 = "";
+
+    let colorCajame1 = "";
+    let colorBordeCajame1="";
+    let colorPuntoBordeme1 = "";
+    let colorBackme1 = "";
+    let pointColorBorderme1 = "";
+
+   let colorCaja = "";
+   let colorBordeCaja="";
+   let colorPuntoBorde = "";
+   let colorBack = "";
+   let pointColorBorder = "";
+
+    let colorCajama1 = "";
+    let colorBordeCajama1="";
+    let colorPuntoBordema1 = "";
+    let colorBackma1 = "";
+    let pointColorBorderma1 = "";
+
+    let colorCajama2 = "";
+    let colorBordeCajama2="";
+    let colorPuntoBordema2 = "";
+    let colorBackma2 = "";
+    let pointColorBorderma2 = "";
+
+    if(this.sex == "Femenino"){
+      console.log(this.sex);
+      this.banderasex = true;
+      //-2D
+      colorCajame2 = "rgba(255, 167, 222,0.4)";
+      colorBordeCajame2 = "rgba(255, 167, 222,1)";
+      colorPuntoBordeme2 = "rgba(255, 167, 222,1)";
+      colorBackme2 = "rgba(255, 167, 222,1)";
+      pointColorBorderme2 = "rgba(255, 167, 222,1)";
+
+      //-1D
+      colorCajame1 = "rgba(255, 124, 206,0.4)";
+      colorBordeCajame1 = "rgba(255, 124, 206,1)";
+      colorPuntoBordeme1 = "rgba(255, 124, 206,1)";
+      colorBackme1 = "rgba(255, 124, 206,1)";
+      pointColorBorderme1 = "rgba(255, 124, 206,1)";
+      //Media
+      colorCaja = "rgba(255, 51, 178,0.4)";
+      colorBordeCaja = "rgba(255, 51, 178,1)";
+      colorPuntoBorde = "rgba(255, 124, 206,1)";
+      colorBack = "rgba(255, 124, 206,1)";
+      pointColorBorder = "rgba(255, 124, 206,1)";
+      //+1D
+      colorCajama1 = "rgba(255, 167, 222,0.4)";
+      colorBordeCajama1 = "rgba(255, 124, 206,1)";
+      colorPuntoBordema1 = "rgba(255, 124, 206,1)";
+      colorBackma1 = "rgba(255, 124, 206,1)";
+      pointColorBorderma1 = "rgba(255, 124, 206,1)";
+      //+2D
+      colorCajama2 = "rgba(255, 167, 222,0.4)";
+      colorBordeCajama2 = "rgba(255, 167, 222,1)";
+      colorPuntoBordema2 = "rgba(255, 167, 222,1)";
+      colorBackma2 = "rgba(255, 167, 222,1)";
+      pointColorBorderma2 = "rgba(255, 167, 222,1)";
+    }else if(this.sex== "Masculino"){
+      console.log("pinta masculino");
+      console.log(this.sex);
+      this.banderasex=false;
+
+      //-2D
+      colorCajame2 = "rgba(0, 153, 255,0.4)";
+      colorBordeCajame2 = "rgba(0, 153, 255,1)";
+      colorPuntoBordeme2 = "rgba(0, 153, 255,1)";
+      colorBackme2 = "rgba(0, 153, 255,1)";
+      pointColorBorderme2 = "rgba(0, 153, 255,1)";
+
+      //-1D
+      colorCajame1 = "rgba(0, 102, 255,0.4)";
+      colorBordeCajame1 = "rgba(0, 102, 255,1)";
+      colorPuntoBordeme1 = "rgba(0, 102, 255,1)";
+      colorBackme1 = "rgba(0, 102, 255,1)";
+      pointColorBorderme1 = "rgba(0, 102, 255,1)";
+
+      //medio
+      colorCaja = "rgba(0, 0, 153,0.4)";
+      colorBordeCaja = "rgba(0, 0, 153)";
+      colorPuntoBorde = "rgba(0, 102, 25)";
+      colorBack = "rgba(0, 0, 153)";
+      pointColorBorder = "rgba(0, 0, 153)";
+
+      //1D
+      colorCajama1 = "rgba(0, 102, 255,0.4)";
+      colorBordeCajama1 = "rgba(0, 102, 255,1)";
+      colorPuntoBordema1 = "rgba(0, 102, 255,1)";
+      colorBackma1 = "rgba(0, 102, 255,1)";
+      pointColorBorderma1 = "rgba(0, 102, 255,1)";
+
+      //2D
+      colorCajama2 = "rgba(0, 153, 255,0.4)";
+      colorBordeCajama2 = "rgba(0, 153, 255,1)";
+      colorPuntoBordema2 = "rgba(0, 153, 255,1)";
+      colorBackma2 = "rgba(0, 153, 255,1)";
+      pointColorBorderma2 = "rgba(0, 153, 255,1)";
+
+    }
 
 
 
@@ -138,21 +247,21 @@ export class Graphic2Page {
           labels: DATOS2[index1].labels,
           datasets: [
             {
-              label: "+1DE",
+              label: "-2",
               fill: false,
               lineTension: 0.1,
-              backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-              borderColor: "rgba(255, 51, 178,0.4)", //linea
+              backgroundColor: colorCajame2, //caja
+              borderColor: colorBordeCajame2, //linea
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
-              pointBorderColor: "rgba(255, 51, 178,0.4)",
+              pointBorderColor: colorPuntoBordeme2,
               pointBackgroundColor: "#fff",
               pointBorderWidth: 1,
               pointHoverRadius: 6,
-              pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-              pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+              pointHoverBackgroundColor: colorBackme2,
+              pointHoverBorderColor: pointColorBorderme2,
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
@@ -161,21 +270,21 @@ export class Graphic2Page {
            }
             ,
             {
-              label: "+1DE",
+              label: "-1.5",
               fill: false,
               lineTension: 0.1,
-              backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-              borderColor: "rgba(255, 51, 178,0.4)", //linea
+              backgroundColor: colorCajame2, //caja
+              borderColor: colorBordeCajame2, //linea
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
-              pointBorderColor: "rgba(255, 51, 178,0.4)",
+              pointBorderColor: colorPuntoBordeme2,
               pointBackgroundColor: "#fff",
               pointBorderWidth: 1,
               pointHoverRadius: 6,
-              pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-              pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+              pointHoverBackgroundColor: colorBackme2,
+              pointHoverBorderColor: pointColorBorderme2,
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
@@ -185,21 +294,21 @@ export class Graphic2Page {
             ,
 
             {
-              label: "+1DE",
+              label: "-1",
               fill: false,
               lineTension: 0.1,
-              backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-              borderColor: "rgba(255, 51, 178,0.4)", //linea
+              backgroundColor: colorCajame1, //caja
+              borderColor: colorBordeCajame1, //linea
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
-              pointBorderColor: "rgba(255, 51, 178,0.4)",
+              pointBorderColor: colorPuntoBordeme1,
               pointBackgroundColor: "#fff",
               pointBorderWidth: 1,
               pointHoverRadius: 6,
-              pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-              pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+              pointHoverBackgroundColor: colorBackme1,
+              pointHoverBorderColor: pointColorBorderme1,
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
@@ -208,21 +317,21 @@ export class Graphic2Page {
 
             },
             {
-              label: "+1DE",
+              label: "-0.5",
               fill: false,
               lineTension: 0.1,
-              backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-              borderColor: "rgba(255, 51, 178,0.4)", //linea
+              backgroundColor: colorCajame1, //caja
+              borderColor: colorBordeCajame1, //linea
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
-              pointBorderColor: "rgba(255, 51, 178,0.4)",
+              pointBorderColor: colorPuntoBordeme1,
               pointBackgroundColor: "#fff",
               pointBorderWidth: 1,
               pointHoverRadius: 6,
-              pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-              pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+              pointHoverBackgroundColor: colorBackme1,
+              pointHoverBorderColor: pointColorBorderme1,
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
@@ -231,21 +340,21 @@ export class Graphic2Page {
 
             },
             {
-              label: "+1DE",
+              label: "M",
               fill: false,
               lineTension: 0.1,
-              backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-              borderColor: "rgba(255, 51, 178,0.4)", //linea
+              backgroundColor: colorCaja, //caja
+              borderColor: colorBordeCaja, //linea
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
-              pointBorderColor: "rgba(255, 51, 178,0.4)",
+              pointBorderColor: colorPuntoBorde,
               pointBackgroundColor: "#fff",
               pointBorderWidth: 1,
               pointHoverRadius: 6,
-              pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-              pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+              pointHoverBackgroundColor: colorBack,
+              pointHoverBorderColor: pointColorBorder,
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
@@ -255,21 +364,21 @@ export class Graphic2Page {
             }
             ,
             {
-              label: "+1DE",
+              label: "+0.5",
               fill: false,
               lineTension: 0.1,
-              backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-              borderColor: "rgba(255, 51, 178,0.4)", //linea
+              backgroundColor: colorCajama1, //caja
+              borderColor: colorBordeCajama1, //linea
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
-              pointBorderColor: "rgba(255, 51, 178,0.4)",
+              pointBorderColor: colorPuntoBordema1,
               pointBackgroundColor: "#fff",
               pointBorderWidth: 1,
               pointHoverRadius: 6,
-              pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-              pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+              pointHoverBackgroundColor: colorBackma1,
+              pointHoverBorderColor: pointColorBorderma1,
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
@@ -278,21 +387,21 @@ export class Graphic2Page {
 
             },
             {
-              label: "+1DE",
+              label: "+1",
               fill: false,
               lineTension: 0.1,
-              backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-              borderColor: "rgba(255, 51, 178,0.4)", //linea
+              backgroundColor: colorCajama1, //caja
+              borderColor: colorBordeCajama1, //linea
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
-              pointBorderColor: "rgba(255, 51, 178,0.4)",
+              pointBorderColor: colorPuntoBordema1,
               pointBackgroundColor: "#fff",
               pointBorderWidth: 1,
               pointHoverRadius: 6,
-              pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-              pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+              pointHoverBackgroundColor: colorBackma1,
+              pointHoverBorderColor: pointColorBorderma1,
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
@@ -301,21 +410,21 @@ export class Graphic2Page {
 
             },
             {
-              label: "+1DE",
+              label: "+1.5",
               fill: false,
               lineTension: 0.1,
-              backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-              borderColor: "rgba(255, 51, 178,0.4)", //linea
+              backgroundColor: colorCajama2, //caja
+              borderColor: colorBordeCajama2, //linea
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
-              pointBorderColor: "rgba(255, 51, 178,0.4)",
+              pointBorderColor: colorPuntoBordema2,
               pointBackgroundColor: "#fff",
               pointBorderWidth: 1,
               pointHoverRadius: 6,
-              pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-              pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+              pointHoverBackgroundColor: colorBackma2,
+              pointHoverBorderColor: pointColorBorderma2,
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
@@ -324,21 +433,21 @@ export class Graphic2Page {
 
             },
             {
-              label: "+1DE",
+              label: "+1.5",
               fill: false,
               lineTension: 0.1,
-              backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-              borderColor: "rgba(255, 51, 178,0.4)", //linea
+              backgroundColor: colorCajama2, //caja
+              borderColor: colorBordeCajama2, //linea
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
-              pointBorderColor: "rgba(255, 51, 178,0.4)",
+              pointBorderColor: colorPuntoBordema2,
               pointBackgroundColor: "#fff",
               pointBorderWidth: 1,
               pointHoverRadius: 6,
-              pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-              pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+              pointHoverBackgroundColor: colorBackma2,
+              pointHoverBorderColor: pointColorBorderma2,
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
@@ -360,21 +469,21 @@ export class Graphic2Page {
             labels: DATOS2[index2].labels,
             datasets: [
               {
-                label: "+1DE",
+                label: "-2",
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                borderColor: "rgba(255, 51, 178,0.4)", //linea
+                backgroundColor: colorCajame2, //caja
+                borderColor: colorBordeCajame2, //linea
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(255, 51, 178,0.4)",
+                pointBorderColor: colorPuntoBordeme2,
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 6,
-                pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                pointHoverBackgroundColor: colorBackme2,
+                pointHoverBorderColor: pointColorBorderme2,
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -383,21 +492,21 @@ export class Graphic2Page {
              }
               ,
               {
-                label: "+1DE",
+                label: "-1.5",
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                borderColor: "rgba(255, 51, 178,0.4)", //linea
+                backgroundColor: colorCajame2, //caja
+                borderColor: colorBordeCajame2, //linea
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(255, 51, 178,0.4)",
+                pointBorderColor: colorPuntoBordeme2,
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 6,
-                pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                pointHoverBackgroundColor: colorBackme2,
+                pointHoverBorderColor: pointColorBorderme2,
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -407,21 +516,21 @@ export class Graphic2Page {
               ,
 
               {
-                label: "+1DE",
+                label: "-1",
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                borderColor: "rgba(255, 51, 178,0.4)", //linea
+                backgroundColor: colorCajame1, //caja
+                borderColor: colorBordeCajame1, //linea
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(255, 51, 178,0.4)",
+                pointBorderColor: colorPuntoBordeme1,
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 6,
-                pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                pointHoverBackgroundColor: colorBackme1,
+                pointHoverBorderColor: pointColorBorderme1,
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -430,21 +539,21 @@ export class Graphic2Page {
 
               },
               {
-                label: "+1DE",
+                label: "-0.5",
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                borderColor: "rgba(255, 51, 178,0.4)", //linea
+                backgroundColor: colorCajame1, //caja
+                borderColor: colorBordeCajame1, //linea
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(255, 51, 178,0.4)",
+                pointBorderColor: colorPuntoBordeme1,
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 6,
-                pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                pointHoverBackgroundColor: colorBackme1,
+                pointHoverBorderColor: pointColorBorderme1,
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -453,21 +562,21 @@ export class Graphic2Page {
 
               },
               {
-                label: "+1DE",
+                label: "M",
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                borderColor: "rgba(255, 51, 178,0.4)", //linea
+                backgroundColor: colorCaja, //caja
+                borderColor: colorBordeCaja, //linea
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(255, 51, 178,0.4)",
+                pointBorderColor: colorPuntoBorde,
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 6,
-                pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                pointHoverBackgroundColor: colorBack,
+                pointHoverBorderColor: pointColorBorder,
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -477,21 +586,21 @@ export class Graphic2Page {
               }
               ,
               {
-                label: "+1DE",
+                label: "-0.5",
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                borderColor: "rgba(255, 51, 178,0.4)", //linea
+                backgroundColor: colorCajama1, //caja
+                borderColor: colorBordeCajama1, //linea
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(255, 51, 178,0.4)",
+                pointBorderColor: colorPuntoBordema1,
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 6,
-                pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                pointHoverBackgroundColor: colorBackma1,
+                pointHoverBorderColor: pointColorBorderma1,
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -500,21 +609,21 @@ export class Graphic2Page {
 
               },
               {
-                label: "+1DE",
+                label: "-1",
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                borderColor: "rgba(255, 51, 178,0.4)", //linea
+                backgroundColor: colorCajama1, //caja
+                borderColor: colorBordeCajama1, //linea
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(255, 51, 178,0.4)",
+                pointBorderColor: colorPuntoBordema1,
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 6,
-                pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                pointHoverBackgroundColor: colorBackma1,
+                pointHoverBorderColor: pointColorBorderma1,
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -523,21 +632,21 @@ export class Graphic2Page {
 
               },
               {
-                label: "+1DE",
+                label: "-1.5",
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                borderColor: "rgba(255, 51, 178,0.4)", //linea
+                backgroundColor: colorCajama2, //caja
+                borderColor: colorBordeCajama2, //linea
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(255, 51, 178,0.4)",
+                pointBorderColor: colorPuntoBordema2,
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 6,
-                pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                pointHoverBackgroundColor: colorBackma2,
+                pointHoverBorderColor: pointColorBorderma2,
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -546,21 +655,21 @@ export class Graphic2Page {
 
               },
               {
-                label: "+1DE",
+                label: "-2",
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                borderColor: "rgba(255, 51, 178,0.4)", //linea
+                backgroundColor: colorCajama2, //caja
+                borderColor: colorBordeCajama2, //linea
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(255, 51, 178,0.4)",
+                pointBorderColor: colorPuntoBordema2,
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 6,
-                pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                pointHoverBackgroundColor: colorBackma2,
+                pointHoverBorderColor: pointColorBorderma2,
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -582,21 +691,21 @@ export class Graphic2Page {
                 labels: DATOS2[index3].labels,
                 datasets: [
                   {
-                    label: "+1DE",
+                    label: "-2",
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                    borderColor: "rgba(255, 51, 178,0.4)", //linea
+                    backgroundColor: colorCajame2, //caja
+                    borderColor: colorBordeCajame2, //linea
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointBorderColor: colorPuntoBordeme2,
                     pointBackgroundColor: "#fff",
                     pointBorderWidth: 1,
                     pointHoverRadius: 6,
-                    pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                    pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointHoverBackgroundColor: colorBackme2,
+                    pointHoverBorderColor: pointColorBorderme2,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -605,21 +714,21 @@ export class Graphic2Page {
                  }
                   ,
                   {
-                    label: "+1DE",
+                    label: "-1.5",
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                    borderColor: "rgba(255, 51, 178,0.4)", //linea
+                    backgroundColor: colorCajame2, //caja
+                    borderColor: colorBordeCajame2, //linea
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointBorderColor: colorPuntoBordeme2,
                     pointBackgroundColor: "#fff",
                     pointBorderWidth: 1,
                     pointHoverRadius: 6,
-                    pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                    pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointHoverBackgroundColor: colorBackme2,
+                    pointHoverBorderColor: pointColorBorderme2,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -629,21 +738,21 @@ export class Graphic2Page {
                   ,
 
                   {
-                    label: "+1DE",
+                    label: "-1",
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                    borderColor: "rgba(255, 51, 178,0.4)", //linea
+                    backgroundColor: colorCajame1, //caja
+                    borderColor: colorBordeCajame1, //linea
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointBorderColor: colorPuntoBordeme1,
                     pointBackgroundColor: "#fff",
                     pointBorderWidth: 1,
                     pointHoverRadius: 6,
-                    pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                    pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointHoverBackgroundColor: colorBackme1,
+                    pointHoverBorderColor: pointColorBorderme1,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -652,21 +761,21 @@ export class Graphic2Page {
 
                   },
                   {
-                    label: "+1DE",
+                    label: "-0.5",
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                    borderColor: "rgba(255, 51, 178,0.4)", //linea
+                    backgroundColor: colorCajame1, //caja
+                    borderColor: colorBordeCajame1, //linea
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointBorderColor: colorPuntoBordeme1,
                     pointBackgroundColor: "#fff",
                     pointBorderWidth: 1,
                     pointHoverRadius: 6,
-                    pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                    pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointHoverBackgroundColor: colorBackme1,
+                    pointHoverBorderColor: pointColorBorderme1,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -675,21 +784,21 @@ export class Graphic2Page {
 
                   },
                   {
-                    label: "+1DE",
+                    label: "M",
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                    borderColor: "rgba(255, 51, 178,0.4)", //linea
+                    backgroundColor: colorCaja, //caja
+                    borderColor: colorBordeCaja, //linea
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointBorderColor: colorPuntoBorde,
                     pointBackgroundColor: "#fff",
                     pointBorderWidth: 1,
                     pointHoverRadius: 6,
-                    pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                    pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointHoverBackgroundColor: colorBack,
+                    pointHoverBorderColor: pointColorBorder,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -699,21 +808,21 @@ export class Graphic2Page {
                   }
                   ,
                   {
-                    label: "+1DE",
+                    label: "+0.5",
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                    borderColor: "rgba(255, 51, 178,0.4)", //linea
+                    backgroundColor: colorCajama1, //caja
+                    borderColor: colorBordeCajama1, //linea
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointBorderColor: colorPuntoBordema1,
                     pointBackgroundColor: "#fff",
                     pointBorderWidth: 1,
                     pointHoverRadius: 6,
-                    pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                    pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointHoverBackgroundColor: colorBackma1,
+                    pointHoverBorderColor: pointColorBorderma1,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -722,21 +831,21 @@ export class Graphic2Page {
 
                   },
                   {
-                    label: "+1DE",
+                    label: "+1",
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                    borderColor: "rgba(255, 51, 178,0.4)", //linea
+                    backgroundColor: colorCajama1, //caja
+                    borderColor: colorBordeCajama1, //linea
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointBorderColor: colorPuntoBordema1,
                     pointBackgroundColor: "#fff",
                     pointBorderWidth: 1,
                     pointHoverRadius: 6,
-                    pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                    pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointHoverBackgroundColor: colorBackma1,
+                    pointHoverBorderColor: pointColorBorderma1,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -745,21 +854,21 @@ export class Graphic2Page {
 
                   },
                   {
-                    label: "+1DE",
+                    label: "+1.5",
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                    borderColor: "rgba(255, 51, 178,0.4)", //linea
+                    backgroundColor: colorCajama2, //caja
+                    borderColor: colorBordeCajama2, //linea
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointBorderColor: colorPuntoBordema2,
                     pointBackgroundColor: "#fff",
                     pointBorderWidth: 1,
                     pointHoverRadius: 6,
-                    pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                    pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointHoverBackgroundColor: colorBackma2,
+                    pointHoverBorderColor: pointColorBorderma2,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -768,21 +877,21 @@ export class Graphic2Page {
 
                   },
                   {
-                    label: "+1DE",
+                    label: "+2.0",
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: "rgba(255, 51, 178,0.4)", //caja
-                    borderColor: "rgba(255, 51, 178,0.4)", //linea
+                    backgroundColor: colorCajama2, //caja
+                    borderColor: colorBordeCajama2, //linea
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointBorderColor: colorPuntoBordema2,
                     pointBackgroundColor: "#fff",
                     pointBorderWidth: 1,
                     pointHoverRadius: 6,
-                    pointHoverBackgroundColor: "rgba(255, 51, 178,0.4)",
-                    pointHoverBorderColor: "rgba(255, 51, 178,0.4)",
+                    pointHoverBackgroundColor: colorBackma2,
+                    pointHoverBorderColor: pointColorBorderma2,
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -849,10 +958,17 @@ export class Graphic2Page {
         index3 = 5;
       }
 
-  }
+    }else if(altura > 103){
+      if(this.sex == "Masculino"){
+        index3 = 12;
+      }else{
+        index3 = 13;
+      }
+    }
 
-  return(index3);
-}
+    return(index3);
+
+  }
 
 
 }
