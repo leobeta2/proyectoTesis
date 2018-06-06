@@ -72,6 +72,35 @@ export class Graphic2Page {
     console.log(peso);
     console.log(sex);
     console.log("");
+    let colorCajame2 = "";
+    let colorBordeCajame2="";
+    let colorPuntoBordeme2 = "";
+    let colorBackme2 = "";
+    let pointColorBorderme2 = "";
+
+    let colorCajame1 = "";
+    let colorBordeCajame1="";
+    let colorPuntoBordeme1 = "";
+    let colorBackme1 = "";
+    let pointColorBorderme1 = "";
+
+   let colorCaja = "";
+   let colorBordeCaja="";
+   let colorPuntoBorde = "";
+   let colorBack = "";
+   let pointColorBorder = "";
+
+    let colorCajama1 = "";
+    let colorBordeCajama1="";
+    let colorPuntoBordema1 = "";
+    let colorBackma1 = "";
+    let pointColorBorderma1 = "";
+
+    let colorCajama2 = "";
+    let colorBordeCajama2="";
+    let colorPuntoBordema2 = "";
+    let colorBackma2 = "";
+    let pointColorBorderma2 = "";
 
 
     let mesActual = this.dateTime.getMonth()+1;
@@ -130,35 +159,7 @@ export class Graphic2Page {
 
     //Definimos el color de los graficos
 
-    let colorCajame2 = "";
-    let colorBordeCajame2="";
-    let colorPuntoBordeme2 = "";
-    let colorBackme2 = "";
-    let pointColorBorderme2 = "";
 
-    let colorCajame1 = "";
-    let colorBordeCajame1="";
-    let colorPuntoBordeme1 = "";
-    let colorBackme1 = "";
-    let pointColorBorderme1 = "";
-
-   let colorCaja = "";
-   let colorBordeCaja="";
-   let colorPuntoBorde = "";
-   let colorBack = "";
-   let pointColorBorder = "";
-
-    let colorCajama1 = "";
-    let colorBordeCajama1="";
-    let colorPuntoBordema1 = "";
-    let colorBackma1 = "";
-    let pointColorBorderma1 = "";
-
-    let colorCajama2 = "";
-    let colorBordeCajama2="";
-    let colorPuntoBordema2 = "";
-    let colorBackma2 = "";
-    let pointColorBorderma2 = "";
 
     if(this.sex == "Femenino"){
       console.log(this.sex);
@@ -235,9 +236,10 @@ export class Graphic2Page {
       pointColorBorderma2 = "rgba(0, 153, 255,1)";
 
     }
-
-
-
+    let comienzo= 0;
+    let puntoPeso = this.PointPositionPeso(this.peso,mesesT,comienzo);
+    let puntoAltura = this.PointPositionAltura(this.color,mesesT, comienzo);
+    let puntoLongitudPeso = this.PointPositionPesoLongitud(this.peso,this.color);
 
     console.log('ionViewDidLoad Graphic2Page');
     this.A1 = new Chart(this.graphicsA1.nativeElement, {
@@ -453,6 +455,18 @@ export class Graphic2Page {
               pointHitRadius: 10,
               data: DATOS2[index1].dato8,
               spanGaps: false,
+
+            }
+            ,
+            {
+              label: "Coordenadas",
+              backgroundColor: "#ff0000",
+              borderColor: "#ff0000",
+              data: puntoPeso,
+              fill: false,
+              pointRadius: 5,
+              pointHoverRadius: 10,
+              showLine: false // no line shown
 
             }
 
@@ -676,6 +690,17 @@ export class Graphic2Page {
                 data: DATOS2[index2].dato8,
                 spanGaps: false,
 
+              },
+              {
+                label: "Coordenada",
+                backgroundColor: "#ff0000",
+                borderColor: "#ff0000",
+                data: puntoAltura,
+                fill: false,
+                pointRadius: 5,
+                pointHoverRadius: 10,
+                showLine: false // no line shown
+
               }
 
 
@@ -898,6 +923,17 @@ export class Graphic2Page {
                     data: DATOS2[index3].dato8,
                     spanGaps: false,
 
+                  },
+                  {
+                    label: "Coordenada",
+                    backgroundColor: "#ff0000",
+                    borderColor: "#ff0000",
+                    data: puntoLongitudPeso,
+                    fill: false,
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    showLine: false // no line shown
+
                   }
 
 
@@ -969,6 +1005,58 @@ export class Graphic2Page {
     return(index3);
 
   }
+
+
+  public PointPositionPeso(peso,Meses,bandStart){
+
+    let a = [];
+
+    for (let i=0; i < Meses;i++){
+      a.push(null);
+      a.push(null);
+
+    }
+    a.push(peso);
+    console.log("Peso"+ a);
+
+    return(a);
+  }
+
+  public PointPositionAltura(Altura,Meses,DosAnos){
+    console.log("ENtre??!?!?!?");
+    let a = [];
+
+    for (let i=0; i < Meses;i++){
+      a.push(null);
+      a.push(null);
+
+    }
+    a.push(Altura);
+    console.log("Altura"+ a);
+
+    return(a);
+  }
+
+
+  public PointPositionPesoLongitud(Peso,longitud){
+
+    let a = [];
+    console.log("Point Position Longitud!!!!");
+    console.log("LONGIUD Antes 1: "+longitud);
+    if (longitud >= 45 && longitud <= 103) {
+      longitud = longitud -45;
+      console.log("LONGIUD despues 1: "+longitud);
+      for (let i=0; i < longitud;i++){
+        //console.log(i);
+        a.push(null);
+        a.push(null);
+      }
+      a.push(Peso);
+    }
+    return(a);
+
+  }
+
 
 
 }
