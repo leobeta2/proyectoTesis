@@ -29,6 +29,7 @@ export class Graphic2Page {
   banderasex:boolean;
   edad1: any;
   public cuartoGrafico = true;
+  public mayor24 = true;
   public tercerGrafico = true;
   //public message1: string;
   //public message2: string;
@@ -37,13 +38,13 @@ export class Graphic2Page {
   @ViewChild('graphicsA1') graphicsA1;
   @ViewChild('graphicsA2') graphicsA2;
   @ViewChild('graphicsA3') graphicsA3;
-  //@ViewChild('graphicsA4') graphicsA4;
+  @ViewChild('graphicsA4') graphicsA4;
 
 
   A1: any;
   A2: any;
   A3: any;
-  //A4: any;
+  A4: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.color = this.navParams.get('color');
@@ -68,6 +69,7 @@ export class Graphic2Page {
     let index1 = 0;
     let index2 = 0;
     let index3 = 0;
+    let index4 = 0;
     console.log(altura);
     console.log(peso);
     console.log(sex);
@@ -135,15 +137,23 @@ export class Graphic2Page {
     console.log("mesesT: "+ mesesT);
     difAno = anoActual - anoNacimiento;
 
-    let index: number[] = [0, 0];
+    let index: number[] = [0, 0,0];
     //funcion para todo lo que es estatura y peso con
     //respecto a la edad
     index= this.GraficoEdad(mesesT, this.sex);
     console.log("Estees:  "+index);
 
+    let mayor24 = true;
     index1 =index[0];
     index2 =index[1];
+    index4 = index[2];
 
+    if(index4==-1){
+      this.mayor24= false;
+      index4 = 12;//por mientras
+    }
+
+    console.log("index4: "+index4);
     this.edad1 = mesesT;
 
     index3 = this.GraficoAltura(altura,this.sex);
@@ -151,6 +161,7 @@ export class Graphic2Page {
     this.t1 = DATOS2[index1].tituloGrafico;
     this.t2 = DATOS2[index2].tituloGrafico;
     this.t3 = DATOS2[index3].tituloGrafico;
+    this.t4 = DATOS2[index4].tituloGrafico;
     console.log('Despues');
 
     let tipoGraficolocal1 = DATOS2[index1].tipoGrafico || 0;
@@ -158,8 +169,7 @@ export class Graphic2Page {
     //let tipoGraficolocal3 = DATOS[index3].tipoGrafico || 0;
 
     //Definimos el color de los graficos
-
-
+    let puntoIMC = [];
 
     if(this.sex == "Femenino"){
       console.log(this.sex);
@@ -240,6 +250,8 @@ export class Graphic2Page {
     let puntoPeso = this.PointPositionPeso(this.peso,mesesT,comienzo);
     let puntoAltura = this.PointPositionAltura(this.color,mesesT, comienzo);
     let puntoLongitudPeso = this.PointPositionPesoLongitud(this.peso,this.color);
+
+    puntoIMC= this.PointIMC(this.peso,this.color,mesesT);
 
     console.log('ionViewDidLoad Graphic2Page');
     this.A1 = new Chart(this.graphicsA1.nativeElement, {
@@ -941,48 +953,304 @@ export class Graphic2Page {
               }
 
             });
+
+    this.A4 = new Chart(this.graphicsA4.nativeElement, {
+
+
+                    type: 'line',
+                    data: {
+                      labels: DATOS2[index4].labels,
+                      datasets: [
+                        {
+                          label: "-2",
+                          fill: false,
+                          lineTension: 0.1,
+                          backgroundColor: colorCajame2, //caja
+                          borderColor: colorBordeCajame2, //linea
+                          borderCapStyle: 'butt',
+                          borderDash: [],
+                          borderDashOffset: 0.0,
+                          borderJoinStyle: 'miter',
+                          pointBorderColor: colorPuntoBordeme2,
+                          pointBackgroundColor: "#fff",
+                          pointBorderWidth: 1,
+                          pointHoverRadius: 6,
+                          pointHoverBackgroundColor: colorBackme2,
+                          pointHoverBorderColor: pointColorBorderme2,
+                          pointHoverBorderWidth: 2,
+                          pointRadius: 1,
+                          pointHitRadius: 10,
+                          data: DATOS2[index4].dato1,
+                          spanGaps: false,
+                       }
+                        ,
+                        {
+                          label: "-1.5",
+                          fill: false,
+                          lineTension: 0.1,
+                          backgroundColor: colorCajame2, //caja
+                          borderColor: colorBordeCajame2, //linea
+                          borderCapStyle: 'butt',
+                          borderDash: [],
+                          borderDashOffset: 0.0,
+                          borderJoinStyle: 'miter',
+                          pointBorderColor: colorPuntoBordeme2,
+                          pointBackgroundColor: "#fff",
+                          pointBorderWidth: 1,
+                          pointHoverRadius: 6,
+                          pointHoverBackgroundColor: colorBackme2,
+                          pointHoverBorderColor: pointColorBorderme2,
+                          pointHoverBorderWidth: 2,
+                          pointRadius: 1,
+                          pointHitRadius: 10,
+                          data: DATOS2[index4].dato2,
+                          spanGaps: false,
+                        }
+                        ,
+
+                        {
+                          label: "-1",
+                          fill: false,
+                          lineTension: 0.1,
+                          backgroundColor: colorCajame1, //caja
+                          borderColor: colorBordeCajame1, //linea
+                          borderCapStyle: 'butt',
+                          borderDash: [],
+                          borderDashOffset: 0.0,
+                          borderJoinStyle: 'miter',
+                          pointBorderColor: colorPuntoBordeme1,
+                          pointBackgroundColor: "#fff",
+                          pointBorderWidth: 1,
+                          pointHoverRadius: 6,
+                          pointHoverBackgroundColor: colorBackme1,
+                          pointHoverBorderColor: pointColorBorderme1,
+                          pointHoverBorderWidth: 2,
+                          pointRadius: 1,
+                          pointHitRadius: 10,
+                          data: DATOS2[index4].dato3,
+                          spanGaps: false,
+
+                        },
+                        {
+                          label: "-0.5",
+                          fill: false,
+                          lineTension: 0.1,
+                          backgroundColor: colorCajame1, //caja
+                          borderColor: colorBordeCajame1, //linea
+                          borderCapStyle: 'butt',
+                          borderDash: [],
+                          borderDashOffset: 0.0,
+                          borderJoinStyle: 'miter',
+                          pointBorderColor: colorPuntoBordeme1,
+                          pointBackgroundColor: "#fff",
+                          pointBorderWidth: 1,
+                          pointHoverRadius: 6,
+                          pointHoverBackgroundColor: colorBackme1,
+                          pointHoverBorderColor: pointColorBorderme1,
+                          pointHoverBorderWidth: 2,
+                          pointRadius: 1,
+                          pointHitRadius: 10,
+                          data: DATOS2[index4].dato4,
+                          spanGaps: false,
+
+                        },
+                        {
+                          label: "M",
+                          fill: false,
+                          lineTension: 0.1,
+                          backgroundColor: colorCaja, //caja
+                          borderColor: colorBordeCaja, //linea
+                          borderCapStyle: 'butt',
+                          borderDash: [],
+                          borderDashOffset: 0.0,
+                          borderJoinStyle: 'miter',
+                          pointBorderColor: colorPuntoBorde,
+                          pointBackgroundColor: "#fff",
+                          pointBorderWidth: 1,
+                          pointHoverRadius: 6,
+                          pointHoverBackgroundColor: colorBack,
+                          pointHoverBorderColor: pointColorBorder,
+                          pointHoverBorderWidth: 2,
+                          pointRadius: 1,
+                          pointHitRadius: 10,
+                          data: DATOS2[index4].datoM,
+                          spanGaps: false,
+
+                        }
+                        ,
+                        {
+                          label: "+0.5",
+                          fill: false,
+                          lineTension: 0.1,
+                          backgroundColor: colorCajama1, //caja
+                          borderColor: colorBordeCajama1, //linea
+                          borderCapStyle: 'butt',
+                          borderDash: [],
+                          borderDashOffset: 0.0,
+                          borderJoinStyle: 'miter',
+                          pointBorderColor: colorPuntoBordema1,
+                          pointBackgroundColor: "#fff",
+                          pointBorderWidth: 1,
+                          pointHoverRadius: 6,
+                          pointHoverBackgroundColor: colorBackma1,
+                          pointHoverBorderColor: pointColorBorderma1,
+                          pointHoverBorderWidth: 2,
+                          pointRadius: 1,
+                          pointHitRadius: 10,
+                          data: DATOS2[index4].dato5,
+                          spanGaps: false,
+
+                        },
+                        {
+                          label: "+1",
+                          fill: false,
+                          lineTension: 0.1,
+                          backgroundColor: colorCajama1, //caja
+                          borderColor: colorBordeCajama1, //linea
+                          borderCapStyle: 'butt',
+                          borderDash: [],
+                          borderDashOffset: 0.0,
+                          borderJoinStyle: 'miter',
+                          pointBorderColor: colorPuntoBordema1,
+                          pointBackgroundColor: "#fff",
+                          pointBorderWidth: 1,
+                          pointHoverRadius: 6,
+                          pointHoverBackgroundColor: colorBackma1,
+                          pointHoverBorderColor: pointColorBorderma1,
+                          pointHoverBorderWidth: 2,
+                          pointRadius: 1,
+                          pointHitRadius: 10,
+                          data: DATOS2[index4].dato6,
+                          spanGaps: false,
+
+                        },
+                        {
+                          label: "+1.5",
+                          fill: false,
+                          lineTension: 0.1,
+                          backgroundColor: colorCajama2, //caja
+                          borderColor: colorBordeCajama2, //linea
+                          borderCapStyle: 'butt',
+                          borderDash: [],
+                          borderDashOffset: 0.0,
+                          borderJoinStyle: 'miter',
+                          pointBorderColor: colorPuntoBordema2,
+                          pointBackgroundColor: "#fff",
+                          pointBorderWidth: 1,
+                          pointHoverRadius: 6,
+                          pointHoverBackgroundColor: colorBackma2,
+                          pointHoverBorderColor: pointColorBorderma2,
+                          pointHoverBorderWidth: 2,
+                          pointRadius: 1,
+                          pointHitRadius: 10,
+                          data: DATOS2[index4].dato7,
+                          spanGaps: false,
+
+                        },
+                        {
+                          label: "+2.0",
+                          fill: false,
+                          lineTension: 0.1,
+                          backgroundColor: colorCajama2, //caja
+                          borderColor: colorBordeCajama2, //linea
+                          borderCapStyle: 'butt',
+                          borderDash: [],
+                          borderDashOffset: 0.0,
+                          borderJoinStyle: 'miter',
+                          pointBorderColor: colorPuntoBordema2,
+                          pointBackgroundColor: "#fff",
+                          pointBorderWidth: 1,
+                          pointHoverRadius: 6,
+                          pointHoverBackgroundColor: colorBackma2,
+                          pointHoverBorderColor: pointColorBorderma2,
+                          pointHoverBorderWidth: 2,
+                          pointRadius: 1,
+                          pointHitRadius: 10,
+                          data: DATOS2[index4].dato8,
+                          spanGaps: false,
+
+                        },
+                        {
+                          label: "Coordenada",
+                          backgroundColor: "#ff0000",
+                          borderColor: "#ff0000",
+                          data: puntoIMC,
+                          fill: false,
+                          pointRadius: 5,
+                          pointHoverRadius: 10,
+                          showLine: false // no line shown
+
+                        }
+
+
+                      ]
+                    }
+
+                  });
+
+
+
+
+
   }
 
   public GraficoEdad(mesesT, sex){
-    let index:number[] = [-1,-1]
+    let index:number[] = [-1,-1,-1]
+
+    if(mesesT>24 && mesesT>0){
+
+      if(this.sex == "Masculino"){
+
+        index[2]=12 // imc
+
+
+      }else{
+
+        index[2] =13; //imc
+
+      }
+    }//fin mayor a 24 meses
+
+
     if( mesesT>=0 && mesesT <= 36){
 
       if(this.sex == "Masculino"){
         index[0] =0; //para edad x peso
         index[1] =2; //para edad * Estatura
 
+
       }else{
         console.log("1A");
         index[0] =1;//para edad x peso
         console.log("2A");
         index[1] =3; //para edad * Estatura
+
       }
-
-
-
-
-    } else if (mesesT > 36 && mesesT <= 240 ) {
+    }else if (mesesT > 36 && mesesT <= 240 ) {
 
 
       if(this.sex == "Masculino"){
         index[0] = 8;
         index[1] = 10;
+
       }else{
         console.log("5A");
         index[0] =9;
         console.log("6A");
         index[1] =11;
+
       }
 
 
-    }else{
+    }else if(mesesT>240){
 
         console.log("SE SUPERAN LOS 20 AÑOS");
     }
 
     return(index);
 
-  }
+
+}
 
   public GraficoAltura(altura,sex){
     let index3=-1;
@@ -994,7 +1262,8 @@ export class Graphic2Page {
         index3 = 5;
       }
 
-    }else if(altura > 103){
+    }else if(altura > 103){ //?????
+      this.tercerGrafico = false;
       if(this.sex == "Masculino"){
         index3 = 12;
       }else{
@@ -1039,10 +1308,11 @@ export class Graphic2Page {
 
 
   public PointPositionPesoLongitud(Peso,longitud){
-
     let a = [];
+    let imc = 0;
     console.log("Point Position Longitud!!!!");
-    console.log("LONGIUD Antes 1: "+longitud);
+    console.log("LONGItUD Antes 1: "+longitud);
+
     if (longitud >= 45 && longitud <= 103) {
       longitud = longitud -45;
       console.log("LONGIUD despues 1: "+longitud);
@@ -1052,9 +1322,29 @@ export class Graphic2Page {
         a.push(null);
       }
       a.push(Peso);
-    }
     return(a);
 
+
+    }
+  }
+
+  public PointIMC(peso,longitud,meses){
+    console.log("IMC");
+    let a = [];
+    let imc;
+    let imcR;
+
+    imc = peso/Math.pow((longitud)/100,2);
+    imcR = Math.round(imc * 100) / 100
+    console.log("IMC: "+imc);
+    console.log("IMC R:"+imcR);
+    for (let i=0; i < meses;i++){
+      //console.log(i);
+      a.push(null);
+      a.push(null);
+    }
+    a.push(imcR);
+    return(a);
   }
 
 
