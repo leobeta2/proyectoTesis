@@ -31,7 +31,7 @@ export class Graphic2Page {
   public cuartoGrafico = true;
   public mayor24 = true;
   public tercerGrafico = true;
-  //public message1: string;
+  public message1: string;
   //public message2: string;
   //public message3: string;
 
@@ -70,6 +70,7 @@ export class Graphic2Page {
     let index2 = 0;
     let index3 = 0;
     let index4 = 0;
+
     console.log(altura);
     console.log(peso);
     console.log(sex);
@@ -130,6 +131,9 @@ export class Graphic2Page {
     }
 
     let tipoGrafico1 = "";
+    let tipoGrafico2 = "";
+    let tipoGrafico3 = "";
+    let tipoGrafico4 = "";
 
 
     // numero de meses entre fecha de nacimiento y fecha actual
@@ -252,6 +256,10 @@ export class Graphic2Page {
     let puntoLongitudPeso = this.PointPositionPesoLongitud(this.peso,this.color);
 
     puntoIMC= this.PointIMC(this.peso,this.color,mesesT);
+
+    //mensajes
+    tipoGrafico1 = DATOS2[index1].tipoGrafico;
+    this.message1=this.MensajePercentil(tipoGrafico1,peso,mesesT,altura);
 
     console.log('ionViewDidLoad Graphic2Page');
     this.A1 = new Chart(this.graphicsA1.nativeElement, {
@@ -1347,6 +1355,76 @@ export class Graphic2Page {
     return(a);
   }
 
+  public MensajePercentil(tipoGrafico,peso,mesesT,altura){
+    let auxMessage="";
+    let xx,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice;
+
+    if(tipoGrafico == "PE36_M"){
+      console.log("Para gragico PE36_M");
+      xx = DATOS2[0].labels;
+      y1 = DATOS2[0].dato1;
+      y2 = DATOS2[0].dato2;
+      y3 = DATOS2[0].dato3;
+      y4 = DATOS2[0].dato4;
+      ym = DATOS2[0].datoM;
+      y5 = DATOS2[0].dato5;
+      y6 = DATOS2[0].dato6;
+      y7 = DATOS2[0].dato7;
+      y8 = DATOS2[0].dato8;
+
+      for(let i =0; i < xx.length; i++){
+        if(mesesT == xx[i]){
+          indice = i;
+        }
+      }
+      console.log("indice:"+indice);
+      auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+    }
+
+    return(auxMessage);
+  }
+
+  public calculosPeso(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice){
+    let aux="";
+
+    if (peso <= y1[indice]) {
+      //debajo la curva -2D
+      console.log("Desnutricion severa");
+      aux = "Desnutrición (-2)";
+
+
+    }else if(peso > y1[indice] && peso <= y2[indice]){
+      //sobre la curva -2D y debajo de la curva -1D
+
+      aux = "Riesgo de Desnutricion(Entre -2 y -1.5 )"
+    }else if (peso > y2[indice] && peso <= y3[indice]) {
+
+      aux = "NORMAL - Eutrofico (Entre -1.5 y -1.0)";
+    }else if(peso > y3[indice] && peso <= y4[indice]){
+
+      aux = "NORMAL - Eutrofico (Entre -1.0 y -0.5)";
+    }else if(peso > y4[indice] && peso <= ym[indice]){
+
+      aux = "NORMAL - Eutrofico (Entre -0.5 y 0)";
+    }else if(peso > ym[indice] && peso <= y5[indice]){
+
+      aux = "Riesgo de obesidad (Entre 0 y 0.5)";
+    }else if(peso > y5[indice] && peso <= y6[indice]){
+
+      aux = "Riesgo de obesidad (Entre 0.5 y 1.0)";
+    }else if(peso > y6[indice] && peso <= y7[indice]){
+
+      aux = "Obesidad (Entre 1.0 y 1.5)";
+    }else if(peso > y7[indice] && peso <= y8[indice]){
+
+      aux = "Obesidad (Entre 1.5 y 2.0)";
+    }else if(peso > y8[indice]){
+
+      aux = "Obesidad (+2.0)";
+    }
+    return (aux);
+
+  }
 
 
 }
