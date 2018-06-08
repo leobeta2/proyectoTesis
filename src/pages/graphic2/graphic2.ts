@@ -33,7 +33,9 @@ export class Graphic2Page {
   public tercerGrafico = true;
   public message1: string;
   public message2: string;
-  //public message3: string;
+  public message3: string;
+  public message4: string;//imc
+  public message5: string;//mensaje imc
 
   @ViewChild('graphicsA1') graphicsA1;
   @ViewChild('graphicsA2') graphicsA2;
@@ -251,18 +253,24 @@ export class Graphic2Page {
 
     }
     let comienzo= 0;
+    if(mesesT >36){
+      comienzo=24;
+    }
+
     let puntoPeso = this.PointPositionPeso(this.peso,mesesT,comienzo);
     let puntoAltura = this.PointPositionAltura(this.color,mesesT, comienzo);
     let puntoLongitudPeso = this.PointPositionPesoLongitud(this.peso,this.color);
 
-    puntoIMC= this.PointIMC(this.peso,this.color,mesesT);
+    puntoIMC= this.PointIMC(this.peso,this.color,mesesT,comienzo);
 
     //mensajes
     tipoGrafico1 = DATOS2[index1].tipoGrafico;
     tipoGrafico2 = DATOS2[index2].tipoGrafico;
+    tipoGrafico3 = DATOS2[index3].tipoGrafico;
 
     this.message1=this.MensajePercentil(tipoGrafico1,peso,mesesT,altura);
     this.message2=this.MensajePercentil(tipoGrafico2,peso,mesesT,altura);
+    this.message3=this.MensajePercentil(tipoGrafico3,peso,mesesT,altura);
 
 
     console.log('ionViewDidLoad Graphic2Page');
@@ -1239,7 +1247,7 @@ export class Graphic2Page {
 
       }
     }else if (mesesT > 36 && mesesT <= 240 ) {
-
+      this.tercerGrafico = false
 
       if(this.sex == "Masculino"){
         index[0] = 8;
@@ -1291,8 +1299,10 @@ export class Graphic2Page {
   public PointPositionPeso(peso,Meses,bandStart){
 
     let a = [];
+    let MesesTemp=0;
+    MesesTemp = Meses-bandStart;
 
-    for (let i=0; i < Meses;i++){
+    for (let i=0; i < MesesTemp;i++){
       a.push(null);
       a.push(null);
 
@@ -1303,11 +1313,13 @@ export class Graphic2Page {
     return(a);
   }
 
-  public PointPositionAltura(Altura,Meses,DosAnos){
+  public PointPositionAltura(Altura,Meses,bandStart){
     console.log("ENtre??!?!?!?");
     let a = [];
+    let MesesTemp=0;
+    MesesTemp = Meses-bandStart;
 
-    for (let i=0; i < Meses;i++){
+    for (let i=0; i < MesesTemp;i++){
       a.push(null);
       a.push(null);
 
@@ -1340,28 +1352,56 @@ export class Graphic2Page {
     }
   }
 
-  public PointIMC(peso,longitud,meses){
+  public PointIMC(peso,longitud,meses,bandStart){
     console.log("IMC");
     let a = [];
     let imc;
     let imcR;
+    let MesesTemp=0;
+    MesesTemp = meses-bandStart;
 
     imc = peso/Math.pow((longitud)/100,2);
     imcR = Math.round(imc * 100) / 100
     console.log("IMC: "+imc);
     console.log("IMC R:"+imcR);
-    for (let i=0; i < meses;i++){
+    this.message4 = imcR;
+
+    for (let i=0; i < MesesTemp;i++){
       //console.log(i);
       a.push(null);
       a.push(null);
     }
     a.push(imcR);
+
+    //MENSAJE SEGÚN IMC
+
+    if(imcR < 16){
+      this.message5 = "Infrapeso: Delgadez Severa"
+    }else if(imcR >=16 && imcR <=16.99){
+      this.message5 = "Infrapeso: Delgadez moderada"
+    }else if(imcR >=17 && imcR <=18.49){
+      this.message5 = "Infrapeso: Delgadez aceptable"
+    }else if(imcR >=18.50 && imcR <=24.99){
+      this.message5 = "Peso Normal"
+    }else if(imcR >=25 && imcR <=29.99){
+      this.message5 = "Sobrepeso"
+    }else if(imcR >=30 && imcR <=34.99){
+      this.message5 = "Obeso: Tipo I"
+    }else if(imcR >=35 && imcR <40){
+      this.message5 = "Obeso: Tipo II"
+    }else if(imcR >40){
+      this.message5 = "Obeso: Tipo III"
+    }
+
+
+
+
     return(a);
   }
 
   public MensajePercentil(tipoGrafico,peso,mesesT,altura){
     let auxMessage="";
-    let xx,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice;
+    let xx,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice,alt;
 
     if(tipoGrafico == "PE36_M"){
       console.log("Para gragico PE36_M");
@@ -1451,6 +1491,235 @@ export class Graphic2Page {
       console.log("indice:"+indice);
       auxMessage = this.calculosAltura(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
     }
+
+    if(tipoGrafico == "PES36_M"){
+      console.log("Para grafico PES36_M");
+      xx = DATOS2[4].labels;
+      y1 = DATOS2[4].dato1;
+      y2 = DATOS2[4].dato2;
+      y3 = DATOS2[4].dato3;
+      y4 = DATOS2[4].dato4;
+      ym = DATOS2[4].datoM;
+      y5 = DATOS2[4].dato5;
+      y6 = DATOS2[4].dato6;
+      y7 = DATOS2[4].dato7;
+      y8 = DATOS2[4].dato8;
+
+
+      alt = Math.round(altura/0.5)*0.5;// redondea de 0.5 a 0.5
+      alt = alt.toString();
+      alt = alt.replace(".",",");
+      console.log("Sin redondear:"+altura);
+      console.log("COn redondear"+alt);
+
+      for(let i =0; i < xx.length; i++){
+
+        if(alt == xx[i]){
+          indice = i;
+        }
+
+      }
+      console.log("indice:"+indice);
+      auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+    }
+
+    if(tipoGrafico == "PES36_F"){
+      console.log("Para grafico PES36_F");
+      xx = DATOS2[5].labels;
+      y1 = DATOS2[5].dato1;
+      y2 = DATOS2[5].dato2;
+      y3 = DATOS2[5].dato3;
+      y4 = DATOS2[5].dato4;
+      ym = DATOS2[5].datoM;
+      y5 = DATOS2[5].dato5;
+      y6 = DATOS2[5].dato6;
+      y7 = DATOS2[5].dato7;
+      y8 = DATOS2[5].dato8;
+
+
+      alt = Math.round(altura/0.5)*0.5;// redondea de 0.5 a 0.5
+      alt = alt.toString();
+      alt = alt.replace(".",",");
+      console.log("Sin redondear:"+altura);
+      console.log("COn redondear"+alt);
+
+      for(let i =0; i < xx.length; i++){
+
+        if(alt == xx[i]){
+          indice = i;
+        }
+
+      }
+      console.log("indice:"+indice);
+      auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+    }
+
+    if(tipoGrafico == "PES_M"){
+      console.log("Para grafico PES_M");
+      xx = DATOS2[6].labels;
+      y1 = DATOS2[6].dato1;
+      y2 = DATOS2[6].dato2;
+      y3 = DATOS2[6].dato3;
+      y4 = DATOS2[6].dato4;
+      ym = DATOS2[6].datoM;
+      y5 = DATOS2[6].dato5;
+      y6 = DATOS2[6].dato6;
+      y7 = DATOS2[6].dato7;
+      y8 = DATOS2[6].dato8;
+
+
+      alt = Math.round(altura/0.5)*0.5;// redondea de 0.5 a 0.5
+      alt = alt.toString();
+      alt = alt.replace(".",",");
+      console.log("Sin redondear:"+altura);
+      console.log("COn redondear"+alt);
+
+      for(let i =0; i < xx.length; i++){
+
+        if(alt == xx[i]){
+          indice = i;
+        }
+
+      }
+      console.log("indice:"+indice);
+      auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+    }
+
+    if(tipoGrafico == "PES_F"){
+      console.log("Para grafico PES_F");
+      xx = DATOS2[7].labels;
+      y1 = DATOS2[7].dato1;
+      y2 = DATOS2[7].dato2;
+      y3 = DATOS2[7].dato3;
+      y4 = DATOS2[7].dato4;
+      ym = DATOS2[7].datoM;
+      y5 = DATOS2[7].dato5;
+      y6 = DATOS2[7].dato6;
+      y7 = DATOS2[7].dato7;
+      y8 = DATOS2[7].dato8;
+
+
+      alt = Math.round(altura/0.5)*0.5;// redondea de 0.5 a 0.5
+      alt = alt.toString();
+      alt = alt.replace(".",",");
+      console.log("Sin redondear:"+altura);
+      console.log("COn redondear"+alt);
+
+      for(let i =0; i < xx.length; i++){
+
+        if(alt == xx[i]){
+          indice = i;
+        }
+
+      }
+      console.log("indice:"+indice);
+      auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+    }
+
+    if(tipoGrafico == "PE_M"){
+      console.log("Para grafico PE_M");
+      xx = DATOS2[8].labels;
+      y1 = DATOS2[8].dato1;
+      y2 = DATOS2[8].dato2;
+      y3 = DATOS2[8].dato3;
+      y4 = DATOS2[8].dato4;
+      ym = DATOS2[8].datoM;
+      y5 = DATOS2[8].dato5;
+      y6 = DATOS2[8].dato6;
+      y7 = DATOS2[8].dato7;
+      y8 = DATOS2[8].dato8;
+
+
+
+      for(let i =0; i < xx.length; i++){
+
+        if(mesesT == xx[i]){
+          indice = i;
+        }
+
+      }
+      console.log("indice:"+indice);
+      auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+    }
+
+    if(tipoGrafico == "PE_F"){
+      console.log("Para grafico PE_F");
+      xx = DATOS2[9].labels;
+      y1 = DATOS2[9].dato1;
+      y2 = DATOS2[9].dato2;
+      y3 = DATOS2[9].dato3;
+      y4 = DATOS2[9].dato4;
+      ym = DATOS2[9].datoM;
+      y5 = DATOS2[9].dato5;
+      y6 = DATOS2[9].dato6;
+      y7 = DATOS2[9].dato7;
+      y8 = DATOS2[9].dato8;
+
+
+
+      for(let i =0; i < xx.length; i++){
+
+        if(mesesT == xx[i]){
+          indice = i;
+        }
+
+      }
+      console.log("indice:"+indice);
+      auxMessage = this.calculosPeso(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+    }
+
+    if(tipoGrafico == "ESE_M"){
+      console.log("Para grafico ESE_M");
+      xx = DATOS2[10].labels;
+      y1 = DATOS2[10].dato1;
+      y2 = DATOS2[10].dato2;
+      y3 = DATOS2[10].dato3;
+      y4 = DATOS2[10].dato4;
+      ym = DATOS2[10].datoM;
+      y5 = DATOS2[10].dato5;
+      y6 = DATOS2[10].dato6;
+      y7 = DATOS2[10].dato7;
+      y8 = DATOS2[10].dato8;
+
+
+
+      for(let i =0; i < xx.length; i++){
+
+        if(mesesT == xx[i]){
+          indice = i;
+        }
+
+      }
+      console.log("indice:"+indice);
+      auxMessage = this.calculosAltura(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+    }
+
+    if(tipoGrafico == "ESE_F"){
+      console.log("Para grafico ESE_F");
+      xx = DATOS2[11].labels;
+      y1 = DATOS2[11].dato1;
+      y2 = DATOS2[11].dato2;
+      y3 = DATOS2[11].dato3;
+      y4 = DATOS2[11].dato4;
+      ym = DATOS2[11].datoM;
+      y5 = DATOS2[11].dato5;
+      y6 = DATOS2[11].dato6;
+      y7 = DATOS2[11].dato7;
+      y8 = DATOS2[11].dato8;
+
+
+
+      for(let i =0; i < xx.length; i++){
+
+        if(mesesT == xx[i]){
+          indice = i;
+        }
+
+      }
+      console.log("indice:"+indice);
+      auxMessage = this.calculosAltura(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+    }
+
     return(auxMessage);
   }
 
@@ -1500,11 +1769,8 @@ export class Graphic2Page {
 
   public calculosAltura(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice){
     let aux="";
-    console.log(  y1[indice]  );
-    console.log(  y2[indice]  );
-    console.log(  y3[indice]  );
-    console.log(  y4[indice]  );
-    console.log(y1);
+
+
 
     if (altura <= y1[indice]) {
       //debajo la curva -2D
