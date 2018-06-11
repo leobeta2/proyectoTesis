@@ -29,6 +29,9 @@ export class GraphicPage {
   public message1: string;
   public message2: string;
   public message3: string;
+  public message4: string;
+  public message5: string;
+  mayor24: boolean;
 
 
   //Se define niña= A, niño= B
@@ -310,9 +313,9 @@ export class GraphicPage {
     this.message1 = this.mensajePercentil(tipoGraficolocal1,mesesT,difAno,peso,altura);
     this.message2 = this.mensajePercentil(tipoGraficolocal2,mesesT,difAno,peso,altura);
     this.message3 = this.mensajePercentil(tipoGraficolocal3,mesesT,difAno,peso,altura);
+    this.mayor24 = false;
 
-
-
+  this.calculoIMC(this.peso,this.color,mesesT);
 
    //console.log(labels);
 
@@ -1376,6 +1379,39 @@ export class GraphicPage {
 
     //console.log("PesoLongitud:"+ a);
     return(a);
+  }
+
+  public calculoIMC(peso,longitud,meses){
+    let imc;
+    let imcR;
+    if(meses >=24){
+      this.mayor24=true;
+    }
+
+    imc = peso/Math.pow((longitud)/100,2);
+    imcR = Math.round(imc * 100) / 100;
+    console.log("IMC: "+imc);
+    console.log("IMC R:"+imcR);
+    this.message4 = imcR;
+
+    if(imcR < 16){
+      this.message5 = "Infrapeso: Delgadez Severa"
+    }else if(imcR >=16 && imcR <=16.99){
+      this.message5 = "Infrapeso: Delgadez moderada"
+    }else if(imcR >=17 && imcR <=18.49){
+      this.message5 = "Infrapeso: Delgadez aceptable"
+    }else if(imcR >=18.50 && imcR <=24.99){
+      this.message5 = "Peso Normal"
+    }else if(imcR >=25 && imcR <=29.99){
+      this.message5 = "Sobrepeso"
+    }else if(imcR >=30 && imcR <=34.99){
+      this.message5 = "Obeso: Tipo I"
+    }else if(imcR >=35 && imcR <40){
+      this.message5 = "Obeso: Tipo II"
+    }else if(imcR >40){
+      this.message5 = "Obeso: Tipo III"
+    }
+
   }
 
 
