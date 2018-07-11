@@ -1360,6 +1360,9 @@ export class Graphic2Page {
     let imc;
     let imcR;
     let MesesTemp=0;
+    console.log("PointIMC");
+    console.log(meses);
+    console.log(bandStart);
     MesesTemp = meses-bandStart;
 
     imc = peso/Math.pow((longitud)/100,2);
@@ -1370,7 +1373,6 @@ export class Graphic2Page {
 
     for (let i=0; i < MesesTemp;i++){
       //console.log(i);
-      a.push(null);
       a.push(null);
     }
     a.push(imcR);
@@ -1777,6 +1779,7 @@ export class Graphic2Page {
   public calculosIMC(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice){
     let aux="";
     let auxIMC = peso/Math.pow((altura)/100,2);
+
     console.log("Calculos IMC");
     console.log(auxIMC);
     console.log(y1[indice]);
