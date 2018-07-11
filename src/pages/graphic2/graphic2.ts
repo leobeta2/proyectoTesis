@@ -36,6 +36,7 @@ export class Graphic2Page {
   public message3: string;
   public message4: string;//imc
   public message5: string;//mensaje imc
+  public message6: string;
 
   @ViewChild('graphicsA1') graphicsA1;
   @ViewChild('graphicsA2') graphicsA2;
@@ -267,11 +268,12 @@ export class Graphic2Page {
     tipoGrafico1 = DATOS2[index1].tipoGrafico;
     tipoGrafico2 = DATOS2[index2].tipoGrafico;
     tipoGrafico3 = DATOS2[index3].tipoGrafico;
+    tipoGrafico4 = DATOS2[index4].tipoGrafico;
 
     this.message1=this.MensajePercentil(tipoGrafico1,peso,mesesT,altura);
     this.message2=this.MensajePercentil(tipoGrafico2,peso,mesesT,altura);
     this.message3=this.MensajePercentil(tipoGrafico3,peso,mesesT,altura);
-
+    this.message6 = this.MensajePercentil(tipoGrafico4,peso,mesesT,altura);
 
     console.log('ionViewDidLoad Graphic2Page');
     this.A1 = new Chart(this.graphicsA1.nativeElement, {
@@ -1720,9 +1722,112 @@ export class Graphic2Page {
       auxMessage = this.calculosAltura(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
     }
 
+    if(tipoGrafico == "IMC_M"){
+      console.log("IMC MAsculino")
+      xx = DATOS2[12].labels;
+      y1 = DATOS2[12].dato1;
+      y2 = DATOS2[12].dato2;
+      y3 = DATOS2[12].dato3;
+      y4 = DATOS2[12].dato4;
+      ym = DATOS2[12].datoM;
+      y5 = DATOS2[12].dato5;
+      y6 = DATOS2[12].dato6;
+      y7 = DATOS2[12].dato7;
+      y8 = DATOS2[12].dato8;
+
+      for(let i =0; i < xx.length; i++){
+
+        if(mesesT == xx[i]){
+          indice = i;
+        }
+
+      }
+      auxMessage = this.calculosIMC(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+    }
+    if(tipoGrafico == "IMC_F"){
+      console.log("IMC femenino")
+      xx = DATOS2[13].labels;
+      y1 = DATOS2[13].dato1;
+      y2 = DATOS2[13].dato2;
+      y3 = DATOS2[13].dato3;
+      y4 = DATOS2[13].dato4;
+      ym = DATOS2[13].datoM;
+      y5 = DATOS2[13].dato5;
+      y6 = DATOS2[13].dato6;
+      y7 = DATOS2[13].dato7;
+      y8 = DATOS2[13].dato8;
+
+      for(let i =0; i < xx.length; i++){
+
+        if(mesesT == xx[i]){
+          indice = i;
+        }
+
+      }
+      console.log("INdice IMC:"+indice)
+      auxMessage = this.calculosIMC(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice);
+
+    }
+
+
+
     return(auxMessage);
   }
 
+  public calculosIMC(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice){
+    let aux="";
+    let auxIMC = peso/Math.pow((altura)/100,2);
+    console.log("Calculos IMC");
+    console.log(auxIMC);
+    console.log(y1[indice]);
+    console.log(y2[indice]);
+    console.log(y3[indice]);
+    console.log(y4[indice]);
+    console.log(ym[indice]);
+    console.log(y5[indice]);
+    console.log(y6[indice]);
+    console.log(y7[indice]);
+    console.log(y8[indice]);
+
+
+    if (auxIMC <= y1[indice]) {
+      //debajo la curva -2D
+      console.log("Desnutricion severa");
+      aux = "Bajo Peso. Percentil 0";
+
+
+    }else if(auxIMC > y1[indice] && auxIMC <= y2[indice]){
+      //sobre la curva -2D y debajo de la curva -1D
+
+      aux = "Bajo Peso. Percentil 3"
+    }else if (auxIMC > y2[indice] && auxIMC <= y3[indice]) {
+
+      aux = "Bajo Peso. Percentil 5";
+    }else if(auxIMC > y3[indice] && auxIMC <= y4[indice]){
+
+      aux = "Peso Normal. Percentil 10";
+    }else if(auxIMC > y4[indice] && auxIMC <= ym[indice]){
+
+      aux = "Peso Normal. Percentil 25";
+    }else if(auxIMC > ym[indice] && auxIMC <= y5[indice]){
+
+      aux = "Peso Normal. Percentil 50";
+    }else if(auxIMC > y5[indice] && auxIMC <= y6[indice]){
+
+      aux = "Peso Normal. Percentil 75";
+    }else if(auxIMC > y6[indice] && auxIMC <= y7[indice]){
+
+      aux = "Peso Normal. Percentil 90";
+    }else if(auxIMC > y7[indice] && auxIMC <= y8[indice]){
+
+      aux = "Sobre Peso. Percentil 95";
+    }else if(auxIMC > y8[indice]){
+
+      aux = "Obesidad. Percentil 97";
+    }
+    console.log("Mensaje IMC:"+aux)
+    return (aux);
+  }
 
 
   public calculosPeso(xx,peso,altura,y1,y2,y3,y4,ym,y5,y6,y7,y8,indice){

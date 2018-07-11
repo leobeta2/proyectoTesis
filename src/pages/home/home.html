@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-grid>
       <ion-row>
-        <ion-col>
+        <ion-col col-6>
           <ion-title >
 
             <h2>Desarrollo del Crecimiento</h2>
@@ -12,7 +12,7 @@
 
         </ion-col>
         <ion-col>
-          <button  *ngIf="!loginUser"  ion-button color="secondary"  (click)="goToLogin()">Entrar</button>
+          <!-- <button  *ngIf="!loginUser"  ion-button color="secondary"  (click)="goToLogin()">Entrar</button> -->
           <button *ngIf="loginUser" ion-button color=""  (click)="signOut()">Salir</button>
 
         </ion-col>
@@ -55,7 +55,8 @@
   </ion-list>
   <div padding>
     <button ion-button color="secondary" block  (click)="goToGraphic(sex.value, date.value,color.value, peso.value) ">OMS (0 a 6 años)</button>
-    <button ion-button color="primary" block (click)="goToGraphic2(sex.value,date.value,color.value, peso.value)">WHO (0 a 20 años)</button>
+    <button ion-button color="primary" block (click)="goToGraphic2(sex.value,date.value,color.value, peso.value)">CDC (0 a 20 años)</button>
+    <button ion-button color="danger" block >Salir</button>
     <button *ngIf="loginUser" ion-button color="secondary" block  (click)="goToProfile()">Perfil</button>
 
 

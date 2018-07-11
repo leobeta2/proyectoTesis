@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title> WHO</ion-title>
+    <ion-title>CDC</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -48,6 +48,7 @@
       <div><label>Grafico (Estatura/Edad): {{message2}}</label></div>
       <div *ngIf="tercerGrafico"><label>Grafico (Peso/Estatura): {{message3}}</label></div>
       <div *ngIf="mayor24"><label>Índice de Masa Corporal: {{message4}}</label></div>
+      <div *ngIf="mayor24"><label>Grafico  (IMC/Edad): {{message6}}</label></div>
       <div *ngIf="mayor24"><label>Atendiendo al IMC, tiene: {{message5}}</label></div>
     </div>
   </ion-card>
