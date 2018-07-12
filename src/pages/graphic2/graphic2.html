@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>CDC</ion-title>
+    <ion-title>CDC Gráficos Antropométricos</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -44,18 +44,18 @@
   <ion-card>
     <div padding>
       <h2> <strong>Resultados:</strong> </h2>
-      <div><label>Grafico (Peso/Edad): {{message1}}</label></div>
+      <div *ngIf="primerGrafico"><label>Grafico (Peso/Edad): {{message1}}</label></div>
       <div><label>Grafico (Estatura/Edad): {{message2}}</label></div>
       <div *ngIf="tercerGrafico"><label>Grafico (Peso/Estatura): {{message3}}</label></div>
       <div *ngIf="mayor24"><label>Índice de Masa Corporal: {{message4}}</label></div>
       <div *ngIf="mayor24"><label>Grafico  (IMC/Edad): {{message6}}</label></div>
-      <div *ngIf="mayor24"><label>Atendiendo al IMC, tiene: {{message5}}</label></div>
+      <div *ngIf="mayor24"><label>Atendiendo al IMC: {{message5}}</label></div>
     </div>
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="primerGrafico">
       <ion-card-header>
-        Grafico 1: {{t1}}
+        Grafico: {{t1}}
       </ion-card-header>
       <ion-card-content>
         <canvas  #graphicsA1></canvas>
@@ -63,7 +63,7 @@
     </ion-card>
     <ion-card>
         <ion-card-header>
-          Grafico 2: {{t2}}
+          Grafico: {{t2}}
         </ion-card-header>
         <ion-card-content>
           <canvas  #graphicsA2></canvas>
@@ -71,7 +71,7 @@
       </ion-card>
       <ion-card *ngIf="tercerGrafico">
           <ion-card-header>
-            Grafico 3: {{t3}}
+            Grafico: {{t3}}
           </ion-card-header>
           <ion-card-content>
             <canvas  #graphicsA3></canvas>

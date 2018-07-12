@@ -30,6 +30,7 @@ export class Graphic2Page {
   edad1: any;
   public cuartoGrafico = true;
   public mayor24 = true;
+  public primerGrafico = true;
   public tercerGrafico = true;
   public message1: string;
   public message2: string;
@@ -1250,7 +1251,7 @@ export class Graphic2Page {
       }
     }else if (mesesT > 36 && mesesT <= 240 ) {
       this.tercerGrafico = false
-
+      this.primerGrafico = false
       if(this.sex == "Masculino"){
         index[0] = 8;
         index[1] = 10;

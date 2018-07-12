@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>OMS Graficos Antropometricos</ion-title>
+    <ion-title>OMS Gráficos Antropometricos</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -41,12 +41,12 @@
     <ion-card>
       <div padding>
         <h2> <strong>Resultados:</strong> </h2>
-        <div><label>Grafico 1 (Peso/Edad): {{message1}}</label></div>
-        <div><label>Grafico 2 (Peso/Talla): {{message3}}</label></div>
-        <div><label>Grafico 3 (Talla/Edad): {{message2}}</label></div>
+        <div><label>Grafico (Peso/Edad): {{message1}}</label></div>
+        <div><label>Grafico (Peso/Talla): {{message3}}</label></div>
+        <div><label>Grafico (Talla/Edad): {{message2}}</label></div>
         <div *ngIf="mayor24"><label>Índice de Masa Corporal: {{message4}}</label></div>
         <div *ngIf="mayor24"><label>Grafico  (IMC/Edad): {{message6}}</label></div>
-        <div *ngIf="mayor24"><label>Atendiendo al IMC, tiene: {{message5}}</label></div>
+        <div *ngIf="mayor24"><label>Atendiendo al IMC: {{message5}}</label></div>
 
 
       </div>
