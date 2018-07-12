@@ -1,12 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, AlertController, ToastController, Item} from 'ionic-angular';
 import {GraphicPage} from "../graphic/graphic";
-import {LoginPage} from "../login/login";
-import {AngularFireAuth} from "angularfire2/auth";
-import {AngularFireDatabase} from "angularfire2/database";
-import {FirebaseObjectObservable} from "angularfire2/database-deprecated";
-import { AngularFireObject }  from "angularfire2/database";
-import {ProfilePage} from "../profile/profile";
 import { Observable } from 'rxjs/Observable';
 import {Graphic2Page} from '../graphic2/graphic2'
 
@@ -29,9 +23,7 @@ export class HomePage {
 
 
   @ViewChild('myNav') nav: NavController;
-  constructor(private afDatabase: AngularFireDatabase,
-              //private afDb: AngularFireObject<any>,
-              private afAuth:AngularFireAuth,
+  constructor(
               private toast: ToastController,
               public navCtrl: NavController,
               public alertCtrl: AlertController) {
@@ -42,35 +34,7 @@ export class HomePage {
   ionViewWillLoad(){
 
 
-    this.afAuth.authState.subscribe(data => {
-      if (data && data.email && data.uid) {
-        this.toast.create({
-          message: 'Bienvenido a Desarrollo del Infante,' +data.email+'!!',
-          duration: 3000
-        }).present();
-        //this.profileData = this.afDb.valueChanges()
-        //this.items = this.afDatabase.object('profile/'+data.uid).valueChanges();
-        //console.log("profile" +this.items);
 
-
-      }
-      else{
-        this.toast.create({
-          message: 'No se pudo autentificar',
-          duration: 1000
-        }).present();
-      }
-
-    });
-    console.log("estado: "+ this.loginUser );
-
-     this.afAuth.authState.subscribe(data => {
-       if(data && data.email && data.uid){
-         this.loginUser = true;
-       }else{
-         this.loginUser = false;
-       }
-     });
 
   }
 
@@ -132,18 +96,6 @@ export class HomePage {
     alert.present();
   }
 
-  goToLogin(){
-    this.navCtrl.push(LoginPage);
-  }
 
-  goToProfile(){
-    this.navCtrl.push(ProfilePage);
-  }
-
-  signOut() {
-    this.afAuth.auth.signOut().then(res => {
-      this.navCtrl.setRoot(HomePage); // or somewhere else
-    });
-  }
-
+  
 }
