@@ -284,7 +284,7 @@ export class Graphic2Page {
           labels: DATOS2[index1].labels,
           datasets: [
             {
-              label: "-2",
+              label: "p3",
               fill: false,
               lineTension: 0.1,
               backgroundColor: colorCajame2, //caja
@@ -307,7 +307,7 @@ export class Graphic2Page {
            }
             ,
             {
-              label: "-1.5",
+              label: "p5",
               fill: false,
               lineTension: 0.1,
               backgroundColor: colorCajame2, //caja
@@ -331,7 +331,7 @@ export class Graphic2Page {
             ,
 
             {
-              label: "-1",
+              label: "p10",
               fill: false,
               lineTension: 0.1,
               backgroundColor: colorCajame1, //caja
@@ -354,7 +354,7 @@ export class Graphic2Page {
 
             },
             {
-              label: "-0.5",
+              label: "p25",
               fill: false,
               lineTension: 0.1,
               backgroundColor: colorCajame1, //caja
@@ -377,7 +377,7 @@ export class Graphic2Page {
 
             },
             {
-              label: "M",
+              label: "p50",
               fill: false,
               lineTension: 0.1,
               backgroundColor: colorCaja, //caja
@@ -401,7 +401,7 @@ export class Graphic2Page {
             }
             ,
             {
-              label: "+0.5",
+              label: "p75",
               fill: false,
               lineTension: 0.1,
               backgroundColor: colorCajama1, //caja
@@ -424,7 +424,7 @@ export class Graphic2Page {
 
             },
             {
-              label: "+1",
+              label: "p90",
               fill: false,
               lineTension: 0.1,
               backgroundColor: colorCajama1, //caja
@@ -447,7 +447,7 @@ export class Graphic2Page {
 
             },
             {
-              label: "+1.5",
+              label: "p95",
               fill: false,
               lineTension: 0.1,
               backgroundColor: colorCajama2, //caja
@@ -470,7 +470,7 @@ export class Graphic2Page {
 
             },
             {
-              label: "+1.5",
+              label: "p97",
               fill: false,
               lineTension: 0.1,
               backgroundColor: colorCajama2, //caja
@@ -518,7 +518,7 @@ export class Graphic2Page {
             labels: DATOS2[index2].labels,
             datasets: [
               {
-                label: "-2",
+                label: "p3",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: colorCajame2, //caja
@@ -541,7 +541,7 @@ export class Graphic2Page {
              }
               ,
               {
-                label: "-1.5",
+                label: "p5",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: colorCajame2, //caja
@@ -565,7 +565,7 @@ export class Graphic2Page {
               ,
 
               {
-                label: "-1",
+                label: "p10",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: colorCajame1, //caja
@@ -588,7 +588,7 @@ export class Graphic2Page {
 
               },
               {
-                label: "-0.5",
+                label: "p25",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: colorCajame1, //caja
@@ -611,7 +611,7 @@ export class Graphic2Page {
 
               },
               {
-                label: "M",
+                label: "p50",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: colorCaja, //caja
@@ -635,7 +635,7 @@ export class Graphic2Page {
               }
               ,
               {
-                label: "-0.5",
+                label: "p75",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: colorCajama1, //caja
@@ -658,7 +658,7 @@ export class Graphic2Page {
 
               },
               {
-                label: "-1",
+                label: "p90",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: colorCajama1, //caja
@@ -681,7 +681,7 @@ export class Graphic2Page {
 
               },
               {
-                label: "-1.5",
+                label: "p95",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: colorCajama2, //caja
@@ -704,7 +704,7 @@ export class Graphic2Page {
 
               },
               {
-                label: "-2",
+                label: "p97",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: colorCajama2, //caja
@@ -751,7 +751,7 @@ export class Graphic2Page {
                 labels: DATOS2[index3].labels,
                 datasets: [
                   {
-                    label: "-2",
+                    label: "p3",
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: colorCajame2, //caja
@@ -774,7 +774,7 @@ export class Graphic2Page {
                  }
                   ,
                   {
-                    label: "-1.5",
+                    label: "p5",
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: colorCajame2, //caja
@@ -798,7 +798,7 @@ export class Graphic2Page {
                   ,
 
                   {
-                    label: "-1",
+                    label: "p10",
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: colorCajame1, //caja
@@ -821,7 +821,7 @@ export class Graphic2Page {
 
                   },
                   {
-                    label: "-0.5",
+                    label: "p25",
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: colorCajame1, //caja
@@ -844,7 +844,7 @@ export class Graphic2Page {
 
                   },
                   {
-                    label: "M",
+                    label: "p50",
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: colorCaja, //caja
@@ -868,7 +868,7 @@ export class Graphic2Page {
                   }
                   ,
                   {
-                    label: "+0.5",
+                    label: "p75",
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: colorCajama1, //caja
@@ -891,7 +891,7 @@ export class Graphic2Page {
 
                   },
                   {
-                    label: "+1",
+                    label: "p90",
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: colorCajama1, //caja
@@ -914,7 +914,7 @@ export class Graphic2Page {
 
                   },
                   {
-                    label: "+1.5",
+                    label: "p95",
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: colorCajama2, //caja
@@ -937,7 +937,7 @@ export class Graphic2Page {
 
                   },
                   {
-                    label: "+2.0",
+                    label: "p97",
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: colorCajama2, //caja
@@ -985,7 +985,7 @@ export class Graphic2Page {
                       labels: DATOS2[index4].labels,
                       datasets: [
                         {
-                          label: "-2",
+                          label: "p3",
                           fill: false,
                           lineTension: 0.1,
                           backgroundColor: colorCajame2, //caja
@@ -1008,7 +1008,7 @@ export class Graphic2Page {
                        }
                         ,
                         {
-                          label: "-1.5",
+                          label: "p5",
                           fill: false,
                           lineTension: 0.1,
                           backgroundColor: colorCajame2, //caja
@@ -1032,7 +1032,7 @@ export class Graphic2Page {
                         ,
 
                         {
-                          label: "-1",
+                          label: "p10",
                           fill: false,
                           lineTension: 0.1,
                           backgroundColor: colorCajame1, //caja
@@ -1055,7 +1055,7 @@ export class Graphic2Page {
 
                         },
                         {
-                          label: "-0.5",
+                          label: "p25",
                           fill: false,
                           lineTension: 0.1,
                           backgroundColor: colorCajame1, //caja
@@ -1078,7 +1078,7 @@ export class Graphic2Page {
 
                         },
                         {
-                          label: "M",
+                          label: "p50",
                           fill: false,
                           lineTension: 0.1,
                           backgroundColor: colorCaja, //caja
@@ -1102,7 +1102,7 @@ export class Graphic2Page {
                         }
                         ,
                         {
-                          label: "+0.5",
+                          label: "p75",
                           fill: false,
                           lineTension: 0.1,
                           backgroundColor: colorCajama1, //caja
@@ -1125,7 +1125,7 @@ export class Graphic2Page {
 
                         },
                         {
-                          label: "+1",
+                          label: "p90",
                           fill: false,
                           lineTension: 0.1,
                           backgroundColor: colorCajama1, //caja
@@ -1148,7 +1148,7 @@ export class Graphic2Page {
 
                         },
                         {
-                          label: "+1.5",
+                          label: "p95",
                           fill: false,
                           lineTension: 0.1,
                           backgroundColor: colorCajama2, //caja
@@ -1171,7 +1171,7 @@ export class Graphic2Page {
 
                         },
                         {
-                          label: "+2.0",
+                          label: "p97",
                           fill: false,
                           lineTension: 0.1,
                           backgroundColor: colorCajama2, //caja
